@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Penguinsula - Misc</title><link href="https://jwarmenhoven.github.io/" rel="alternate"></link><link href="https://jwarmenhoven.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://jwarmenhoven.github.io/</id><updated>2017-07-05T00:00:00+02:00</updated><entry><title>Getting the hang of this Pelican-GitHub thing!</title><link href="https://jwarmenhoven.github.io/getting-the-hang-of-this-pelican-github-thing.html" rel="alternate"></link><published>2017-07-05T00:00:00+02:00</published><updated>2017-07-05T00:00:00+02:00</updated><author><name>Jordi Warmenhoven</name></author><id>tag:jwarmenhoven.github.io,2017-07-05:/getting-the-hang-of-this-pelican-github-thing.html</id><summary type="html">&lt;p class="first last"&gt;Almost there... &lt;strong&gt;Pelican&lt;/strong&gt;.&lt;/p&gt;
+</summary><content type="html">&lt;div class="section" id="more-a-matter-of-git-than-pelican"&gt;
+&lt;h2&gt;More a matter of Git than Pelican&lt;/h2&gt;
+&lt;p&gt;I found out that the git flow was the issue...&lt;/p&gt;
+&lt;/div&gt;
+</content><category term="Pelican"></category><category term="GitHub"></category></entry></feed>
