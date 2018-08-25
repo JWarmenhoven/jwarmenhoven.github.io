@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Posts in category Blog" />
+    <meta name="description" content="" />
     <meta name="author" content="Jordi Warmenhoven" />
     <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
   
@@ -11805,7 +11805,7 @@ jQuery(document).ready(function($) {
 </script>
 
 
-    <title>Category:Blog - Penguinsula</title>
+    <title>Building a modest Linux Deep Learning machine - Penguinsula</title>
 
    
         <link rel="stylesheet"
@@ -11873,13 +11873,8 @@ jQuery(document).ready(function($) {
     <div class="container" id="main-container">
       <div class="row">
         <div class="col-md-9" id="content">
-<ol class="breadcrumb">
-    <li><a href="/" title="Home" rel="home">
-		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
-    <li>Categories </li>
-    <li class="active">Blog</li>
-</ol>
-    <article>
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
 <abbr class="article-header-date">
   Sat 25 August 2018
 </abbr> <h1>
@@ -11895,47 +11890,125 @@ jQuery(document).ready(function($) {
       Blog</a>
     &nbsp;&nbsp;
   </p>
-</div> <!-- /.article-header-info -->
-      <div class="summary">
-		<p>
+</div> <!-- /.article-header-info -->  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Some time ago I decided to move from a MacOS development environment back to Linux for exploring and working with Python datascience and statistical modelling libraries. Though most of the Python libraries and platforms offer support for MacOS, things are generally easier in  Linux. One avoids a lot of special …</p></div></div></div></p>
-		<p class="content-emphasis"><a href="/Linux-Deep-Learning-Machine.html">
-			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
-		</a></p>
-      </div>    </article>
-    <hr />
-    <article>
-<abbr class="article-header-date">
-  Sat 08 July 2017
-</abbr> <h1>
-  <a href="/Post1.html" rel="bookmark"
-     title="Permalink to Setting up Pelican and GitHub pages">
-    Setting up Pelican and GitHub pages
-  </a>
-</h1><div class="article-header-info">
-  <p>
-      Posted by <a href="/author/jordi-warmenhoven.html">Jordi Warmenhoven</a>
-    in 
-    <a href="/category/blog.html">
-      Blog</a>
-    &nbsp;&nbsp;
+<p>Some time ago I decided to move from a MacOS development environment back to Linux for exploring and working with Python datascience and statistical modelling libraries. Though most of the Python libraries and platforms offer support for MacOS, things are generally easier in  Linux. One avoids a lot of special installation and compatability instructions. My first experience with Linux dates from 1996 when I bought a set of Slackware cdroms. Since then I have used Linux on various types of hardware, but not that much during the last few years. For Python programming I mainly use <a href="https://jupyter-notebook.readthedocs.io/en/latest/">Jupyter Notebooks</a>, which are accessed through a webbrowser. So I will just run the Linux machine as a server and work in the notebooks through from my MacOS desktop using a browser.</p>
+<p>A second reason for wanting to switch back to Linux has to do with the fact that I want to take a look at running deep learning models on a Graphics Processing Unit (<a href="https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/">GPU</a>). My MacOS desktop (iMac) does not have compatible hardware or the possibility of installing such hardware. Today, the <a href="https://developer.nvidia.com/computeworks">GPU's and toolkits from Nvidia</a> are most common and deep learning frameworks like TensorFlow and Theano support mainly those. I must admit that the GPU was not a strict requirement for the new hardware: I am currently interested in probabilistic programming in PyMC3 and those type of models generally do not benefit from running on a GPU. Using the CPU for the computations is often faster! But since i wanted to take a look at Keras/Tensorflow I opted for a GPU anyway, making it the most expensive hardware component in my build...</p>
+<p>Below are some details on the hardware and the base installation of the Python libraries. It assumes basic knowledge of hardware components, Linux, Python and Deep Learning frameworks.</p>
+<h3 id="Hardware">Hardware<a class="anchor-link" href="#Hardware">&#182;</a></h3><hr>
+<p>My objective was <em>not</em> to build a high-end Deep Learning machine with multiple GPU's of the newest hardware available. I wanted to have a reasonably compact and average machine in terms of performance and cost. Checking component compatibility and reviews with help of <a href="https://pcpartpicker.com/">pcpartpicker</a> was very convenient. The actual installation of the hardware was not very difficult. Carefully read the manual of the motherboard and case. Those will pretty much lay out in which order to put things together.</p>
+<ul>
+<li><strong>Motherboard: <a href="https://www.asus.com/uk/Motherboards/PRIME-B250M-PLUS/specifications/">ASUS Prime B250M-Plus</a></strong><br>
+This motherboard has a B250 chipset with support for 6th/7th generation Skylake/Kaby Lake Intel Core processors. Initially I went for the B250M-K which has one slot for GPU instead of two and two slots for RAM instead of four. This would have been fine since I do not intend on running multiple GPU's or upgrade to more RAM. But as it turned out, the B250M-K is not compatible with the case I had bought: it has only one connector for a case fan whereas my case came with two fans. I really liked the case so I decided to change the motherboard since the extra cost was small.</li>
+</ul>
+<ul>
+<li><strong>CPU: <a href="https://ark.intel.com/products/97123">Intel Core i5 7500 3.4 GHz</a></strong><br>
+A 7th generation Kaby Lake processor with 4 cores from Q1 2017. </li>
+</ul>
+<ul>
+<li><strong>CPU Cooler: <a href="http://www.coolermaster.com/cooling/cpu-air-cooler/hyper-212-evo/">Cooler Master Hyper 212 EVO</a></strong><br>
+The Intel CPU came with a fan but I bought this one afterwards. Mostly to reduce the noise somewhat. I do not think there would have been any problems with the Intel stock cooler since I am not going to overclock the CPU. </li>
+</ul>
+<ul>
+<li><strong>Video Card: <a href="https://www.asus.com/uk/Graphics-Cards/PH-GTX1060-6G/specifications/">ASUS GeForce GTX 1060 6GB Phoenix</a></strong><br>
+Not the newest and most capable GPU on the market, but enough for what I intend to use it for.</li>
+</ul>
+<ul>
+<li><strong>Memory: <a href="https://www.corsair.com/eu/en/Categories/Products/Memory/VENGEANCE%C2%AE-LPX-16GB-%282-x-8GB%29-DDR4-DRAM-2400MHz-C16-Memory-Kit---Black/p/CMK16GX4M2Z2400C16">Corsair 16GB (2x 8GB) DDR4 2400MHz CL16 Vengeance</a></strong><br>
+The Motherboard supports a maximum of 64GB DDR4 @ 2400 MHz. It required a BIOS update for the motherboard to run the RAM at 2400MHz.   </li>
+</ul>
+<ul>
+<li><strong>Storage: <a href="https://www.samsung.com/uk/memory-storage/960-evo-nvme-m-2-ssd/MZ-V6E250BW/">Samsung 960 EVO 250GB</a></strong><br>
+I wanted a SSD disk as the main storage disk.</li>
+</ul>
+<ul>
+<li><strong>Case: <a href="http://www.fractal-design.com/home/product/cases/define-series/define-mini-c">Fractal Design Define Mini C Svart</a></strong><br>
+Nice, compact mATX case. High quality finish and good manual.</li>
+</ul>
+<ul>
+<li><strong>Power Supply: <a href="http://www.fractal-design.com/home/product/power-supplies/integra-m/integra-m-450w">Fractal Design Integra M 450W</a></strong><br>
+All the components together do not draw that much power at all. This modest 450 Watt power supply works just fine. </li>
+</ul>
+<p>The total price tag for the components was a little more than 1100 USD.</p>
+<h3 id="Software">Software<a class="anchor-link" href="#Software">&#182;</a></h3><hr>
+<p>Instead of just copying the installation instructions of the various libraries here, I will just mentioned specific points which I think are especially important. You should read all notes in the context of <em>"At the time of installation"</em>. Available versions and dependencies have likely changed since then.</p>
+<ul>
+<li><strong><a href="https://help.ubuntu.com/16.04/installation-guide/index.html">Ubuntu 16.04 LTS</a></strong><br>
+I chose the 16.04 release over the more recent 18.04 because the latter is not explicitly mentioned as being compatible with the Nvidia Cuda Toolkit. Judging from various posts on the Internet there are ways to get it to work in 18.04, but I did not want to take any chances. I installed Ubuntu by means of a boot image on a <a href="https://help.ubuntu.com/16.04/installation-guide/amd64/ch04s03.html">USB memory stick</a>.  </li>
+</ul>
+<ul>
+<li><strong><a href="https://developer.nvidia.com/cuda-toolkit-archive">Nvidia CUDA Toolkit 9.0</a></strong><br>
+<em>"The NVIDIA® CUDA® Toolkit provides a development environment for creating high performance GPU-accelerated applications. With the CUDA Toolkit, you can develop, optimize and deploy your applications on GPU-accelerated embedded systems, desktop workstations, enterprise data centers, cloud-based platforms and HPC supercomputers."</em><br>
+TensorFlow with GPU support in Ubuntu requires CUDA Toolkit 9.0. After carefully following the <a href="https://docs.nvidia.com/cuda/archive/9.0/cuda-installation-guide-linux/index.html">installation and post-installation instructions</a>, I did not encounter any problems with the Ubuntu deb packages. To make sure that my package manager does automatically upgrade to a never version of the toolkit I installed with <code>sudo apt-get install cuda-9.0</code> instead of <code>sudo apt-get install cuda</code>.  </li>
+</ul>
+<ul>
+<li><strong><a href="https://developer.nvidia.com/cudnn">Nvidia cuDNN 7.1.4 for CUDA 9.0</a></strong><br>
+<em>"The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers. cuDNN is part of the NVIDIA Deep Learning SDK."</em><br>
+I installed the deb packages as described in the <a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-archived/cudnn_714/cudnn-install/index.html#install-linux">documentation</a>. You will have to register (free) as a developer to be able to download the library.  </li>
+</ul>
+<ul>
+<li><strong><a href="https://www.anaconda.com/download/#linux">Anaconda 5.2 (Python 3.6)</a></strong><br>
+I created a conda environment with Python version 3.6 and installed the typical PyData libraries like Pandas, Numpy, Scipy, Matplotlib and Jupyter.    </li>
+</ul>
+<ul>
+<li><strong><a href="http://deeplearning.net/software/theano/install_ubuntu.html">Theano 1.0.2</a></strong><br>
+Bleeding-Edge installation as described in the documentation: <code>pip install</code> from GitHub. I did this within the conda environment. The Ubuntu installation instructions appear a bit dated with regards to the required versions of the dependent libraries. Just install the libraries mentioned using <code>conda install [library]</code>. I installed libgpuarray following the step-by-step system install description (note <code>cmake</code> requirement).<br>
+Read the documentation about the configuration of Theano using the <code>.theanorc</code> file.</li>
+</ul>
+<ul>
+<li><strong><a href="http://docs.pymc.io/">PyMC3 3.5</a></strong><br>
+PyMC3 is a Python package for Bayesian modelling and relies on Theano for computations. I installed the development branch with <code>pip install</code> from GitHub within the conda environment. When testing some code to see if I could use the GPU with Theano, I found out that PyMC3 tries to do parallel MCMC sampling by default. It assumes that you have multiple GPU's and this will result in a RuntimeError. Specify <code>cores=1</code> when calling the <code>pm.sample()</code> method. If you have configured Theano to use the CPU instead of the GPU  (<code>device = cpu</code> in your <code>.theanorc</code> file), you can enter the number of cores of your cpu. As mentioned earlier, the GPU does generally not speed up computations with PyMC3 models.  </li>
+</ul>
+<ul>
+<li><strong><a href="https://www.tensorflow.org/install/install_linux">TensorFlow 1.9</a></strong><br>
+Installed in the conda environment using pip and the URL of the TensorFlow package with GPU support for Python 3.6.</li>
+</ul>
+<ul>
+<li><strong><a href="https://keras.io/">Keras 2.2.2</a></strong><br>
+Installed in the conda environment using pip. It will use TensorFlow as its backend.</li>
+</ul>
+<p>There are of course more base packages and libraries that one would install in a typical development environment, but the above are the main parts with regards to Deep Learning and Bayesian modelling. Furthermore, the modelling and Deep Learning ecosystem for Python is <a href="https://t.co/Zn6pjXplXB">developping fast</a>. Many more frameworks are available. I am looking forward to exploring these!</p>
+
+</div>
+</div>
+</div>
+ 
+
   </p>
-</div> <!-- /.article-header-info -->
-      <div class="summary">
-		<p>How I did it.</p>
-		<p class="content-emphasis"><a href="/Post1.html">
-			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
-		</a></p>
-      </div>    </article>
-    <hr />
+  </div>
+  
+<div class="article-tag-list">
+<span class="label label-default">Tags</span>
+	<a href="/tag/linux.html"><i class="fa fa-tag"></i>Linux</a>&nbsp;
+	<a href="/tag/deep-learning.html"><i class="fa fa-tag"></i>Deep Learning</a>&nbsp;
+	<a href="/tag/gpu.html"><i class="fa fa-tag"></i>GPU</a>&nbsp;
+	<a href="/tag/python.html"><i class="fa fa-tag"></i>Python</a>&nbsp;
+</div>  <hr />
+  <div class="well well-sm">  <!-- Social media sharing buttons -->
+    <!-- Twitter -->
+    <a href="https://twitter.com/share" class="twitter-share-button" 
+       data-via="penguinsula" >Tweet</a>&nbsp;
 
-<nav class="index-pager">
+    <!-- Google+ -->
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="g-plusone" data-size="medium"></div>&nbsp;
 
-</nav> <!-- /index-pager -->
+    <!-- Facebook -->
+    <div class="fb-like" 
+        data-href="/Linux-Deep-Learning-Machine.html" 
+        data-layout="button_count" 
+        data-action="like" data-show-faces="true" 
+        data-share="true">
+    </div>
+    &nbsp;
+  </div> <!-- /Social media sharing buttons -->
+</article>
         </div><!-- /content -->
 
         <div class="col-md-3 sidebar-nav" id="sidebar">
@@ -12031,5 +12104,30 @@ jQuery(document).ready(function($) {
             crossorigin="anonymous"></script>
 
 
-  </body>
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google+ -->
+<!-- Synchronous 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+-->
+<!-- Asynchronous -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>  </body>
 </html>
