@@ -42,7 +42,7 @@ LOAD_CONTENT_CACHE = False
 PATH = 'content'
 
 TIMEZONE = 'Europe/Stockholm'
-LOCALE = 'en_US'
+LOCALE = 'en_US.UTF-8'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
