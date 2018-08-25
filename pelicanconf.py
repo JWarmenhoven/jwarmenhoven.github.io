@@ -15,8 +15,16 @@ AUTHOR = 'Jordi Warmenhoven'
 SITENAME = 'Penguinsula'
 SITESUBTITLE = 'Python, Stats, Modelling & Stuff'
 SITEURL = ''
+DISQUS_SITENAME = 'penguinsula'
 
 THEME = '../pelican-themes/voidy-bootstrap'
+
+PLUGIN_PATHS = ['../pelican-plugins/']
+PLUGINS = ['liquid_tags.notebook']
+NOTEBOOK_DIR = 'notebooks'
+
+# Jordi: Liquid tags notebook
+EXTRA_HEADER = open('_nb_header.html').read()
 
 #SITETAG = "Text that's displayed in the title on the home page."
 
