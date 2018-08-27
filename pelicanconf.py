@@ -22,6 +22,7 @@ THEME = '../pelican-themes/voidy-bootstrap'
 PLUGIN_PATHS = ['../pelican-plugins/']
 PLUGINS = ['liquid_tags.notebook']
 NOTEBOOK_DIR = 'notebooks'
+STATIC_PATHS = ['images']
 
 # Jordi: Liquid tags notebook
 EXTRA_HEADER = open('_nb_header.html').read()
