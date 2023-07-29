@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'misc'
 DISPLAY_PAGES_ON_MENU = True
@@ -19,13 +20,15 @@ DISQUS_SITENAME = 'penguinsula'
 
 THEME = '../pelican-themes/voidy-bootstrap'
 
-PLUGIN_PATHS = ['../pelican-plugins/']
-PLUGINS = ['liquid_tags.notebook']
+#PLUGIN_PATHS = ['../pelican-plugins/']
+PLUGINS = ['pelican.plugins.liquid_tags.generic', 'pelican.plugins.liquid_tags.notebook']
 NOTEBOOK_DIR = 'notebooks'
 STATIC_PATHS = ['images']
 
 # Jordi: Liquid tags notebook
-EXTRA_HEADER = open('_nb_header.html').read()
+from io import open
+EXTRA_HEADER = open('_nb_header.html', encoding='utf-8').read()
+LIQUID_TAGS = ['notebook']
 
 #SITETAG = "Text that's displayed in the title on the home page."
 
