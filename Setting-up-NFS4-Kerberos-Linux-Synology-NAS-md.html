@@ -81,7 +81,7 @@
 <abbr class="article-header-date">
   Tue 01 August 2023
 </abbr> <h1>
-  <a href="/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" rel="bookmark"
+  <a href="/Setting-up-NFS4-Kerberos-Linux-Synology-NAS-md.html" rel="bookmark"
      title="Permalink to Synology NAS | NFSv4 | Kerberos | Linux Client">
     Synology NAS | NFSv4 | Kerberos | Linux Client
   </a>
@@ -230,11 +230,9 @@ jQuery(document).ready(function($) {
 
   </header>
   <div class="content-body" itemprop="text articleBody">
-	<p>Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:</p>
+	<p>Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:
+* <a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block (SMB)</a></p>
 <ul>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block (SMB)</a></p>
-</li>
 <li>
 <p><a href="https://en.wikipedia.org/wiki/Network_File_System">Network File System (NFS)</a></p>
 </li>
@@ -245,32 +243,29 @@ jQuery(document).ready(function($) {
 <p>The SMB protocol is the standard in Windows networks, whereas NFS is used more in Unix/Linux environments. I have a <a href="https://www.synology.com/">Synology</a> NAS and have both Linux and Microsoft Windows clients connecting to the fileserver. </p>
 <p>SMB works fine on Linux too, but there are a number of advantages in using NFS which I will not detail here. However, certain steps in NFS configuration are especially important to make file permissions work properly/securely with version 4 of the NFS protocol. This has to do with how user accounts on the NAS are mapped and authorized to the user accounts on the Linux client. A quick and dirty setup on the Synology NAS is possible: mapping all connecting NFS clients to a guest account on the NAS. As a consequence, owners of the files created on the NFS share are mapped to user <code>nobody</code>. With this setup I ran into issues with using <code>git</code> on the NFS fileshares since my Linux user was not the owner of the repository files.</p>
 <p>Below I describe how I configured NFSv4 + Kerberos on the Synology NAS and my Linux client in order to work properly with regards to file ownership and permissions. This is by no means an exhaustive description and assumes some prior knowledge on the subjects, but hopefully it gives some form of guidance.</p>
-<blockquote>
-<h4>System environment:</h4>
+<p>System environment:
+- <strong>NFS Server</strong>: Synology DS216+ NAS running DSM 7.1.1-42962 Update 6 
+  - NFSv4
+  - Kerberos 5 v1.18.3</p>
 <ul>
-<li><strong>NFS Server</strong>: Synology DS216+ NAS running DSM 7.1.1-42962 Update 6<ul>
-<li>NFSv4  </li>
-<li>Kerberos 5 v1.18.3  </li>
-</ul>
-</li>
-<li><strong>NFS Client</strong>: Manjaro Linux running a 6.3 kernel<ul>
+<li>
+<p><strong>NFS Client</strong>: Manjaro Linux running a 6.3 kernel</p>
+<ul>
 <li>Mounting NFSv4 share on NAS.</li>
-<li>Running Kerberos KDC (Kerberos Distribution Center). In larger networks the KDC would typically run on a separate server. </li>
+<li>Acting as Kerberos KDC (Kerberos Distribution Center). Note: in larger networks the KDC would typically be on a separate server. </li>
 <li>Kerberos 5 v1.19.4   </li>
 </ul>
 </li>
-<li><strong>No DNS on local network</strong></li>
+<li>
+<p><strong>No DNS on local network</strong></p>
+</li>
 </ul>
-</blockquote>
-<hr>
 <h4>Kerberos</h4>
 <p>NSFv4 clients are authenticated on user level. This can be done using standard UNIX authentication (AUTH_SYS), but then user accounts on client and NAS need to match on UID/GID level as I understand it. The other authentication method uses <a href="https://en.wikipedia.org/wiki/Kerberos_(protocol)">Kerberos</a> Understanding how Kerberos works (high level) takes some time. It is typically one of those things where you will need to read documentation, try things out, re-read documentation and try some more.</p>
-<p>Here are a number of resources which I found useful:</p>
-<ul>
-<li>
-<p><a href="https://kerberos.org/software/tutorial.html">Tutorial (kerberos.org)</a> <br>
+<p>Here are a number of resources which I found useful:
+- <a href="https://kerberos.org/software/tutorial.html">Tutorial (kerberos.org)</a> <br>
   I suggest to start here.  </p>
-</li>
+<ul>
 <li>
 <p><a href="https://web.mit.edu/kerberos/krb5-latest/doc/">Official Documentation (web.mit.edu)</a> <br>
   This is a collection of separate HTML pages. I found the single pdf file contained in the <a href="http://web.mit.edu/kerberos/dist/">releases</a> easier to navigate.</p>
@@ -287,19 +282,16 @@ jQuery(document).ready(function($) {
 <p><a href="https://linuskarlsson.se/blog/acquiring-kerberos-ticket-upon-local-login/">Generate Kerberos tickets at login</a></p>
 </li>
 <li>
-<p>Linux man files on the various config files, programs and protocols.</p>
+<p>Linux man files on the various config files, programs and protocols.  </p>
 </li>
 </ul>
-<hr>
 <h4>NFS Client</h4>
 <ul>
+<li><strong>Enable NFS client services</strong>: <br>
+  The <a href="https://kb.synology.com/en-br/DSM/help/DSM/AdminCenter/file_winmacnfs_nfs?version=7">Synology documentation</a> mentions that <em>idmapd</em> needs to be enabled. However, I noticed that the idmapd manual in Linux says that only NFSv4 servers need to have that daemon running. The client on newer Linux kernels now uses the <em>nfsidmap</em> program to do name mapping. No need to enable idmapd.<br>
+<code>sudo systemctl enable nfs-client.target</code></li>
 <li>
-<p><strong>Enable NFS client services</strong>: <br>
-<code>sudo systemctl enable nfs-client.target</code> <br>
-  The <a href="https://kb.synology.com/en-br/DSM/help/DSM/AdminCenter/file_winmacnfs_nfs?version=7">Synology documentation</a> mentions that <em>idmapd</em> needs to be enabled. However, I noticed that the idmapd manual in Linux says that only NFSv4 servers need to have that daemon running. The client on newer Linux kernels now uses the <em>nfsidmap</em> program to do name mapping. No need to enable idmapd. However, you do need to set the NFSv4 domain identical to the Kerberos Realm in <code>/etc/idmapd.conf</code>. This config file is used by other programs as well according to the manual page.</p>
-</li>
-<li>
-<p><strong>Configure<code>/etc/hosts</code></strong> <br>
+<p><strong>Configure<code>/etc/hosts</code></strong>
   The hostname of the client (and KDC) must be mapped to the LAN ip address, <em>not</em> the 127.* address.<br>
   The hostname of the service/server (NAS) must be mapped to the LAN ip address (unless you have DNS running).</p>
 </li>
@@ -308,7 +300,7 @@ jQuery(document).ready(function($) {
 <ul>
 <li>Section <code>[libdefaults]</code>: set your <code>default_realm</code> to a name you want to use for your Kerberos realm. Convention is to use the DNS domain in capital letters, but if you do not use DNS in your local network you can of course pick something else.</li>
 <li>Section <code>[realms]</code>: map the <code>admin_server</code> and <code>kdc</code>for your realm to the ip address/FQDN of your linux client.</li>
-<li>Section <code>[domain_realm]</code>: map the domain to your realm.   </li>
+<li>Section <code>[domain_realm]</code>: map the domain to your real</li>
 </ul>
 </li>
 <li>
@@ -317,12 +309,11 @@ jQuery(document).ready(function($) {
 </li>
 <li>
 <p><strong>Configure Kerberos database</strong>  </p>
-<ul>
+</li>
 <li>After initial creation of the database, use <code>$sudo kadmin_local</code> to add the administrator principal to the database. After having added this principal, you can from now on use <code>$kadmin</code> which interacts with the database <em>via the kadmind daemon</em>.</li>
 <li>Add a standard principal that is your user on the Linux client.</li>
-<li>Add a service principal for the NAS/NFSv4 server.   </li>
-<li>Add a service principal for the KDC (the Linux client).</li>
-</ul>
+<li>
+<p>Add a service principal for the NAS/NSFv4 server.</p>
 </li>
 <li>
 <p><strong>Export the principal key for the server to the <code>/etc/krb5.keytab</code> file using <code>$kadmin</code>.</strong><br>
@@ -334,11 +325,10 @@ jQuery(document).ready(function($) {
 </li>
 <li>
 <p><strong>Configure PAM to automatically generate a Kerberos TGT ticket at login.</strong><br>
-  When you have a Kerberos KDC running with the relevant principals you can use <code>$kinit</code> to generate a TGT ticket. When you try to access the NFS fileshare, a service ticket is automatically generated which grants you this access. In order to have the first step done in the background as well, you need to configure the <a href="https://github.com/linux-pam/linux-pam">Pluggable Authentication Modules</a> (PAM).
+  When you have a Kerberos KDC running with the relevant principals (your user principal + NFS/NAS service principal) you can use <code>$kinit</code> to generate a TGT ticket. When you try to access the NFS fileshare, a service ticket is automatically generated which grants you this access. In order to have the first step done in the background as well, you need to configure the <a href="https://github.com/linux-pam/linux-pam">Pluggable Authentication Modules</a> (PAM).
  <a href="https://linuskarlsson.se/blog/acquiring-kerberos-ticket-upon-local-login/">This</a> post describes a way how to do that in a pragmatic way. It relies on having both a local login <em>and</em> Kerberos login with identical passwords, but for me this is fine.</p>
 </li>
 </ul>
-<hr>
 <h4>NFS Server</h4>
 <ul>
 <li>
@@ -365,9 +355,9 @@ jQuery(document).ready(function($) {
 <p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Principal.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
 <ul>
 <li>Create NFS permission rule for the file share you want to connect to with the Linux client.</li>
-<li>Enter IP address of the Linux client.</li>
+<li>Enter IP address of the Linux client</li>
 <li>Read/write privilege</li>
-<li>Do not enable any static mapping here.</li>
+<li>Do not enable any static mapping here</li>
 <li>Security: choose either <em>Kerberos integrity</em> (krb5i - Kerberos Authentication and Integrity Checking) or Kerberos Privacy (krb5p - Kerberos Authentication, Integrity Checking and Traffic Encryption). The first Kerberos option only does authentication and provides no further security. </li>
 </ul>
 <p><img src="images/DSM_Shared_Folder_NFS_Permissions.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
@@ -394,7 +384,7 @@ jQuery(document).ready(function($) {
 
     <!-- Facebook -->
     <div class="fb-like" 
-        data-href="/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" 
+        data-href="/Setting-up-NFS4-Kerberos-Linux-Synology-NAS-md.html" 
         data-layout="button_count" 
         data-action="like" data-show-faces="true" 
         data-share="true">
