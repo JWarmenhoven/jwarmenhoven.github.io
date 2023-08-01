@@ -1,31 +1,250 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Penguinsula</title><link href="https://jwarmenhoven.github.io/" rel="alternate"></link><link href="https://jwarmenhoven.github.io/feeds/all.atom.xml" rel="self"></link><id>https://jwarmenhoven.github.io/</id><updated>2018-08-25T00:00:00+02:00</updated><subtitle>Python, Stats, Modelling &amp; Stuff</subtitle><entry><title>Building a modest Linux Deep Learning machine</title><link href="https://jwarmenhoven.github.io/Linux-Deep-Learning-Machine.html" rel="alternate"></link><published>2018-08-25T00:00:00+02:00</published><updated>2018-08-25T00:00:00+02:00</updated><author><name>Jordi Warmenhoven</name></author><id>tag:jwarmenhoven.github.io,2018-08-25:/Linux-Deep-Learning-Machine.html</id><summary type="html">&lt;p&gt;&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;meta charset="utf-8" /&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Jordi Warmenhoven" />
+    <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
 
-&lt;title&gt;Notebook&lt;/title&gt;&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"&gt;&lt;/script&gt;
+    <title>Synology NAS - NFSv4 - Kerberos - Linux Client - Penguinsula</title>
+
+   
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous" />
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+            crossorigin="anonymous">
 
 
+      <link rel="stylesheet" href="https://jwarmenhoven.github.io/theme/css/pygment.css" />
+      <link rel="stylesheet" href="https://jwarmenhoven.github.io/theme/css/voidybootstrap.css" />
 
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" integrity="sha384-FFgGfda92tXC8nCNOxrCQ3R8x1TNkMFqDZVQdDaaJiiVbjkPBXIJBx0o7ETjy8Bh" crossorigin="anonymous"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
+    <![endif]-->
 
-&lt;style type="text/css"&gt;
-    pre { line-height: 125%; }
+    <link rel="shortcut icon" href="https://jwarmenhoven.github.io/favicon.ico" />
+        <link href="https://jwarmenhoven.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Penguinsula Atom Feed" />
+  </head>
+
+  <body>
+   
+    <nav class="navbar navbar-default">
+      <div class="container">
+	   <div class="navbar-header">
+		<button type="button" class="navbar-toggle" 
+				data-toggle="collapse" data-target="#main-navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="https://jwarmenhoven.github.io/" rel="home">
+          <i class="fa fa-home fa-fw fa-lg"> </i> </a>
+       </div>
+
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <ul class="nav navbar-nav">
+              <li>
+                <a href="https://jwarmenhoven.github.io/pages/about-post.html">About me</a>
+              </li>
+              <li>
+                <a href="https://jwarmenhoven.github.io/pages/projects.html">Projects</a>
+              </li>
+            <li class="divider"></li>
+            <li class="">
+              <a href="https://jwarmenhoven.github.io/archives.html">Archives</a>
+            </li>
+          <li class="divider"></li>
+            <li><a href="https://jwarmenhoven.github.io/feeds/all.atom.xml" 
+                   type="application/atom+xml" rel="alternate">
+                <i class="fa fa-rss fa-fw fa-lg"></i> </a></li>
+        </ul> <!-- /nav -->
+      </div> <!-- /navbar-collapse -->
+	  </div> <!-- /container -->
+    </nav> <!-- /navbar -->
+
+	<div class="jumbotron" id="overview">
+	  <div class="container">
+		<h1><a href="https://jwarmenhoven.github.io/">Penguinsula</a></h1>
+		<p class="lead">Python, Stats, Modelling & Stuff</p>
+	  </div>
+	</div>
+
+    <div class="container" id="main-container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
+<abbr class="article-header-date">
+  Sat 29 July 2023
+</abbr> <h1>
+  <a href="https://jwarmenhoven.github.io/drafts/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" rel="bookmark"
+     title="Permalink to Synology NAS - NFSv4 - Kerberos - Linux Client">
+    Synology NAS - NFSv4 - Kerberos - Linux Client
+  </a>
+</h1><div class="article-header-info">
+  <p>
+      Posted by <a href="https://jwarmenhoven.github.io/author/jordi-warmenhoven.html">Jordi Warmenhoven</a>
+    in 
+    <a href="https://jwarmenhoven.github.io/category/blog.html">
+      Blog</a>
+    &nbsp;&nbsp;
+  </p>
+</div> <!-- /.article-header-info -->
+
+<style type="text/css">
+pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-.highlight .hll { background-color …&lt;/style&gt;&lt;/meta&gt;&lt;/head&gt;&lt;/html&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;meta charset="utf-8" /&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+.highlight .hll { background-color: var(--jp-cell-editor-active-background) }
+.highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
+.highlight .c { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment */
+.highlight .err { color: var(--jp-mirror-editor-error-color) } /* Error */
+.highlight .k { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword */
+.highlight .o { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator */
+.highlight .p { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation */
+.highlight .ch { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Preproc */
+.highlight .cpf { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Single */
+.highlight .cs { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Special */
+.highlight .kc { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Type */
+.highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
+.highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
+.highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
+.highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
+.highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
+.highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
+.highlight .mh { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Hex */
+.highlight .mi { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer */
+.highlight .mo { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Oct */
+.highlight .sa { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Affix */
+.highlight .sb { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Backtick */
+.highlight .sc { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Char */
+.highlight .dl { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Delimiter */
+.highlight .sd { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Doc */
+.highlight .s2 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Double */
+.highlight .se { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Escape */
+.highlight .sh { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Heredoc */
+.highlight .si { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Interpol */
+.highlight .sx { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Other */
+.highlight .sr { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Regex */
+.highlight .s1 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Single */
+.highlight .ss { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Symbol */
+.highlight .il { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer.Long */
+</style>
 
-&lt;title&gt;Notebook&lt;/title&gt;&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"&gt;&lt;/script&gt;
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+div.entry-content {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.2em;
+}
+
+a.heading-anchor {
+ white-space: normal;
+}
+
+.rendered_html
+code {
+ font-size: .8em;
+}
+
+pre.ipynb {
+  color: black;
+  background: #f7f7f7;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  padding: 0;
+  margin: 0px;
+  font-size: 13px;
+}
+
+/* remove the prompt div from text cells */
+div.text_cell .prompt {
+    display: none;
+}
+
+/* remove horizontal padding from text cells, */
+/* so it aligns with outer body text */
+div.text_cell_render {
+    padding: 0.5em 0em;
+}
+
+img.anim_icon{padding:0; border:0; vertical-align:middle; -webkit-box-shadow:none; -box-shadow:none}
+
+div.collapseheader {
+    width=100%;
+    background-color:#d3d3d3;
+    padding: 2px;
+    cursor: pointer;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+</style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        displayMath: [['$$','$$'], ["\\[","\\]"]]
+    }
+});
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+        });
+    });
+});
+});
+</script>
+
+
+  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<p><!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
 
-&lt;style type="text/css"&gt;
+<style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -74,11 +293,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .s1 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Single */
 .highlight .ss { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Symbol */
 .highlight .il { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer.Long */
-  &lt;/style&gt;
+  </style>
 
 
 
-&lt;style type="text/css"&gt;
+<style type="text/css">
 /*-----------------------------------------------------------------------------
 | Copyright (c) Jupyter Development Team.
 | Distributed under the terms of the Modified BSD License.
@@ -295,7 +514,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-Widget, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Widget, /* </DEPRECATED> */
 .lm-Widget {
   box-sizing: border-box;
   position: relative;
@@ -304,7 +523,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-Widget.p-mod-hidden, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Widget.p-mod-hidden, /* </DEPRECATED> */
 .lm-Widget.lm-mod-hidden {
   display: none !important;
 }
@@ -319,7 +538,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette, /* </DEPRECATED> */
 .lm-CommandPalette {
   display: flex;
   flex-direction: column;
@@ -330,13 +549,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-search, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-search, /* </DEPRECATED> */
 .lm-CommandPalette-search {
   flex: 0 0 auto;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-content, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-content, /* </DEPRECATED> */
 .lm-CommandPalette-content {
   flex: 1 1 auto;
   margin: 0;
@@ -347,7 +566,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-header, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-header, /* </DEPRECATED> */
 .lm-CommandPalette-header {
   overflow: hidden;
   white-space: nowrap;
@@ -355,33 +574,33 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-item, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-item, /* </DEPRECATED> */
 .lm-CommandPalette-item {
   display: flex;
   flex-direction: row;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-itemIcon, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-itemIcon, /* </DEPRECATED> */
 .lm-CommandPalette-itemIcon {
   flex: 0 0 auto;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-itemContent, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-itemContent, /* </DEPRECATED> */
 .lm-CommandPalette-itemContent {
   flex: 1 1 auto;
   overflow: hidden;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-itemShortcut, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-itemShortcut, /* </DEPRECATED> */
 .lm-CommandPalette-itemShortcut {
   flex: 0 0 auto;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-CommandPalette-itemLabel, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-CommandPalette-itemLabel, /* </DEPRECATED> */
 .lm-CommandPalette-itemLabel {
   overflow: hidden;
   white-space: nowrap;
@@ -425,37 +644,37 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel, /* </DEPRECATED> */
 .lm-DockPanel {
   z-index: 0;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-widget, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-widget, /* </DEPRECATED> */
 .lm-DockPanel-widget {
   z-index: 0;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-tabBar, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-tabBar, /* </DEPRECATED> */
 .lm-DockPanel-tabBar {
   z-index: 1;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-handle, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-handle, /* </DEPRECATED> */
 .lm-DockPanel-handle {
   z-index: 2;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-handle.p-mod-hidden, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-handle.p-mod-hidden, /* </DEPRECATED> */
 .lm-DockPanel-handle.lm-mod-hidden {
   display: none !important;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-handle:after, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-handle:after, /* </DEPRECATED> */
 .lm-DockPanel-handle:after {
   position: absolute;
   top: 0;
@@ -466,25 +685,25 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-DockPanel-handle[data-orientation='horizontal'],
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-DockPanel-handle[data-orientation='horizontal'] {
   cursor: ew-resize;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-DockPanel-handle[data-orientation='vertical'],
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-DockPanel-handle[data-orientation='vertical'] {
   cursor: ns-resize;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-DockPanel-handle[data-orientation='horizontal']:after,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-DockPanel-handle[data-orientation='horizontal']:after {
   left: 50%;
   min-width: 8px;
@@ -492,9 +711,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-DockPanel-handle[data-orientation='vertical']:after,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-DockPanel-handle[data-orientation='vertical']:after {
   top: 50%;
   min-height: 8px;
@@ -502,7 +721,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-overlay, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-overlay, /* </DEPRECATED> */
 .lm-DockPanel-overlay {
   z-index: 3;
   box-sizing: border-box;
@@ -510,7 +729,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-DockPanel-overlay.p-mod-hidden, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-DockPanel-overlay.p-mod-hidden, /* </DEPRECATED> */
 .lm-DockPanel-overlay.lm-mod-hidden {
   display: none !important;
 }
@@ -525,7 +744,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-Menu, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Menu, /* </DEPRECATED> */
 .lm-Menu {
   z-index: 10000;
   position: absolute;
@@ -540,7 +759,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-Menu-content, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Menu-content, /* </DEPRECATED> */
 .lm-Menu-content {
   margin: 0;
   padding: 0;
@@ -549,26 +768,26 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-Menu-item, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Menu-item, /* </DEPRECATED> */
 .lm-Menu-item {
   display: table-row;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-Menu-item.p-mod-hidden,
 .p-Menu-item.p-mod-collapsed,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-Menu-item.lm-mod-hidden,
 .lm-Menu-item.lm-mod-collapsed {
   display: none !important;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-Menu-itemIcon,
 .p-Menu-itemSubmenuIcon,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-Menu-itemIcon,
 .lm-Menu-itemSubmenuIcon {
   display: table-cell;
@@ -576,14 +795,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-Menu-itemLabel, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Menu-itemLabel, /* </DEPRECATED> */
 .lm-Menu-itemLabel {
   display: table-cell;
   text-align: left;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-Menu-itemShortcut, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-Menu-itemShortcut, /* </DEPRECATED> */
 .lm-Menu-itemShortcut {
   display: table-cell;
   text-align: right;
@@ -599,7 +818,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-MenuBar, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-MenuBar, /* </DEPRECATED> */
 .lm-MenuBar {
   outline: none;
   -webkit-user-select: none;
@@ -609,7 +828,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-MenuBar-content, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-MenuBar-content, /* </DEPRECATED> */
 .lm-MenuBar-content {
   margin: 0;
   padding: 0;
@@ -619,16 +838,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p--MenuBar-item, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p--MenuBar-item, /* </DEPRECATED> */
 .lm-MenuBar-item {
   box-sizing: border-box;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-MenuBar-itemIcon,
 .p-MenuBar-itemLabel,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-MenuBar-itemIcon,
 .lm-MenuBar-itemLabel {
   display: inline-block;
@@ -644,7 +863,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-ScrollBar, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-ScrollBar, /* </DEPRECATED> */
 .lm-ScrollBar {
   display: flex;
   -webkit-user-select: none;
@@ -654,30 +873,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-ScrollBar[data-orientation='horizontal'],
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-ScrollBar[data-orientation='horizontal'] {
   flex-direction: row;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-ScrollBar[data-orientation='vertical'],
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-ScrollBar[data-orientation='vertical'] {
   flex-direction: column;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-ScrollBar-button, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-ScrollBar-button, /* </DEPRECATED> */
 .lm-ScrollBar-button {
   box-sizing: border-box;
   flex: 0 0 auto;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-ScrollBar-track, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-ScrollBar-track, /* </DEPRECATED> */
 .lm-ScrollBar-track {
   box-sizing: border-box;
   position: relative;
@@ -686,7 +905,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-ScrollBar-thumb, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-ScrollBar-thumb, /* </DEPRECATED> */
 .lm-ScrollBar-thumb {
   box-sizing: border-box;
   position: absolute;
@@ -702,25 +921,25 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-SplitPanel-child, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-SplitPanel-child, /* </DEPRECATED> */
 .lm-SplitPanel-child {
   z-index: 0;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-SplitPanel-handle, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-SplitPanel-handle, /* </DEPRECATED> */
 .lm-SplitPanel-handle {
   z-index: 1;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-SplitPanel-handle.p-mod-hidden, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-SplitPanel-handle.p-mod-hidden, /* </DEPRECATED> */
 .lm-SplitPanel-handle.lm-mod-hidden {
   display: none !important;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-SplitPanel-handle:after, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-SplitPanel-handle:after, /* </DEPRECATED> */
 .lm-SplitPanel-handle:after {
   position: absolute;
   top: 0;
@@ -731,36 +950,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */
-.p-SplitPanel[data-orientation='horizontal'] &gt; .p-SplitPanel-handle,
-/* &lt;/DEPRECATED&gt; */
-.lm-SplitPanel[data-orientation='horizontal'] &gt; .lm-SplitPanel-handle {
+/* <DEPRECATED> */
+.p-SplitPanel[data-orientation='horizontal'] > .p-SplitPanel-handle,
+/* </DEPRECATED> */
+.lm-SplitPanel[data-orientation='horizontal'] > .lm-SplitPanel-handle {
   cursor: ew-resize;
 }
 
 
-/* &lt;DEPRECATED&gt; */
-.p-SplitPanel[data-orientation='vertical'] &gt; .p-SplitPanel-handle,
-/* &lt;/DEPRECATED&gt; */
-.lm-SplitPanel[data-orientation='vertical'] &gt; .lm-SplitPanel-handle {
+/* <DEPRECATED> */
+.p-SplitPanel[data-orientation='vertical'] > .p-SplitPanel-handle,
+/* </DEPRECATED> */
+.lm-SplitPanel[data-orientation='vertical'] > .lm-SplitPanel-handle {
   cursor: ns-resize;
 }
 
 
-/* &lt;DEPRECATED&gt; */
-.p-SplitPanel[data-orientation='horizontal'] &gt; .p-SplitPanel-handle:after,
-/* &lt;/DEPRECATED&gt; */
-.lm-SplitPanel[data-orientation='horizontal'] &gt; .lm-SplitPanel-handle:after {
+/* <DEPRECATED> */
+.p-SplitPanel[data-orientation='horizontal'] > .p-SplitPanel-handle:after,
+/* </DEPRECATED> */
+.lm-SplitPanel[data-orientation='horizontal'] > .lm-SplitPanel-handle:after {
   left: 50%;
   min-width: 8px;
   transform: translateX(-50%);
 }
 
 
-/* &lt;DEPRECATED&gt; */
-.p-SplitPanel[data-orientation='vertical'] &gt; .p-SplitPanel-handle:after,
-/* &lt;/DEPRECATED&gt; */
-.lm-SplitPanel[data-orientation='vertical'] &gt; .lm-SplitPanel-handle:after {
+/* <DEPRECATED> */
+.p-SplitPanel[data-orientation='vertical'] > .p-SplitPanel-handle:after,
+/* </DEPRECATED> */
+.lm-SplitPanel[data-orientation='vertical'] > .lm-SplitPanel-handle:after {
   top: 50%;
   min-height: 8px;
   transform: translateY(-50%);
@@ -776,7 +995,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar, /* </DEPRECATED> */
 .lm-TabBar {
   display: flex;
   -webkit-user-select: none;
@@ -786,21 +1005,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar[data-orientation='horizontal'], /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar[data-orientation='horizontal'], /* </DEPRECATED> */
 .lm-TabBar[data-orientation='horizontal'] {
   flex-direction: row;
   align-items: flex-end;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar[data-orientation='vertical'], /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar[data-orientation='vertical'], /* </DEPRECATED> */
 .lm-TabBar[data-orientation='vertical'] {
   flex-direction: column;
   align-items: flex-end;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar-content, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar-content, /* </DEPRECATED> */
 .lm-TabBar-content {
   margin: 0;
   padding: 0;
@@ -810,23 +1029,23 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */
-.p-TabBar[data-orientation='horizontal'] &gt; .p-TabBar-content,
-/* &lt;/DEPRECATED&gt; */
-.lm-TabBar[data-orientation='horizontal'] &gt; .lm-TabBar-content {
+/* <DEPRECATED> */
+.p-TabBar[data-orientation='horizontal'] > .p-TabBar-content,
+/* </DEPRECATED> */
+.lm-TabBar[data-orientation='horizontal'] > .lm-TabBar-content {
   flex-direction: row;
 }
 
 
-/* &lt;DEPRECATED&gt; */
-.p-TabBar[data-orientation='vertical'] &gt; .p-TabBar-content,
-/* &lt;/DEPRECATED&gt; */
-.lm-TabBar[data-orientation='vertical'] &gt; .lm-TabBar-content {
+/* <DEPRECATED> */
+.p-TabBar[data-orientation='vertical'] > .p-TabBar-content,
+/* </DEPRECATED> */
+.lm-TabBar[data-orientation='vertical'] > .lm-TabBar-content {
   flex-direction: column;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar-tab, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar-tab, /* </DEPRECATED> */
 .lm-TabBar-tab {
   display: flex;
   flex-direction: row;
@@ -835,17 +1054,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-TabBar-tabIcon,
 .p-TabBar-tabCloseIcon,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-TabBar-tabIcon,
 .lm-TabBar-tabCloseIcon {
   flex: 0 0 auto;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar-tabLabel, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar-tabLabel, /* </DEPRECATED> */
 .lm-TabBar-tabLabel {
   flex: 1 1 auto;
   overflow: hidden;
@@ -860,7 +1079,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar-tab.p-mod-hidden, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar-tab.p-mod-hidden, /* </DEPRECATED> */
 .lm-TabBar-tab.lm-mod-hidden {
   display: none !important;
 }
@@ -871,33 +1090,33 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabBar.p-mod-dragging .p-TabBar-tab, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabBar.p-mod-dragging .p-TabBar-tab, /* </DEPRECATED> */
 .lm-TabBar.lm-mod-dragging .lm-TabBar-tab {
   position: relative;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-TabBar.p-mod-dragging[data-orientation='horizontal'] .p-TabBar-tab,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-TabBar.lm-mod-dragging[data-orientation='horizontal'] .lm-TabBar-tab {
   left: 0;
   transition: left 150ms ease;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-TabBar.p-mod-dragging[data-orientation='vertical'] .p-TabBar-tab,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-TabBar.lm-mod-dragging[data-orientation='vertical'] .lm-TabBar-tab {
   top: 0;
   transition: top 150ms ease;
 }
 
 
-/* &lt;DEPRECATED&gt; */
+/* <DEPRECATED> */
 .p-TabBar.p-mod-dragging .p-TabBar-tab.p-mod-dragging,
-/* &lt;/DEPRECATED&gt; */
+/* </DEPRECATED> */
 .lm-TabBar.lm-mod-dragging .lm-TabBar-tab.lm-mod-dragging {
   transition: none;
 }
@@ -919,13 +1138,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabPanel-tabBar, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabPanel-tabBar, /* </DEPRECATED> */
 .lm-TabPanel-tabBar {
   z-index: 1;
 }
 
 
-/* &lt;DEPRECATED&gt; */ .p-TabPanel-stackedPanel, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ .p-TabPanel-stackedPanel, /* </DEPRECATED> */
 .lm-TabPanel-stackedPanel {
   z-index: 0;
 }
@@ -1126,9 +1345,9 @@ a{
     -webkit-box-shadow:inset 0 0 0 1px rgba(16, 22, 26, 0.4);
             box-shadow:inset 0 0 0 1px rgba(16, 22, 26, 0.4);
     color:#a7b6c2; }
-  .bp3-running-text a &gt; code, a &gt; .bp3-code{
+  .bp3-running-text a > code, a > .bp3-code{
     color:#137cbd; }
-    .bp3-dark .bp3-running-text a &gt; code, .bp3-running-text .bp3-dark a &gt; code, .bp3-dark a &gt; .bp3-code{
+    .bp3-dark .bp3-running-text a > code, .bp3-running-text .bp3-dark a > code, .bp3-dark a > .bp3-code{
       color:inherit; }
 
 .bp3-running-text pre, .bp3-code-block{
@@ -1151,7 +1370,7 @@ a{
     -webkit-box-shadow:inset 0 0 0 1px rgba(16, 22, 26, 0.4);
             box-shadow:inset 0 0 0 1px rgba(16, 22, 26, 0.4);
     color:#f5f8fa; }
-  .bp3-running-text pre &gt; code, .bp3-code-block &gt; code{
+  .bp3-running-text pre > code, .bp3-code-block > code{
     background:none;
     -webkit-box-shadow:none;
             box-shadow:none;
@@ -1269,21 +1488,21 @@ a{
   list-style:none;
   margin:0;
   padding:0; }
-  .bp3-breadcrumbs &gt; li{
+  .bp3-breadcrumbs > li{
     -webkit-box-align:center;
         -ms-flex-align:center;
             align-items:center;
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex; }
-    .bp3-breadcrumbs &gt; li::after{
+    .bp3-breadcrumbs > li::after{
       background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.71 7.29l-4-4a1.003 1.003 0 00-1.42 1.42L8.59 8 5.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 001.71.71l4-4c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z' fill='%235C7080'/%3e%3c/svg%3e");
       content:"";
       display:block;
       height:16px;
       margin:0 5px;
       width:16px; }
-    .bp3-breadcrumbs &gt; li:last-of-type::after{
+    .bp3-breadcrumbs > li:last-of-type::after{
       display:none; }
 
 .bp3-breadcrumb,
@@ -1342,7 +1561,7 @@ a{
 .bp3-dark .bp3-breadcrumbs-collapsed{
   color:#a7b6c2; }
 
-.bp3-dark .bp3-breadcrumbs &gt; li::after{
+.bp3-dark .bp3-breadcrumbs > li::after{
   color:#a7b6c2; }
 
 .bp3-dark .bp3-breadcrumb.bp3-disabled{
@@ -1379,23 +1598,23 @@ a{
   vertical-align:middle;
   min-height:30px;
   min-width:30px; }
-  .bp3-button &gt; *{
+  .bp3-button > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-button &gt; .bp3-fill{
+  .bp3-button > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
     -ms-flex-negative:1;
         flex-shrink:1; }
   .bp3-button::before,
-  .bp3-button &gt; *{
+  .bp3-button > *{
     margin-right:7px; }
   .bp3-button:empty::before,
-  .bp3-button &gt; :last-child{
+  .bp3-button > :last-child{
     margin-right:0; }
   .bp3-button:empty{
     padding:0 !important; }
@@ -1548,14 +1767,14 @@ a{
     font-size:16px;
     padding:5px 15px; }
     .bp3-button.bp3-large::before,
-    .bp3-button.bp3-large &gt; *,
+    .bp3-button.bp3-large > *,
     .bp3-large .bp3-button::before,
-    .bp3-large .bp3-button &gt; *{
+    .bp3-large .bp3-button > *{
       margin-right:10px; }
     .bp3-button.bp3-large:empty::before,
-    .bp3-button.bp3-large &gt; :last-child,
+    .bp3-button.bp3-large > :last-child,
     .bp3-large .bp3-button:empty::before,
-    .bp3-large .bp3-button &gt; :last-child{
+    .bp3-large .bp3-button > :last-child{
       margin-right:0; }
   .bp3-button.bp3-small,
   .bp3-small .bp3-button{
@@ -1569,7 +1788,7 @@ a{
     .bp3-button.bp3-loading .bp3-button-spinner{
       margin:0;
       position:absolute; }
-    .bp3-button.bp3-loading &gt; :not(.bp3-button-spinner){
+    .bp3-button.bp3-loading > :not(.bp3-button-spinner){
       visibility:hidden; }
   .bp3-button[class*="bp3-icon-"]::before{
     font-family:"Icons16", sans-serif;
@@ -2078,12 +2297,12 @@ a.bp3-button{
         z-index:12; }
       .bp3-button-group .bp3-button[class*="bp3-intent-"]:disabled, .bp3-button-group .bp3-button[class*="bp3-intent-"].bp3-disabled{
         z-index:8; }
-  .bp3-button-group:not(.bp3-minimal) &gt; .bp3-popover-wrapper:not(:first-child) .bp3-button,
-  .bp3-button-group:not(.bp3-minimal) &gt; .bp3-button:not(:first-child){
+  .bp3-button-group:not(.bp3-minimal) > .bp3-popover-wrapper:not(:first-child) .bp3-button,
+  .bp3-button-group:not(.bp3-minimal) > .bp3-button:not(:first-child){
     border-bottom-left-radius:0;
     border-top-left-radius:0; }
-  .bp3-button-group:not(.bp3-minimal) &gt; .bp3-popover-wrapper:not(:last-child) .bp3-button,
-  .bp3-button-group:not(.bp3-minimal) &gt; .bp3-button:not(:last-child){
+  .bp3-button-group:not(.bp3-minimal) > .bp3-popover-wrapper:not(:last-child) .bp3-button,
+  .bp3-button-group:not(.bp3-minimal) > .bp3-button:not(:last-child){
     border-bottom-right-radius:0;
     border-top-right-radius:0;
     margin-right:-1px; }
@@ -2293,22 +2512,22 @@ a.bp3-button{
     .bp3-button-group.bp3-vertical .bp3-button{
       margin-right:0 !important;
       width:100%; }
-    .bp3-button-group.bp3-vertical:not(.bp3-minimal) &gt; .bp3-popover-wrapper:first-child .bp3-button,
-    .bp3-button-group.bp3-vertical:not(.bp3-minimal) &gt; .bp3-button:first-child{
+    .bp3-button-group.bp3-vertical:not(.bp3-minimal) > .bp3-popover-wrapper:first-child .bp3-button,
+    .bp3-button-group.bp3-vertical:not(.bp3-minimal) > .bp3-button:first-child{
       border-radius:3px 3px 0 0; }
-    .bp3-button-group.bp3-vertical:not(.bp3-minimal) &gt; .bp3-popover-wrapper:last-child .bp3-button,
-    .bp3-button-group.bp3-vertical:not(.bp3-minimal) &gt; .bp3-button:last-child{
+    .bp3-button-group.bp3-vertical:not(.bp3-minimal) > .bp3-popover-wrapper:last-child .bp3-button,
+    .bp3-button-group.bp3-vertical:not(.bp3-minimal) > .bp3-button:last-child{
       border-radius:0 0 3px 3px; }
-    .bp3-button-group.bp3-vertical:not(.bp3-minimal) &gt; .bp3-popover-wrapper:not(:last-child) .bp3-button,
-    .bp3-button-group.bp3-vertical:not(.bp3-minimal) &gt; .bp3-button:not(:last-child){
+    .bp3-button-group.bp3-vertical:not(.bp3-minimal) > .bp3-popover-wrapper:not(:last-child) .bp3-button,
+    .bp3-button-group.bp3-vertical:not(.bp3-minimal) > .bp3-button:not(:last-child){
       margin-bottom:-1px; }
   .bp3-button-group.bp3-align-left .bp3-button{
     text-align:left; }
-  .bp3-dark .bp3-button-group:not(.bp3-minimal) &gt; .bp3-popover-wrapper:not(:last-child) .bp3-button,
-  .bp3-dark .bp3-button-group:not(.bp3-minimal) &gt; .bp3-button:not(:last-child){
+  .bp3-dark .bp3-button-group:not(.bp3-minimal) > .bp3-popover-wrapper:not(:last-child) .bp3-button,
+  .bp3-dark .bp3-button-group:not(.bp3-minimal) > .bp3-button:not(:last-child){
     margin-right:1px; }
-  .bp3-dark .bp3-button-group.bp3-vertical &gt; .bp3-popover-wrapper:not(:last-child) .bp3-button,
-  .bp3-dark .bp3-button-group.bp3-vertical &gt; .bp3-button:not(:last-child){
+  .bp3-dark .bp3-button-group.bp3-vertical > .bp3-popover-wrapper:not(:last-child) .bp3-button,
+  .bp3-dark .bp3-button-group.bp3-vertical > .bp3-button:not(:last-child){
     margin-bottom:1px; }
 .bp3-callout{
   font-size:14px;
@@ -2334,7 +2553,7 @@ a.bp3-button{
       top:10px; }
   .bp3-callout.bp3-callout-icon{
     padding-left:40px; }
-    .bp3-callout.bp3-callout-icon &gt; .bp3-icon:first-child{
+    .bp3-callout.bp3-callout-icon > .bp3-icon:first-child{
       color:#5c7080;
       left:10px;
       position:absolute;
@@ -2352,49 +2571,49 @@ a.bp3-button{
   .bp3-callout.bp3-intent-primary{
     background-color:rgba(19, 124, 189, 0.15); }
     .bp3-callout.bp3-intent-primary[class*="bp3-icon-"]::before,
-    .bp3-callout.bp3-intent-primary &gt; .bp3-icon:first-child,
+    .bp3-callout.bp3-intent-primary > .bp3-icon:first-child,
     .bp3-callout.bp3-intent-primary .bp3-heading{
       color:#106ba3; }
     .bp3-dark .bp3-callout.bp3-intent-primary{
       background-color:rgba(19, 124, 189, 0.25); }
       .bp3-dark .bp3-callout.bp3-intent-primary[class*="bp3-icon-"]::before,
-      .bp3-dark .bp3-callout.bp3-intent-primary &gt; .bp3-icon:first-child,
+      .bp3-dark .bp3-callout.bp3-intent-primary > .bp3-icon:first-child,
       .bp3-dark .bp3-callout.bp3-intent-primary .bp3-heading{
         color:#48aff0; }
   .bp3-callout.bp3-intent-success{
     background-color:rgba(15, 153, 96, 0.15); }
     .bp3-callout.bp3-intent-success[class*="bp3-icon-"]::before,
-    .bp3-callout.bp3-intent-success &gt; .bp3-icon:first-child,
+    .bp3-callout.bp3-intent-success > .bp3-icon:first-child,
     .bp3-callout.bp3-intent-success .bp3-heading{
       color:#0d8050; }
     .bp3-dark .bp3-callout.bp3-intent-success{
       background-color:rgba(15, 153, 96, 0.25); }
       .bp3-dark .bp3-callout.bp3-intent-success[class*="bp3-icon-"]::before,
-      .bp3-dark .bp3-callout.bp3-intent-success &gt; .bp3-icon:first-child,
+      .bp3-dark .bp3-callout.bp3-intent-success > .bp3-icon:first-child,
       .bp3-dark .bp3-callout.bp3-intent-success .bp3-heading{
         color:#3dcc91; }
   .bp3-callout.bp3-intent-warning{
     background-color:rgba(217, 130, 43, 0.15); }
     .bp3-callout.bp3-intent-warning[class*="bp3-icon-"]::before,
-    .bp3-callout.bp3-intent-warning &gt; .bp3-icon:first-child,
+    .bp3-callout.bp3-intent-warning > .bp3-icon:first-child,
     .bp3-callout.bp3-intent-warning .bp3-heading{
       color:#bf7326; }
     .bp3-dark .bp3-callout.bp3-intent-warning{
       background-color:rgba(217, 130, 43, 0.25); }
       .bp3-dark .bp3-callout.bp3-intent-warning[class*="bp3-icon-"]::before,
-      .bp3-dark .bp3-callout.bp3-intent-warning &gt; .bp3-icon:first-child,
+      .bp3-dark .bp3-callout.bp3-intent-warning > .bp3-icon:first-child,
       .bp3-dark .bp3-callout.bp3-intent-warning .bp3-heading{
         color:#ffb366; }
   .bp3-callout.bp3-intent-danger{
     background-color:rgba(219, 55, 55, 0.15); }
     .bp3-callout.bp3-intent-danger[class*="bp3-icon-"]::before,
-    .bp3-callout.bp3-intent-danger &gt; .bp3-icon:first-child,
+    .bp3-callout.bp3-intent-danger > .bp3-icon:first-child,
     .bp3-callout.bp3-intent-danger .bp3-heading{
       color:#c23030; }
     .bp3-dark .bp3-callout.bp3-intent-danger{
       background-color:rgba(219, 55, 55, 0.25); }
       .bp3-dark .bp3-callout.bp3-intent-danger[class*="bp3-icon-"]::before,
-      .bp3-dark .bp3-callout.bp3-intent-danger &gt; .bp3-icon:first-child,
+      .bp3-dark .bp3-callout.bp3-intent-danger > .bp3-icon:first-child,
       .bp3-dark .bp3-callout.bp3-intent-danger .bp3-heading{
         color:#ff7373; }
   .bp3-running-text .bp3-callout{
@@ -2520,11 +2739,11 @@ a.bp3-button{
       -ms-user-select:none;
           user-select:none;
   width:100%; }
-  .bp3-dialog-container.bp3-overlay-enter &gt; .bp3-dialog, .bp3-dialog-container.bp3-overlay-appear &gt; .bp3-dialog{
+  .bp3-dialog-container.bp3-overlay-enter > .bp3-dialog, .bp3-dialog-container.bp3-overlay-appear > .bp3-dialog{
     opacity:0;
     -webkit-transform:scale(0.5);
             transform:scale(0.5); }
-  .bp3-dialog-container.bp3-overlay-enter-active &gt; .bp3-dialog, .bp3-dialog-container.bp3-overlay-appear-active &gt; .bp3-dialog{
+  .bp3-dialog-container.bp3-overlay-enter-active > .bp3-dialog, .bp3-dialog-container.bp3-overlay-appear-active > .bp3-dialog{
     opacity:1;
     -webkit-transform:scale(1);
             transform:scale(1);
@@ -2538,11 +2757,11 @@ a.bp3-button{
     transition-property:opacity, transform, -webkit-transform;
     -webkit-transition-timing-function:cubic-bezier(0.54, 1.12, 0.38, 1.11);
             transition-timing-function:cubic-bezier(0.54, 1.12, 0.38, 1.11); }
-  .bp3-dialog-container.bp3-overlay-exit &gt; .bp3-dialog{
+  .bp3-dialog-container.bp3-overlay-exit > .bp3-dialog{
     opacity:1;
     -webkit-transform:scale(1);
             transform:scale(1); }
-  .bp3-dialog-container.bp3-overlay-exit-active &gt; .bp3-dialog{
+  .bp3-dialog-container.bp3-overlay-exit-active > .bp3-dialog{
     opacity:0;
     -webkit-transform:scale(0.5);
             transform:scale(0.5);
@@ -3237,13 +3456,13 @@ a.bp3-button{
   padding-right:2px;
   text-overflow:ellipsis;
   white-space:pre; }
-  .bp3-editable-text-editing &gt; .bp3-editable-text-content{
+  .bp3-editable-text-editing > .bp3-editable-text-content{
     left:0;
     position:absolute;
     visibility:hidden; }
-  .bp3-editable-text-placeholder &gt; .bp3-editable-text-content{
+  .bp3-editable-text-placeholder > .bp3-editable-text-content{
     color:rgba(92, 112, 128, 0.6); }
-    .bp3-dark .bp3-editable-text-placeholder &gt; .bp3-editable-text-content{
+    .bp3-dark .bp3-editable-text-placeholder > .bp3-editable-text-content{
       color:rgba(167, 182, 194, 0.6); }
 
 .bp3-editable-text.bp3-multiline{
@@ -3271,13 +3490,13 @@ a.bp3-button{
   -webkit-box-align:stretch;
       -ms-flex-align:stretch;
           align-items:stretch; }
-  .bp3-control-group &gt; *{
+  .bp3-control-group > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-control-group &gt; .bp3-fill{
+  .bp3-control-group > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
@@ -3355,35 +3574,35 @@ a.bp3-button{
       .bp3-control-group .bp3-select select[class*="bp3-intent"]:disabled,
       .bp3-control-group .bp3-select select[class*="bp3-intent"].bp3-disabled{
         z-index:8; }
-  .bp3-control-group .bp3-input-group &gt; .bp3-icon,
-  .bp3-control-group .bp3-input-group &gt; .bp3-button,
-  .bp3-control-group .bp3-input-group &gt; .bp3-input-left-container,
-  .bp3-control-group .bp3-input-group &gt; .bp3-input-action{
+  .bp3-control-group .bp3-input-group > .bp3-icon,
+  .bp3-control-group .bp3-input-group > .bp3-button,
+  .bp3-control-group .bp3-input-group > .bp3-input-left-container,
+  .bp3-control-group .bp3-input-group > .bp3-input-action{
     z-index:16; }
   .bp3-control-group .bp3-select::after,
   .bp3-control-group .bp3-html-select::after,
-  .bp3-control-group .bp3-select &gt; .bp3-icon,
-  .bp3-control-group .bp3-html-select &gt; .bp3-icon{
+  .bp3-control-group .bp3-select > .bp3-icon,
+  .bp3-control-group .bp3-html-select > .bp3-icon{
     z-index:17; }
   .bp3-control-group .bp3-select:focus-within{
     z-index:5; }
-  .bp3-control-group:not(.bp3-vertical) &gt; *:not(.bp3-divider){
+  .bp3-control-group:not(.bp3-vertical) > *:not(.bp3-divider){
     margin-right:-1px; }
-  .bp3-control-group:not(.bp3-vertical) &gt; .bp3-divider:not(:first-child){
+  .bp3-control-group:not(.bp3-vertical) > .bp3-divider:not(:first-child){
     margin-left:6px; }
-  .bp3-dark .bp3-control-group:not(.bp3-vertical) &gt; *:not(.bp3-divider){
+  .bp3-dark .bp3-control-group:not(.bp3-vertical) > *:not(.bp3-divider){
     margin-right:0; }
-  .bp3-dark .bp3-control-group:not(.bp3-vertical) &gt; .bp3-button + .bp3-button{
+  .bp3-dark .bp3-control-group:not(.bp3-vertical) > .bp3-button + .bp3-button{
     margin-left:1px; }
   .bp3-control-group .bp3-popover-wrapper,
   .bp3-control-group .bp3-popover-target{
     border-radius:inherit; }
-  .bp3-control-group &gt; :first-child{
+  .bp3-control-group > :first-child{
     border-radius:3px 0 0 3px; }
-  .bp3-control-group &gt; :last-child{
+  .bp3-control-group > :last-child{
     border-radius:0 3px 3px 0;
     margin-right:0; }
-  .bp3-control-group &gt; :only-child{
+  .bp3-control-group > :only-child{
     border-radius:3px;
     margin-right:0; }
   .bp3-control-group .bp3-input-group .bp3-button{
@@ -3393,11 +3612,11 @@ a.bp3-button{
     border-top-left-radius:0; }
   .bp3-control-group.bp3-fill{
     width:100%; }
-  .bp3-control-group &gt; .bp3-fill{
+  .bp3-control-group > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex:1 1 auto;
             flex:1 1 auto; }
-  .bp3-control-group.bp3-fill &gt; *:not(.bp3-fixed){
+  .bp3-control-group.bp3-fill > *:not(.bp3-fixed){
     -webkit-box-flex:1;
         -ms-flex:1 1 auto;
             flex:1 1 auto; }
@@ -3406,12 +3625,12 @@ a.bp3-button{
     -webkit-box-direction:normal;
         -ms-flex-direction:column;
             flex-direction:column; }
-    .bp3-control-group.bp3-vertical &gt; *{
+    .bp3-control-group.bp3-vertical > *{
       margin-top:-1px; }
-    .bp3-control-group.bp3-vertical &gt; :first-child{
+    .bp3-control-group.bp3-vertical > :first-child{
       border-radius:3px 3px 0 0;
       margin-top:0; }
-    .bp3-control-group.bp3-vertical &gt; :last-child{
+    .bp3-control-group.bp3-vertical > :last-child{
       border-radius:0 0 3px 3px; }
 .bp3-control{
   cursor:pointer;
@@ -4035,20 +4254,20 @@ a.bp3-button{
     .bp3-input-group .bp3-input:not(:last-child){
       padding-right:30px; }
   .bp3-input-group .bp3-input-action,
-  .bp3-input-group &gt; .bp3-input-left-container,
-  .bp3-input-group &gt; .bp3-button,
-  .bp3-input-group &gt; .bp3-icon{
+  .bp3-input-group > .bp3-input-left-container,
+  .bp3-input-group > .bp3-button,
+  .bp3-input-group > .bp3-icon{
     position:absolute;
     top:0; }
     .bp3-input-group .bp3-input-action:first-child,
-    .bp3-input-group &gt; .bp3-input-left-container:first-child,
-    .bp3-input-group &gt; .bp3-button:first-child,
-    .bp3-input-group &gt; .bp3-icon:first-child{
+    .bp3-input-group > .bp3-input-left-container:first-child,
+    .bp3-input-group > .bp3-button:first-child,
+    .bp3-input-group > .bp3-icon:first-child{
       left:0; }
     .bp3-input-group .bp3-input-action:last-child,
-    .bp3-input-group &gt; .bp3-input-left-container:last-child,
-    .bp3-input-group &gt; .bp3-button:last-child,
-    .bp3-input-group &gt; .bp3-icon:last-child{
+    .bp3-input-group > .bp3-input-left-container:last-child,
+    .bp3-input-group > .bp3-button:last-child,
+    .bp3-input-group > .bp3-icon:last-child{
       right:0; }
   .bp3-input-group .bp3-button{
     min-height:24px;
@@ -4057,14 +4276,14 @@ a.bp3-button{
     padding:0 7px; }
     .bp3-input-group .bp3-button:empty{
       padding:0; }
-  .bp3-input-group &gt; .bp3-input-left-container,
-  .bp3-input-group &gt; .bp3-icon{
+  .bp3-input-group > .bp3-input-left-container,
+  .bp3-input-group > .bp3-icon{
     z-index:1; }
-  .bp3-input-group &gt; .bp3-input-left-container &gt; .bp3-icon,
-  .bp3-input-group &gt; .bp3-icon{
+  .bp3-input-group > .bp3-input-left-container > .bp3-icon,
+  .bp3-input-group > .bp3-icon{
     color:#5c7080; }
-    .bp3-input-group &gt; .bp3-input-left-container &gt; .bp3-icon:empty,
-    .bp3-input-group &gt; .bp3-icon:empty{
+    .bp3-input-group > .bp3-input-left-container > .bp3-icon:empty,
+    .bp3-input-group > .bp3-icon:empty{
       font-family:"Icons16", sans-serif;
       font-size:16px;
       font-style:normal;
@@ -4072,9 +4291,9 @@ a.bp3-button{
       line-height:1;
       -moz-osx-font-smoothing:grayscale;
       -webkit-font-smoothing:antialiased; }
-  .bp3-input-group &gt; .bp3-input-left-container &gt; .bp3-icon,
-  .bp3-input-group &gt; .bp3-icon,
-  .bp3-input-group .bp3-input-action &gt; .bp3-spinner{
+  .bp3-input-group > .bp3-input-left-container > .bp3-icon,
+  .bp3-input-group > .bp3-icon,
+  .bp3-input-group .bp3-input-action > .bp3-spinner{
     margin:7px; }
   .bp3-input-group .bp3-tag{
     margin:5px; }
@@ -4105,9 +4324,9 @@ a.bp3-button{
     min-height:30px;
     min-width:30px;
     margin:5px; }
-  .bp3-input-group.bp3-large &gt; .bp3-input-left-container &gt; .bp3-icon,
-  .bp3-input-group.bp3-large &gt; .bp3-icon,
-  .bp3-input-group.bp3-large .bp3-input-action &gt; .bp3-spinner{
+  .bp3-input-group.bp3-large > .bp3-input-left-container > .bp3-icon,
+  .bp3-input-group.bp3-large > .bp3-icon,
+  .bp3-input-group.bp3-large .bp3-input-action > .bp3-spinner{
     margin:12px; }
   .bp3-input-group.bp3-large .bp3-input{
     font-size:16px;
@@ -4127,9 +4346,9 @@ a.bp3-button{
     min-height:20px;
     min-width:20px;
     margin:2px; }
-  .bp3-input-group.bp3-small &gt; .bp3-input-left-container &gt; .bp3-icon,
-  .bp3-input-group.bp3-small &gt; .bp3-icon,
-  .bp3-input-group.bp3-small .bp3-input-action &gt; .bp3-spinner{
+  .bp3-input-group.bp3-small > .bp3-input-left-container > .bp3-icon,
+  .bp3-input-group.bp3-small > .bp3-icon,
+  .bp3-input-group.bp3-small .bp3-input-action > .bp3-spinner{
     margin:4px; }
   .bp3-input-group.bp3-small .bp3-input{
     font-size:12px;
@@ -4168,9 +4387,9 @@ a.bp3-button{
     .bp3-input-group.bp3-intent-primary .bp3-input:disabled, .bp3-input-group.bp3-intent-primary .bp3-input.bp3-disabled{
       -webkit-box-shadow:none;
               box-shadow:none; }
-  .bp3-input-group.bp3-intent-primary &gt; .bp3-icon{
+  .bp3-input-group.bp3-intent-primary > .bp3-icon{
     color:#106ba3; }
-    .bp3-dark .bp3-input-group.bp3-intent-primary &gt; .bp3-icon{
+    .bp3-dark .bp3-input-group.bp3-intent-primary > .bp3-icon{
       color:#48aff0; }
   .bp3-input-group.bp3-intent-success .bp3-input{
     -webkit-box-shadow:0 0 0 0 rgba(15, 153, 96, 0), 0 0 0 0 rgba(15, 153, 96, 0), inset 0 0 0 1px #0f9960, inset 0 0 0 1px rgba(16, 22, 26, 0.15), inset 0 1px 1px rgba(16, 22, 26, 0.2);
@@ -4184,9 +4403,9 @@ a.bp3-button{
     .bp3-input-group.bp3-intent-success .bp3-input:disabled, .bp3-input-group.bp3-intent-success .bp3-input.bp3-disabled{
       -webkit-box-shadow:none;
               box-shadow:none; }
-  .bp3-input-group.bp3-intent-success &gt; .bp3-icon{
+  .bp3-input-group.bp3-intent-success > .bp3-icon{
     color:#0d8050; }
-    .bp3-dark .bp3-input-group.bp3-intent-success &gt; .bp3-icon{
+    .bp3-dark .bp3-input-group.bp3-intent-success > .bp3-icon{
       color:#3dcc91; }
   .bp3-input-group.bp3-intent-warning .bp3-input{
     -webkit-box-shadow:0 0 0 0 rgba(217, 130, 43, 0), 0 0 0 0 rgba(217, 130, 43, 0), inset 0 0 0 1px #d9822b, inset 0 0 0 1px rgba(16, 22, 26, 0.15), inset 0 1px 1px rgba(16, 22, 26, 0.2);
@@ -4200,9 +4419,9 @@ a.bp3-button{
     .bp3-input-group.bp3-intent-warning .bp3-input:disabled, .bp3-input-group.bp3-intent-warning .bp3-input.bp3-disabled{
       -webkit-box-shadow:none;
               box-shadow:none; }
-  .bp3-input-group.bp3-intent-warning &gt; .bp3-icon{
+  .bp3-input-group.bp3-intent-warning > .bp3-icon{
     color:#bf7326; }
-    .bp3-dark .bp3-input-group.bp3-intent-warning &gt; .bp3-icon{
+    .bp3-dark .bp3-input-group.bp3-intent-warning > .bp3-icon{
       color:#ffb366; }
   .bp3-input-group.bp3-intent-danger .bp3-input{
     -webkit-box-shadow:0 0 0 0 rgba(219, 55, 55, 0), 0 0 0 0 rgba(219, 55, 55, 0), inset 0 0 0 1px #db3737, inset 0 0 0 1px rgba(16, 22, 26, 0.15), inset 0 1px 1px rgba(16, 22, 26, 0.2);
@@ -4216,9 +4435,9 @@ a.bp3-button{
     .bp3-input-group.bp3-intent-danger .bp3-input:disabled, .bp3-input-group.bp3-intent-danger .bp3-input.bp3-disabled{
       -webkit-box-shadow:none;
               box-shadow:none; }
-  .bp3-input-group.bp3-intent-danger &gt; .bp3-icon{
+  .bp3-input-group.bp3-intent-danger > .bp3-icon{
     color:#c23030; }
-    .bp3-dark .bp3-input-group.bp3-intent-danger &gt; .bp3-icon{
+    .bp3-dark .bp3-input-group.bp3-intent-danger > .bp3-icon{
       color:#ff7373; }
 .bp3-input{
   -webkit-appearance:none;
@@ -4496,25 +4715,25 @@ label.bp3-label{
     .bp3-dark label.bp3-label.bp3-disabled,
     .bp3-dark label.bp3-label.bp3-disabled .bp3-text-muted{
       color:rgba(167, 182, 194, 0.6); }
-.bp3-numeric-input .bp3-button-group.bp3-vertical &gt; .bp3-button{
+.bp3-numeric-input .bp3-button-group.bp3-vertical > .bp3-button{
   -webkit-box-flex:1;
       -ms-flex:1 1 14px;
           flex:1 1 14px;
   min-height:0;
   padding:0;
   width:30px; }
-  .bp3-numeric-input .bp3-button-group.bp3-vertical &gt; .bp3-button:first-child{
+  .bp3-numeric-input .bp3-button-group.bp3-vertical > .bp3-button:first-child{
     border-radius:0 3px 0 0; }
-  .bp3-numeric-input .bp3-button-group.bp3-vertical &gt; .bp3-button:last-child{
+  .bp3-numeric-input .bp3-button-group.bp3-vertical > .bp3-button:last-child{
     border-radius:0 0 3px 0; }
 
-.bp3-numeric-input .bp3-button-group.bp3-vertical:first-child &gt; .bp3-button:first-child{
+.bp3-numeric-input .bp3-button-group.bp3-vertical:first-child > .bp3-button:first-child{
   border-radius:3px 0 0 0; }
 
-.bp3-numeric-input .bp3-button-group.bp3-vertical:first-child &gt; .bp3-button:last-child{
+.bp3-numeric-input .bp3-button-group.bp3-vertical:first-child > .bp3-button:last-child{
   border-radius:0 0 0 3px; }
 
-.bp3-numeric-input.bp3-large .bp3-button-group.bp3-vertical &gt; .bp3-button{
+.bp3-numeric-input.bp3-large .bp3-button-group.bp3-vertical > .bp3-button{
   width:40px; }
 
 form{
@@ -4553,25 +4772,25 @@ form{
   height:30px;
   padding:0 25px 0 10px;
   width:100%; }
-  .bp3-html-select select &gt; *, .bp3-select select &gt; *{
+  .bp3-html-select select > *, .bp3-select select > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-html-select select &gt; .bp3-fill, .bp3-select select &gt; .bp3-fill{
+  .bp3-html-select select > .bp3-fill, .bp3-select select > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
     -ms-flex-negative:1;
         flex-shrink:1; }
   .bp3-html-select select::before,
-  .bp3-select select::before, .bp3-html-select select &gt; *, .bp3-select select &gt; *{
+  .bp3-select select::before, .bp3-html-select select > *, .bp3-select select > *{
     margin-right:7px; }
   .bp3-html-select select:empty::before,
   .bp3-select select:empty::before,
-  .bp3-html-select select &gt; :last-child,
-  .bp3-select select &gt; :last-child{
+  .bp3-html-select select > :last-child,
+  .bp3-select select > :last-child{
     margin-right:0; }
   .bp3-html-select select:hover,
   .bp3-select select:hover{
@@ -5101,23 +5320,23 @@ table.bp3-html-table.bp3-interactive tbody tr:active td{
   -webkit-box-align:center;
       -ms-flex-align:center;
           align-items:center; }
-  .bp3-key-combo &gt; *{
+  .bp3-key-combo > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-key-combo &gt; .bp3-fill{
+  .bp3-key-combo > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
     -ms-flex-negative:1;
         flex-shrink:1; }
   .bp3-key-combo::before,
-  .bp3-key-combo &gt; *{
+  .bp3-key-combo > *{
     margin-right:5px; }
   .bp3-key-combo:empty::before,
-  .bp3-key-combo &gt; :last-child{
+  .bp3-key-combo > :last-child{
     margin-right:0; }
 
 .bp3-hotkey-dialog{
@@ -5164,9 +5383,9 @@ table.bp3-html-table.bp3-interactive tbody tr:active td{
   .bp3-icon:not(:empty)::before{
     content:"" !important;
     content:unset !important; }
-  .bp3-icon &gt; svg{
+  .bp3-icon > svg{
     display:block; }
-    .bp3-icon &gt; svg:not([fill]){
+    .bp3-icon > svg:not([fill]){
       fill:currentColor; }
 
 .bp3-icon.bp3-intent-primary, .bp3-icon-standard.bp3-intent-primary, .bp3-icon-large.bp3-intent-primary{
@@ -6676,24 +6895,24 @@ span.bp3-icon:empty{
 
 .bp3-icon-zoom-to-fit::before{
   content:""; }
-.bp3-submenu &gt; .bp3-popover-wrapper{
+.bp3-submenu > .bp3-popover-wrapper{
   display:block; }
 
 .bp3-submenu .bp3-popover-target{
   display:block; }
-  .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-menu-item{ }
+  .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-menu-item{ }
 
 .bp3-submenu.bp3-popover{
   -webkit-box-shadow:none;
           box-shadow:none;
   padding:0 5px; }
-  .bp3-submenu.bp3-popover &gt; .bp3-popover-content{
+  .bp3-submenu.bp3-popover > .bp3-popover-content{
     -webkit-box-shadow:0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), 0 8px 24px rgba(16, 22, 26, 0.2);
             box-shadow:0 0 0 1px rgba(16, 22, 26, 0.1), 0 2px 4px rgba(16, 22, 26, 0.2), 0 8px 24px rgba(16, 22, 26, 0.2); }
   .bp3-dark .bp3-submenu.bp3-popover, .bp3-submenu.bp3-popover.bp3-dark{
     -webkit-box-shadow:none;
             box-shadow:none; }
-    .bp3-dark .bp3-submenu.bp3-popover &gt; .bp3-popover-content, .bp3-submenu.bp3-popover.bp3-dark &gt; .bp3-popover-content{
+    .bp3-dark .bp3-submenu.bp3-popover > .bp3-popover-content, .bp3-submenu.bp3-popover.bp3-dark > .bp3-popover-content{
       -webkit-box-shadow:0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.4), 0 8px 24px rgba(16, 22, 26, 0.4);
               box-shadow:0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.4), 0 8px 24px rgba(16, 22, 26, 0.4); }
 .bp3-menu{
@@ -6733,27 +6952,27 @@ span.bp3-icon:empty{
      -moz-user-select:none;
       -ms-user-select:none;
           user-select:none; }
-  .bp3-menu-item &gt; *{
+  .bp3-menu-item > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-menu-item &gt; .bp3-fill{
+  .bp3-menu-item > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
     -ms-flex-negative:1;
         flex-shrink:1; }
   .bp3-menu-item::before,
-  .bp3-menu-item &gt; *{
+  .bp3-menu-item > *{
     margin-right:7px; }
   .bp3-menu-item:empty::before,
-  .bp3-menu-item &gt; :last-child{
+  .bp3-menu-item > :last-child{
     margin-right:0; }
-  .bp3-menu-item &gt; .bp3-fill{
+  .bp3-menu-item > .bp3-fill{
     word-break:break-word; }
-  .bp3-menu-item:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-menu-item{
+  .bp3-menu-item:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-menu-item{
     background-color:rgba(167, 182, 194, 0.3);
     cursor:pointer;
     text-decoration:none; }
@@ -6763,7 +6982,7 @@ span.bp3-icon:empty{
     cursor:not-allowed; }
   .bp3-dark .bp3-menu-item{
     color:inherit; }
-    .bp3-dark .bp3-menu-item:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-menu-item{
+    .bp3-dark .bp3-menu-item:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-menu-item{
       background-color:rgba(138, 155, 168, 0.15);
       color:inherit; }
     .bp3-dark .bp3-menu-item.bp3-disabled{
@@ -6776,13 +6995,13 @@ span.bp3-icon:empty{
     .bp3-menu-item.bp3-intent-primary::before, .bp3-menu-item.bp3-intent-primary::after,
     .bp3-menu-item.bp3-intent-primary .bp3-menu-item-label{
       color:#106ba3; }
-    .bp3-menu-item.bp3-intent-primary:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item, .bp3-menu-item.bp3-intent-primary.bp3-active{
+    .bp3-menu-item.bp3-intent-primary:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-menu-item.bp3-intent-primary.bp3-active{
       background-color:#137cbd; }
     .bp3-menu-item.bp3-intent-primary:active{
       background-color:#106ba3; }
-    .bp3-menu-item.bp3-intent-primary:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item, .bp3-menu-item.bp3-intent-primary:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item::before, .bp3-menu-item.bp3-intent-primary:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item::after,
+    .bp3-menu-item.bp3-intent-primary:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-menu-item.bp3-intent-primary:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item::before, .bp3-menu-item.bp3-intent-primary:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item::after,
     .bp3-menu-item.bp3-intent-primary:hover .bp3-menu-item-label,
-    .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-primary:active, .bp3-menu-item.bp3-intent-primary:active::before, .bp3-menu-item.bp3-intent-primary:active::after,
+    .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-primary:active, .bp3-menu-item.bp3-intent-primary:active::before, .bp3-menu-item.bp3-intent-primary:active::after,
     .bp3-menu-item.bp3-intent-primary:active .bp3-menu-item-label, .bp3-menu-item.bp3-intent-primary.bp3-active, .bp3-menu-item.bp3-intent-primary.bp3-active::before, .bp3-menu-item.bp3-intent-primary.bp3-active::after,
     .bp3-menu-item.bp3-intent-primary.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6793,13 +7012,13 @@ span.bp3-icon:empty{
     .bp3-menu-item.bp3-intent-success::before, .bp3-menu-item.bp3-intent-success::after,
     .bp3-menu-item.bp3-intent-success .bp3-menu-item-label{
       color:#0d8050; }
-    .bp3-menu-item.bp3-intent-success:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item, .bp3-menu-item.bp3-intent-success.bp3-active{
+    .bp3-menu-item.bp3-intent-success:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item, .bp3-menu-item.bp3-intent-success.bp3-active{
       background-color:#0f9960; }
     .bp3-menu-item.bp3-intent-success:active{
       background-color:#0d8050; }
-    .bp3-menu-item.bp3-intent-success:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item, .bp3-menu-item.bp3-intent-success:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item::before, .bp3-menu-item.bp3-intent-success:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item::after,
+    .bp3-menu-item.bp3-intent-success:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item, .bp3-menu-item.bp3-intent-success:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item::before, .bp3-menu-item.bp3-intent-success:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item::after,
     .bp3-menu-item.bp3-intent-success:hover .bp3-menu-item-label,
-    .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-success:active, .bp3-menu-item.bp3-intent-success:active::before, .bp3-menu-item.bp3-intent-success:active::after,
+    .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-success:active, .bp3-menu-item.bp3-intent-success:active::before, .bp3-menu-item.bp3-intent-success:active::after,
     .bp3-menu-item.bp3-intent-success:active .bp3-menu-item-label, .bp3-menu-item.bp3-intent-success.bp3-active, .bp3-menu-item.bp3-intent-success.bp3-active::before, .bp3-menu-item.bp3-intent-success.bp3-active::after,
     .bp3-menu-item.bp3-intent-success.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6810,13 +7029,13 @@ span.bp3-icon:empty{
     .bp3-menu-item.bp3-intent-warning::before, .bp3-menu-item.bp3-intent-warning::after,
     .bp3-menu-item.bp3-intent-warning .bp3-menu-item-label{
       color:#bf7326; }
-    .bp3-menu-item.bp3-intent-warning:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item, .bp3-menu-item.bp3-intent-warning.bp3-active{
+    .bp3-menu-item.bp3-intent-warning:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item, .bp3-menu-item.bp3-intent-warning.bp3-active{
       background-color:#d9822b; }
     .bp3-menu-item.bp3-intent-warning:active{
       background-color:#bf7326; }
-    .bp3-menu-item.bp3-intent-warning:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item, .bp3-menu-item.bp3-intent-warning:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item::before, .bp3-menu-item.bp3-intent-warning:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item::after,
+    .bp3-menu-item.bp3-intent-warning:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item, .bp3-menu-item.bp3-intent-warning:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item::before, .bp3-menu-item.bp3-intent-warning:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item::after,
     .bp3-menu-item.bp3-intent-warning:hover .bp3-menu-item-label,
-    .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-warning:active, .bp3-menu-item.bp3-intent-warning:active::before, .bp3-menu-item.bp3-intent-warning:active::after,
+    .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-warning:active, .bp3-menu-item.bp3-intent-warning:active::before, .bp3-menu-item.bp3-intent-warning:active::after,
     .bp3-menu-item.bp3-intent-warning:active .bp3-menu-item-label, .bp3-menu-item.bp3-intent-warning.bp3-active, .bp3-menu-item.bp3-intent-warning.bp3-active::before, .bp3-menu-item.bp3-intent-warning.bp3-active::after,
     .bp3-menu-item.bp3-intent-warning.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6827,13 +7046,13 @@ span.bp3-icon:empty{
     .bp3-menu-item.bp3-intent-danger::before, .bp3-menu-item.bp3-intent-danger::after,
     .bp3-menu-item.bp3-intent-danger .bp3-menu-item-label{
       color:#c23030; }
-    .bp3-menu-item.bp3-intent-danger:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item, .bp3-menu-item.bp3-intent-danger.bp3-active{
+    .bp3-menu-item.bp3-intent-danger:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item, .bp3-menu-item.bp3-intent-danger.bp3-active{
       background-color:#db3737; }
     .bp3-menu-item.bp3-intent-danger:active{
       background-color:#c23030; }
-    .bp3-menu-item.bp3-intent-danger:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item, .bp3-menu-item.bp3-intent-danger:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item::before, .bp3-menu-item.bp3-intent-danger:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item::after,
+    .bp3-menu-item.bp3-intent-danger:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item, .bp3-menu-item.bp3-intent-danger:hover::before, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item::before, .bp3-menu-item.bp3-intent-danger:hover::after, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item::after,
     .bp3-menu-item.bp3-intent-danger:hover .bp3-menu-item-label,
-    .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-danger:active, .bp3-menu-item.bp3-intent-danger:active::before, .bp3-menu-item.bp3-intent-danger:active::after,
+    .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item .bp3-menu-item-label, .bp3-menu-item.bp3-intent-danger:active, .bp3-menu-item.bp3-intent-danger:active::before, .bp3-menu-item.bp3-intent-danger:active::after,
     .bp3-menu-item.bp3-intent-danger:active .bp3-menu-item-label, .bp3-menu-item.bp3-intent-danger.bp3-active, .bp3-menu-item.bp3-intent-danger.bp3-active::before, .bp3-menu-item.bp3-intent-danger.bp3-active::after,
     .bp3-menu-item.bp3-intent-danger.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6847,12 +7066,12 @@ span.bp3-icon:empty{
     -webkit-font-smoothing:antialiased;
     margin-right:7px; }
   .bp3-menu-item::before,
-  .bp3-menu-item &gt; .bp3-icon{
+  .bp3-menu-item > .bp3-icon{
     color:#5c7080;
     margin-top:2px; }
   .bp3-menu-item .bp3-menu-item-label{
     color:#5c7080; }
-  .bp3-menu-item:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-menu-item{
+  .bp3-menu-item:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-menu-item{
     color:inherit; }
   .bp3-menu-item.bp3-active, .bp3-menu-item:active{
     background-color:rgba(115, 134, 148, 0.3); }
@@ -6862,7 +7081,7 @@ span.bp3-icon:empty{
     cursor:not-allowed !important;
     outline:none !important; }
     .bp3-menu-item.bp3-disabled::before,
-    .bp3-menu-item.bp3-disabled &gt; .bp3-icon,
+    .bp3-menu-item.bp3-disabled > .bp3-icon,
     .bp3-menu-item.bp3-disabled .bp3-menu-item-label{
       color:rgba(92, 112, 128, 0.6) !important; }
   .bp3-large .bp3-menu-item{
@@ -6897,7 +7116,7 @@ button.bp3-menu-item{
     border-top-color:rgba(255, 255, 255, 0.15); }
   .bp3-menu-header:first-of-type{
     border-top:none; }
-  .bp3-menu-header &gt; h6{
+  .bp3-menu-header > h6{
     color:#182026;
     font-weight:600;
     overflow:hidden;
@@ -6907,15 +7126,15 @@ button.bp3-menu-item{
     line-height:17px;
     margin:0;
     padding:10px 7px 0 1px; }
-    .bp3-dark .bp3-menu-header &gt; h6{
+    .bp3-dark .bp3-menu-header > h6{
       color:#f5f8fa; }
-  .bp3-menu-header:first-of-type &gt; h6{
+  .bp3-menu-header:first-of-type > h6{
     padding-top:0; }
-  .bp3-large .bp3-menu-header &gt; h6{
+  .bp3-large .bp3-menu-header > h6{
     font-size:18px;
     padding-bottom:5px;
     padding-top:15px; }
-  .bp3-large .bp3-menu-header:first-of-type &gt; h6{
+  .bp3-large .bp3-menu-header:first-of-type > h6{
     padding-top:0; }
 
 .bp3-dark .bp3-menu{
@@ -6930,14 +7149,14 @@ button.bp3-menu-item{
     .bp3-dark .bp3-menu-item.bp3-intent-primary::before, .bp3-dark .bp3-menu-item.bp3-intent-primary::after,
     .bp3-dark .bp3-menu-item.bp3-intent-primary .bp3-menu-item-label{
       color:#48aff0; }
-    .bp3-dark .bp3-menu-item.bp3-intent-primary:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-primary.bp3-active{
+    .bp3-dark .bp3-menu-item.bp3-intent-primary:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-primary.bp3-active{
       background-color:#137cbd; }
     .bp3-dark .bp3-menu-item.bp3-intent-primary:active{
       background-color:#106ba3; }
-    .bp3-dark .bp3-menu-item.bp3-intent-primary:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-primary:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-primary:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item::after,
+    .bp3-dark .bp3-menu-item.bp3-intent-primary:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-primary:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-primary:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item::after,
     .bp3-dark .bp3-menu-item.bp3-intent-primary:hover .bp3-menu-item-label,
-    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item .bp3-menu-item-label,
-    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-primary.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-primary:active, .bp3-dark .bp3-menu-item.bp3-intent-primary:active::before, .bp3-dark .bp3-menu-item.bp3-intent-primary:active::after,
+    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item .bp3-menu-item-label,
+    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-primary:active, .bp3-dark .bp3-menu-item.bp3-intent-primary:active::before, .bp3-dark .bp3-menu-item.bp3-intent-primary:active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-primary:active .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-primary.bp3-active, .bp3-dark .bp3-menu-item.bp3-intent-primary.bp3-active::before, .bp3-dark .bp3-menu-item.bp3-intent-primary.bp3-active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-primary.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6948,14 +7167,14 @@ button.bp3-menu-item{
     .bp3-dark .bp3-menu-item.bp3-intent-success::before, .bp3-dark .bp3-menu-item.bp3-intent-success::after,
     .bp3-dark .bp3-menu-item.bp3-intent-success .bp3-menu-item-label{
       color:#3dcc91; }
-    .bp3-dark .bp3-menu-item.bp3-intent-success:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-success.bp3-active{
+    .bp3-dark .bp3-menu-item.bp3-intent-success:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-success.bp3-active{
       background-color:#0f9960; }
     .bp3-dark .bp3-menu-item.bp3-intent-success:active{
       background-color:#0d8050; }
-    .bp3-dark .bp3-menu-item.bp3-intent-success:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-success:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-success:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item::after,
+    .bp3-dark .bp3-menu-item.bp3-intent-success:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-success:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-success:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item::after,
     .bp3-dark .bp3-menu-item.bp3-intent-success:hover .bp3-menu-item-label,
-    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item .bp3-menu-item-label,
-    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-success.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-success:active, .bp3-dark .bp3-menu-item.bp3-intent-success:active::before, .bp3-dark .bp3-menu-item.bp3-intent-success:active::after,
+    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item .bp3-menu-item-label,
+    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-success.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-success:active, .bp3-dark .bp3-menu-item.bp3-intent-success:active::before, .bp3-dark .bp3-menu-item.bp3-intent-success:active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-success:active .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-success.bp3-active, .bp3-dark .bp3-menu-item.bp3-intent-success.bp3-active::before, .bp3-dark .bp3-menu-item.bp3-intent-success.bp3-active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-success.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6966,14 +7185,14 @@ button.bp3-menu-item{
     .bp3-dark .bp3-menu-item.bp3-intent-warning::before, .bp3-dark .bp3-menu-item.bp3-intent-warning::after,
     .bp3-dark .bp3-menu-item.bp3-intent-warning .bp3-menu-item-label{
       color:#ffb366; }
-    .bp3-dark .bp3-menu-item.bp3-intent-warning:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-warning.bp3-active{
+    .bp3-dark .bp3-menu-item.bp3-intent-warning:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-warning.bp3-active{
       background-color:#d9822b; }
     .bp3-dark .bp3-menu-item.bp3-intent-warning:active{
       background-color:#bf7326; }
-    .bp3-dark .bp3-menu-item.bp3-intent-warning:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-warning:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-warning:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item::after,
+    .bp3-dark .bp3-menu-item.bp3-intent-warning:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-warning:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-warning:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item::after,
     .bp3-dark .bp3-menu-item.bp3-intent-warning:hover .bp3-menu-item-label,
-    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item .bp3-menu-item-label,
-    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-warning.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-warning:active, .bp3-dark .bp3-menu-item.bp3-intent-warning:active::before, .bp3-dark .bp3-menu-item.bp3-intent-warning:active::after,
+    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item .bp3-menu-item-label,
+    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-warning.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-warning:active, .bp3-dark .bp3-menu-item.bp3-intent-warning:active::before, .bp3-dark .bp3-menu-item.bp3-intent-warning:active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-warning:active .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-warning.bp3-active, .bp3-dark .bp3-menu-item.bp3-intent-warning.bp3-active::before, .bp3-dark .bp3-menu-item.bp3-intent-warning.bp3-active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-warning.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
@@ -6984,19 +7203,19 @@ button.bp3-menu-item{
     .bp3-dark .bp3-menu-item.bp3-intent-danger::before, .bp3-dark .bp3-menu-item.bp3-intent-danger::after,
     .bp3-dark .bp3-menu-item.bp3-intent-danger .bp3-menu-item-label{
       color:#ff7373; }
-    .bp3-dark .bp3-menu-item.bp3-intent-danger:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-danger.bp3-active{
+    .bp3-dark .bp3-menu-item.bp3-intent-danger:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-danger.bp3-active{
       background-color:#db3737; }
     .bp3-dark .bp3-menu-item.bp3-intent-danger:active{
       background-color:#c23030; }
-    .bp3-dark .bp3-menu-item.bp3-intent-danger:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-danger:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-danger:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item::after,
+    .bp3-dark .bp3-menu-item.bp3-intent-danger:hover, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item, .bp3-dark .bp3-menu-item.bp3-intent-danger:hover::before, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item::before, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item::before, .bp3-dark .bp3-menu-item.bp3-intent-danger:hover::after, .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item::after, .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item::after,
     .bp3-dark .bp3-menu-item.bp3-intent-danger:hover .bp3-menu-item-label,
-    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item .bp3-menu-item-label,
-    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open &gt; .bp3-intent-danger.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-danger:active, .bp3-dark .bp3-menu-item.bp3-intent-danger:active::before, .bp3-dark .bp3-menu-item.bp3-intent-danger:active::after,
+    .bp3-dark .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item .bp3-menu-item-label,
+    .bp3-submenu .bp3-dark .bp3-popover-target.bp3-popover-open > .bp3-intent-danger.bp3-menu-item .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-danger:active, .bp3-dark .bp3-menu-item.bp3-intent-danger:active::before, .bp3-dark .bp3-menu-item.bp3-intent-danger:active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-danger:active .bp3-menu-item-label, .bp3-dark .bp3-menu-item.bp3-intent-danger.bp3-active, .bp3-dark .bp3-menu-item.bp3-intent-danger.bp3-active::before, .bp3-dark .bp3-menu-item.bp3-intent-danger.bp3-active::after,
     .bp3-dark .bp3-menu-item.bp3-intent-danger.bp3-active .bp3-menu-item-label{
       color:#ffffff; }
   .bp3-dark .bp3-menu-item::before,
-  .bp3-dark .bp3-menu-item &gt; .bp3-icon{
+  .bp3-dark .bp3-menu-item > .bp3-icon{
     color:#a7b6c2; }
   .bp3-dark .bp3-menu-item .bp3-menu-item-label{
     color:#a7b6c2; }
@@ -7005,7 +7224,7 @@ button.bp3-menu-item{
   .bp3-dark .bp3-menu-item.bp3-disabled{
     color:rgba(167, 182, 194, 0.6) !important; }
     .bp3-dark .bp3-menu-item.bp3-disabled::before,
-    .bp3-dark .bp3-menu-item.bp3-disabled &gt; .bp3-icon,
+    .bp3-dark .bp3-menu-item.bp3-disabled > .bp3-icon,
     .bp3-dark .bp3-menu-item.bp3-disabled .bp3-menu-item-label{
       color:rgba(167, 182, 194, 0.6) !important; }
 
@@ -7013,7 +7232,7 @@ button.bp3-menu-item{
 .bp3-dark .bp3-menu-header{
   border-color:rgba(255, 255, 255, 0.15); }
 
-.bp3-dark .bp3-menu-header &gt; h6{
+.bp3-dark .bp3-menu-header > h6{
   color:#f5f8fa; }
 
 .bp3-label .bp3-menu{
@@ -7082,25 +7301,25 @@ button.bp3-menu-item{
           justify-content:center;
   text-align:center;
   width:100%; }
-  .bp3-non-ideal-state &gt; *{
+  .bp3-non-ideal-state > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-non-ideal-state &gt; .bp3-fill{
+  .bp3-non-ideal-state > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
     -ms-flex-negative:1;
         flex-shrink:1; }
   .bp3-non-ideal-state::before,
-  .bp3-non-ideal-state &gt; *{
+  .bp3-non-ideal-state > *{
     margin-bottom:20px; }
   .bp3-non-ideal-state:empty::before,
-  .bp3-non-ideal-state &gt; :last-child{
+  .bp3-non-ideal-state > :last-child{
     margin-bottom:0; }
-  .bp3-non-ideal-state &gt; *{
+  .bp3-non-ideal-state > *{
     max-width:400px; }
 
 .bp3-non-ideal-state-visual{
@@ -7217,7 +7436,7 @@ body.bp3-overlay-open{
   .bp3-dark .bp3-panel-stack-header{
     -webkit-box-shadow:0 1px rgba(255, 255, 255, 0.15);
             box-shadow:0 1px rgba(255, 255, 255, 0.15); }
-  .bp3-panel-stack-header &gt; span{
+  .bp3-panel-stack-header > span{
     -webkit-box-align:stretch;
         -ms-flex-align:stretch;
             align-items:stretch;
@@ -7359,7 +7578,7 @@ body.bp3-overlay-open{
   .bp3-dark .bp3-panel-stack2-header{
     -webkit-box-shadow:0 1px rgba(255, 255, 255, 0.15);
             box-shadow:0 1px rgba(255, 255, 255, 0.15); }
-  .bp3-panel-stack2-header &gt; span{
+  .bp3-panel-stack2-header > span{
     -webkit-box-align:stretch;
         -ms-flex-align:stretch;
             align-items:stretch;
@@ -7497,77 +7716,77 @@ body.bp3-overlay-open{
       height:20px;
       margin:5px;
       width:20px; }
-  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top &gt; .bp3-popover{
+  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top > .bp3-popover{
     margin-bottom:17px;
     margin-top:-17px; }
-    .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top &gt; .bp3-popover &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top > .bp3-popover > .bp3-popover-arrow{
       bottom:-11px; }
-      .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top &gt; .bp3-popover &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top > .bp3-popover > .bp3-popover-arrow svg{
         -webkit-transform:rotate(-90deg);
                 transform:rotate(-90deg); }
-  .bp3-tether-element-attached-left.bp3-tether-target-attached-right &gt; .bp3-popover{
+  .bp3-tether-element-attached-left.bp3-tether-target-attached-right > .bp3-popover{
     margin-left:17px; }
-    .bp3-tether-element-attached-left.bp3-tether-target-attached-right &gt; .bp3-popover &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-left.bp3-tether-target-attached-right > .bp3-popover > .bp3-popover-arrow{
       left:-11px; }
-      .bp3-tether-element-attached-left.bp3-tether-target-attached-right &gt; .bp3-popover &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-left.bp3-tether-target-attached-right > .bp3-popover > .bp3-popover-arrow svg{
         -webkit-transform:rotate(0);
                 transform:rotate(0); }
-  .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom &gt; .bp3-popover{
+  .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom > .bp3-popover{
     margin-top:17px; }
-    .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom &gt; .bp3-popover &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom > .bp3-popover > .bp3-popover-arrow{
       top:-11px; }
-      .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom &gt; .bp3-popover &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom > .bp3-popover > .bp3-popover-arrow svg{
         -webkit-transform:rotate(90deg);
                 transform:rotate(90deg); }
-  .bp3-tether-element-attached-right.bp3-tether-target-attached-left &gt; .bp3-popover{
+  .bp3-tether-element-attached-right.bp3-tether-target-attached-left > .bp3-popover{
     margin-left:-17px;
     margin-right:17px; }
-    .bp3-tether-element-attached-right.bp3-tether-target-attached-left &gt; .bp3-popover &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-right.bp3-tether-target-attached-left > .bp3-popover > .bp3-popover-arrow{
       right:-11px; }
-      .bp3-tether-element-attached-right.bp3-tether-target-attached-left &gt; .bp3-popover &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-right.bp3-tether-target-attached-left > .bp3-popover > .bp3-popover-arrow svg{
         -webkit-transform:rotate(180deg);
                 transform:rotate(180deg); }
-  .bp3-tether-element-attached-middle &gt; .bp3-popover &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-middle > .bp3-popover > .bp3-popover-arrow{
     top:50%;
     -webkit-transform:translateY(-50%);
             transform:translateY(-50%); }
-  .bp3-tether-element-attached-center &gt; .bp3-popover &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-center > .bp3-popover > .bp3-popover-arrow{
     right:50%;
     -webkit-transform:translateX(50%);
             transform:translateX(50%); }
-  .bp3-tether-element-attached-top.bp3-tether-target-attached-top &gt; .bp3-popover &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-top.bp3-tether-target-attached-top > .bp3-popover > .bp3-popover-arrow{
     top:-0.3934px; }
-  .bp3-tether-element-attached-right.bp3-tether-target-attached-right &gt; .bp3-popover &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-right.bp3-tether-target-attached-right > .bp3-popover > .bp3-popover-arrow{
     right:-0.3934px; }
-  .bp3-tether-element-attached-left.bp3-tether-target-attached-left &gt; .bp3-popover &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-left.bp3-tether-target-attached-left > .bp3-popover > .bp3-popover-arrow{
     left:-0.3934px; }
-  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-bottom &gt; .bp3-popover &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-bottom > .bp3-popover > .bp3-popover-arrow{
     bottom:-0.3934px; }
-  .bp3-tether-element-attached-top.bp3-tether-element-attached-left &gt; .bp3-popover{
+  .bp3-tether-element-attached-top.bp3-tether-element-attached-left > .bp3-popover{
     -webkit-transform-origin:top left;
             transform-origin:top left; }
-  .bp3-tether-element-attached-top.bp3-tether-element-attached-center &gt; .bp3-popover{
+  .bp3-tether-element-attached-top.bp3-tether-element-attached-center > .bp3-popover{
     -webkit-transform-origin:top center;
             transform-origin:top center; }
-  .bp3-tether-element-attached-top.bp3-tether-element-attached-right &gt; .bp3-popover{
+  .bp3-tether-element-attached-top.bp3-tether-element-attached-right > .bp3-popover{
     -webkit-transform-origin:top right;
             transform-origin:top right; }
-  .bp3-tether-element-attached-middle.bp3-tether-element-attached-left &gt; .bp3-popover{
+  .bp3-tether-element-attached-middle.bp3-tether-element-attached-left > .bp3-popover{
     -webkit-transform-origin:center left;
             transform-origin:center left; }
-  .bp3-tether-element-attached-middle.bp3-tether-element-attached-center &gt; .bp3-popover{
+  .bp3-tether-element-attached-middle.bp3-tether-element-attached-center > .bp3-popover{
     -webkit-transform-origin:center center;
             transform-origin:center center; }
-  .bp3-tether-element-attached-middle.bp3-tether-element-attached-right &gt; .bp3-popover{
+  .bp3-tether-element-attached-middle.bp3-tether-element-attached-right > .bp3-popover{
     -webkit-transform-origin:center right;
             transform-origin:center right; }
-  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-left &gt; .bp3-popover{
+  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-left > .bp3-popover{
     -webkit-transform-origin:bottom left;
             transform-origin:bottom left; }
-  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-center &gt; .bp3-popover{
+  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-center > .bp3-popover{
     -webkit-transform-origin:bottom center;
             transform-origin:bottom center; }
-  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-right &gt; .bp3-popover{
+  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-right > .bp3-popover{
     -webkit-transform-origin:bottom right;
             transform-origin:bottom right; }
   .bp3-popover .bp3-popover-content{
@@ -7581,10 +7800,10 @@ body.bp3-overlay-open{
     fill-opacity:0.1; }
   .bp3-popover .bp3-popover-arrow-fill{
     fill:#ffffff; }
-  .bp3-popover-enter &gt; .bp3-popover, .bp3-popover-appear &gt; .bp3-popover{
+  .bp3-popover-enter > .bp3-popover, .bp3-popover-appear > .bp3-popover{
     -webkit-transform:scale(0.3);
             transform:scale(0.3); }
-  .bp3-popover-enter-active &gt; .bp3-popover, .bp3-popover-appear-active &gt; .bp3-popover{
+  .bp3-popover-enter-active > .bp3-popover, .bp3-popover-appear-active > .bp3-popover{
     -webkit-transform:scale(1);
             transform:scale(1);
     -webkit-transition-delay:0;
@@ -7597,10 +7816,10 @@ body.bp3-overlay-open{
     transition-property:transform, -webkit-transform;
     -webkit-transition-timing-function:cubic-bezier(0.54, 1.12, 0.38, 1.11);
             transition-timing-function:cubic-bezier(0.54, 1.12, 0.38, 1.11); }
-  .bp3-popover-exit &gt; .bp3-popover{
+  .bp3-popover-exit > .bp3-popover{
     -webkit-transform:scale(1);
             transform:scale(1); }
-  .bp3-popover-exit-active &gt; .bp3-popover{
+  .bp3-popover-exit-active > .bp3-popover{
     -webkit-transform:scale(0.3);
             transform:scale(0.3);
     -webkit-transition-delay:0;
@@ -7628,10 +7847,10 @@ body.bp3-overlay-open{
     .bp3-popover.bp3-minimal.bp3-popover{
       -webkit-transform:scale(1);
               transform:scale(1); }
-      .bp3-popover-enter &gt; .bp3-popover.bp3-minimal.bp3-popover, .bp3-popover-appear &gt; .bp3-popover.bp3-minimal.bp3-popover{
+      .bp3-popover-enter > .bp3-popover.bp3-minimal.bp3-popover, .bp3-popover-appear > .bp3-popover.bp3-minimal.bp3-popover{
         -webkit-transform:scale(1);
                 transform:scale(1); }
-      .bp3-popover-enter-active &gt; .bp3-popover.bp3-minimal.bp3-popover, .bp3-popover-appear-active &gt; .bp3-popover.bp3-minimal.bp3-popover{
+      .bp3-popover-enter-active > .bp3-popover.bp3-minimal.bp3-popover, .bp3-popover-appear-active > .bp3-popover.bp3-minimal.bp3-popover{
         -webkit-transform:scale(1);
                 transform:scale(1);
         -webkit-transition-delay:0;
@@ -7644,10 +7863,10 @@ body.bp3-overlay-open{
         transition-property:transform, -webkit-transform;
         -webkit-transition-timing-function:cubic-bezier(0.4, 1, 0.75, 0.9);
                 transition-timing-function:cubic-bezier(0.4, 1, 0.75, 0.9); }
-      .bp3-popover-exit &gt; .bp3-popover.bp3-minimal.bp3-popover{
+      .bp3-popover-exit > .bp3-popover.bp3-minimal.bp3-popover{
         -webkit-transform:scale(1);
                 transform:scale(1); }
-      .bp3-popover-exit-active &gt; .bp3-popover.bp3-minimal.bp3-popover{
+      .bp3-popover-exit-active > .bp3-popover.bp3-minimal.bp3-popover{
         -webkit-transform:scale(1);
                 transform:scale(1);
         -webkit-transition-delay:0;
@@ -8091,7 +8310,7 @@ span.bp3-popover-target{
 .bp3-spinner-animation{
   -webkit-animation:pt-spinner-animation 500ms linear infinite;
           animation:pt-spinner-animation 500ms linear infinite; }
-  .bp3-no-spin &gt; .bp3-spinner-animation{
+  .bp3-no-spin > .bp3-spinner-animation{
     -webkit-animation:none;
             animation:none; }
 
@@ -8116,7 +8335,7 @@ span.bp3-popover-target{
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex; }
-  .bp3-tabs.bp3-vertical &gt; .bp3-tab-list{
+  .bp3-tabs.bp3-vertical > .bp3-tab-list{
     -webkit-box-align:start;
         -ms-flex-align:start;
             align-items:flex-start;
@@ -8124,15 +8343,15 @@ span.bp3-popover-target{
     -webkit-box-direction:normal;
         -ms-flex-direction:column;
             flex-direction:column; }
-    .bp3-tabs.bp3-vertical &gt; .bp3-tab-list .bp3-tab{
+    .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab{
       border-radius:3px;
       padding:0 10px;
       width:100%; }
-      .bp3-tabs.bp3-vertical &gt; .bp3-tab-list .bp3-tab[aria-selected="true"]{
+      .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab[aria-selected="true"]{
         background-color:rgba(19, 124, 189, 0.2);
         -webkit-box-shadow:none;
                 box-shadow:none; }
-    .bp3-tabs.bp3-vertical &gt; .bp3-tab-list .bp3-tab-indicator-wrapper .bp3-tab-indicator{
+    .bp3-tabs.bp3-vertical > .bp3-tab-list .bp3-tab-indicator-wrapper .bp3-tab-indicator{
       background-color:rgba(19, 124, 189, 0.2);
       border-radius:3px;
       bottom:0;
@@ -8140,7 +8359,7 @@ span.bp3-popover-target{
       left:0;
       right:0;
       top:0; }
-  .bp3-tabs.bp3-vertical &gt; .bp3-tab-panel{
+  .bp3-tabs.bp3-vertical > .bp3-tab-panel{
     margin-top:0;
     padding-left:20px; }
 
@@ -8159,7 +8378,7 @@ span.bp3-popover-target{
   margin:0;
   padding:0;
   position:relative; }
-  .bp3-tab-list &gt; *:not(:last-child){
+  .bp3-tab-list > *:not(:last-child){
     margin-right:20px; }
 
 .bp3-tab{
@@ -8196,7 +8415,7 @@ span.bp3-popover-target{
     color:#106ba3; }
   .bp3-tab:focus{
     -moz-outline-radius:0; }
-  .bp3-large &gt; .bp3-tab{
+  .bp3-large > .bp3-tab{
     font-size:16px;
     line-height:40px; }
 
@@ -8278,23 +8497,23 @@ span.bp3-popover-target{
       background-color:rgba(92, 112, 128, 0.85); }
     .bp3-tag.bp3-interactive.bp3-active, .bp3-tag.bp3-interactive:active{
       background-color:rgba(92, 112, 128, 0.7); }
-  .bp3-tag &gt; *{
+  .bp3-tag > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-tag &gt; .bp3-fill{
+  .bp3-tag > .bp3-fill{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
     -ms-flex-negative:1;
         flex-shrink:1; }
   .bp3-tag::before,
-  .bp3-tag &gt; *{
+  .bp3-tag > *{
     margin-right:4px; }
   .bp3-tag:empty::before,
-  .bp3-tag &gt; :last-child{
+  .bp3-tag > :last-child{
     margin-right:0; }
   .bp3-tag:focus{
     outline:rgba(19, 124, 189, 0.6) auto 2px;
@@ -8313,9 +8532,9 @@ span.bp3-popover-target{
         background-color:rgba(191, 204, 214, 0.85); }
       .bp3-dark .bp3-tag.bp3-interactive.bp3-active, .bp3-dark .bp3-tag.bp3-interactive:active{
         background-color:rgba(191, 204, 214, 0.7); }
-    .bp3-dark .bp3-tag &gt; .bp3-icon, .bp3-dark .bp3-tag .bp3-icon-standard, .bp3-dark .bp3-tag .bp3-icon-large{
+    .bp3-dark .bp3-tag > .bp3-icon, .bp3-dark .bp3-tag .bp3-icon-standard, .bp3-dark .bp3-tag .bp3-icon-large{
       fill:currentColor; }
-  .bp3-tag &gt; .bp3-icon, .bp3-tag .bp3-icon-standard, .bp3-tag .bp3-icon-large{
+  .bp3-tag > .bp3-icon, .bp3-tag .bp3-icon-standard, .bp3-tag .bp3-icon-large{
     fill:#ffffff; }
   .bp3-tag.bp3-large,
   .bp3-large .bp3-tag{
@@ -8325,14 +8544,14 @@ span.bp3-popover-target{
     min-width:30px;
     padding:5px 10px; }
     .bp3-tag.bp3-large::before,
-    .bp3-tag.bp3-large &gt; *,
+    .bp3-tag.bp3-large > *,
     .bp3-large .bp3-tag::before,
-    .bp3-large .bp3-tag &gt; *{
+    .bp3-large .bp3-tag > *{
       margin-right:7px; }
     .bp3-tag.bp3-large:empty::before,
-    .bp3-tag.bp3-large &gt; :last-child,
+    .bp3-tag.bp3-large > :last-child,
     .bp3-large .bp3-tag:empty::before,
-    .bp3-large .bp3-tag &gt; :last-child{
+    .bp3-large .bp3-tag > :last-child{
       margin-right:0; }
     .bp3-tag.bp3-large.bp3-round,
     .bp3-large .bp3-tag.bp3-round{
@@ -8379,7 +8598,7 @@ span.bp3-popover-target{
     display:-ms-flexbox;
     display:flex;
     width:100%; }
-  .bp3-tag.bp3-minimal &gt; .bp3-icon, .bp3-tag.bp3-minimal .bp3-icon-standard, .bp3-tag.bp3-minimal .bp3-icon-large{
+  .bp3-tag.bp3-minimal > .bp3-icon, .bp3-tag.bp3-minimal .bp3-icon-standard, .bp3-tag.bp3-minimal .bp3-icon-large{
     fill:#5c7080; }
   .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]){
     background-color:rgba(138, 155, 168, 0.2);
@@ -8398,7 +8617,7 @@ span.bp3-popover-target{
           background-color:rgba(191, 204, 214, 0.3); }
         .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]).bp3-interactive.bp3-active, .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]).bp3-interactive:active{
           background-color:rgba(191, 204, 214, 0.4); }
-      .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]) &gt; .bp3-icon, .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]) .bp3-icon-standard, .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]) .bp3-icon-large{
+      .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]) > .bp3-icon, .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]) .bp3-icon-standard, .bp3-dark .bp3-tag.bp3-minimal:not([class*="bp3-intent-"]) .bp3-icon-large{
         fill:#a7b6c2; }
   .bp3-tag.bp3-minimal.bp3-intent-primary{
     background-color:rgba(19, 124, 189, 0.15);
@@ -8409,7 +8628,7 @@ span.bp3-popover-target{
         background-color:rgba(19, 124, 189, 0.25); }
       .bp3-tag.bp3-minimal.bp3-intent-primary.bp3-interactive.bp3-active, .bp3-tag.bp3-minimal.bp3-intent-primary.bp3-interactive:active{
         background-color:rgba(19, 124, 189, 0.35); }
-    .bp3-tag.bp3-minimal.bp3-intent-primary &gt; .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-primary .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-primary .bp3-icon-large{
+    .bp3-tag.bp3-minimal.bp3-intent-primary > .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-primary .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-primary .bp3-icon-large{
       fill:#137cbd; }
     .bp3-dark .bp3-tag.bp3-minimal.bp3-intent-primary{
       background-color:rgba(19, 124, 189, 0.25);
@@ -8429,7 +8648,7 @@ span.bp3-popover-target{
         background-color:rgba(15, 153, 96, 0.25); }
       .bp3-tag.bp3-minimal.bp3-intent-success.bp3-interactive.bp3-active, .bp3-tag.bp3-minimal.bp3-intent-success.bp3-interactive:active{
         background-color:rgba(15, 153, 96, 0.35); }
-    .bp3-tag.bp3-minimal.bp3-intent-success &gt; .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-success .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-success .bp3-icon-large{
+    .bp3-tag.bp3-minimal.bp3-intent-success > .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-success .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-success .bp3-icon-large{
       fill:#0f9960; }
     .bp3-dark .bp3-tag.bp3-minimal.bp3-intent-success{
       background-color:rgba(15, 153, 96, 0.25);
@@ -8449,7 +8668,7 @@ span.bp3-popover-target{
         background-color:rgba(217, 130, 43, 0.25); }
       .bp3-tag.bp3-minimal.bp3-intent-warning.bp3-interactive.bp3-active, .bp3-tag.bp3-minimal.bp3-intent-warning.bp3-interactive:active{
         background-color:rgba(217, 130, 43, 0.35); }
-    .bp3-tag.bp3-minimal.bp3-intent-warning &gt; .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-warning .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-warning .bp3-icon-large{
+    .bp3-tag.bp3-minimal.bp3-intent-warning > .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-warning .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-warning .bp3-icon-large{
       fill:#d9822b; }
     .bp3-dark .bp3-tag.bp3-minimal.bp3-intent-warning{
       background-color:rgba(217, 130, 43, 0.25);
@@ -8469,7 +8688,7 @@ span.bp3-popover-target{
         background-color:rgba(219, 55, 55, 0.25); }
       .bp3-tag.bp3-minimal.bp3-intent-danger.bp3-interactive.bp3-active, .bp3-tag.bp3-minimal.bp3-intent-danger.bp3-interactive:active{
         background-color:rgba(219, 55, 55, 0.35); }
-    .bp3-tag.bp3-minimal.bp3-intent-danger &gt; .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-danger .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-danger .bp3-icon-large{
+    .bp3-tag.bp3-minimal.bp3-intent-danger > .bp3-icon, .bp3-tag.bp3-minimal.bp3-intent-danger .bp3-icon-standard, .bp3-tag.bp3-minimal.bp3-intent-danger .bp3-icon-large{
       fill:#db3737; }
     .bp3-dark .bp3-tag.bp3-minimal.bp3-intent-danger{
       background-color:rgba(219, 55, 55, 0.25);
@@ -8536,13 +8755,13 @@ span.bp3-popover-target{
   min-height:30px;
   padding-left:5px;
   padding-right:0; }
-  .bp3-tag-input &gt; *{
+  .bp3-tag-input > *{
     -webkit-box-flex:0;
         -ms-flex-positive:0;
             flex-grow:0;
     -ms-flex-negative:0;
         flex-shrink:0; }
-  .bp3-tag-input &gt; .bp3-tag-input-values{
+  .bp3-tag-input > .bp3-tag-input-values{
     -webkit-box-flex:1;
         -ms-flex-positive:1;
             flex-grow:1;
@@ -8571,27 +8790,27 @@ span.bp3-popover-target{
     margin-right:7px;
     margin-top:5px;
     min-width:0; }
-    .bp3-tag-input .bp3-tag-input-values &gt; *{
+    .bp3-tag-input .bp3-tag-input-values > *{
       -webkit-box-flex:0;
           -ms-flex-positive:0;
               flex-grow:0;
       -ms-flex-negative:0;
           flex-shrink:0; }
-    .bp3-tag-input .bp3-tag-input-values &gt; .bp3-fill{
+    .bp3-tag-input .bp3-tag-input-values > .bp3-fill{
       -webkit-box-flex:1;
           -ms-flex-positive:1;
               flex-grow:1;
       -ms-flex-negative:1;
           flex-shrink:1; }
     .bp3-tag-input .bp3-tag-input-values::before,
-    .bp3-tag-input .bp3-tag-input-values &gt; *{
+    .bp3-tag-input .bp3-tag-input-values > *{
       margin-right:5px; }
     .bp3-tag-input .bp3-tag-input-values:empty::before,
-    .bp3-tag-input .bp3-tag-input-values &gt; :last-child{
+    .bp3-tag-input .bp3-tag-input-values > :last-child{
       margin-right:0; }
     .bp3-tag-input .bp3-tag-input-values:first-child .bp3-input-ghost:first-child{
       padding-left:5px; }
-    .bp3-tag-input .bp3-tag-input-values &gt; *{
+    .bp3-tag-input .bp3-tag-input-values > *{
       margin-bottom:5px; }
   .bp3-tag-input .bp3-tag{
     overflow-wrap:break-word; }
@@ -8619,10 +8838,10 @@ span.bp3-popover-target{
     height:auto;
     min-height:40px; }
     .bp3-tag-input.bp3-large::before,
-    .bp3-tag-input.bp3-large &gt; *{
+    .bp3-tag-input.bp3-large > *{
       margin-right:10px; }
     .bp3-tag-input.bp3-large:empty::before,
-    .bp3-tag-input.bp3-large &gt; :last-child{
+    .bp3-tag-input.bp3-large > :last-child{
       margin-right:0; }
     .bp3-tag-input.bp3-large .bp3-tag-input-icon{
       margin-left:5px;
@@ -8796,7 +9015,7 @@ span.bp3-popover-target{
             flex:0 0 auto;
     padding:5px;
     padding-left:0; }
-  .bp3-toast &gt; .bp3-icon{
+  .bp3-toast > .bp3-icon{
     color:#5c7080;
     margin:12px;
     margin-right:0; }
@@ -8805,14 +9024,14 @@ span.bp3-popover-target{
     background-color:#394b59;
     -webkit-box-shadow:0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.4), 0 8px 24px rgba(16, 22, 26, 0.4);
             box-shadow:0 0 0 1px rgba(16, 22, 26, 0.2), 0 2px 4px rgba(16, 22, 26, 0.4), 0 8px 24px rgba(16, 22, 26, 0.4); }
-    .bp3-toast.bp3-dark &gt; .bp3-icon,
-    .bp3-dark .bp3-toast &gt; .bp3-icon{
+    .bp3-toast.bp3-dark > .bp3-icon,
+    .bp3-dark .bp3-toast > .bp3-icon{
       color:#a7b6c2; }
   .bp3-toast[class*="bp3-intent-"] a{
     color:rgba(255, 255, 255, 0.7); }
     .bp3-toast[class*="bp3-intent-"] a:hover{
       color:#ffffff; }
-  .bp3-toast[class*="bp3-intent-"] &gt; .bp3-icon{
+  .bp3-toast[class*="bp3-intent-"] > .bp3-icon{
     color:#ffffff; }
   .bp3-toast[class*="bp3-intent-"] .bp3-button, .bp3-toast[class*="bp3-intent-"] .bp3-button::before,
   .bp3-toast[class*="bp3-intent-"] .bp3-button .bp3-icon, .bp3-toast[class*="bp3-intent-"] .bp3-button:active{
@@ -8906,77 +9125,77 @@ span.bp3-popover-target{
       height:14px;
       margin:4px;
       width:14px; }
-  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top > .bp3-tooltip{
     margin-bottom:11px;
     margin-top:-11px; }
-    .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top > .bp3-tooltip > .bp3-popover-arrow{
       bottom:-8px; }
-      .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top &gt; .bp3-tooltip &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-bottom.bp3-tether-target-attached-top > .bp3-tooltip > .bp3-popover-arrow svg{
         -webkit-transform:rotate(-90deg);
                 transform:rotate(-90deg); }
-  .bp3-tether-element-attached-left.bp3-tether-target-attached-right &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-left.bp3-tether-target-attached-right > .bp3-tooltip{
     margin-left:11px; }
-    .bp3-tether-element-attached-left.bp3-tether-target-attached-right &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-left.bp3-tether-target-attached-right > .bp3-tooltip > .bp3-popover-arrow{
       left:-8px; }
-      .bp3-tether-element-attached-left.bp3-tether-target-attached-right &gt; .bp3-tooltip &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-left.bp3-tether-target-attached-right > .bp3-tooltip > .bp3-popover-arrow svg{
         -webkit-transform:rotate(0);
                 transform:rotate(0); }
-  .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom > .bp3-tooltip{
     margin-top:11px; }
-    .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom > .bp3-tooltip > .bp3-popover-arrow{
       top:-8px; }
-      .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom &gt; .bp3-tooltip &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-top.bp3-tether-target-attached-bottom > .bp3-tooltip > .bp3-popover-arrow svg{
         -webkit-transform:rotate(90deg);
                 transform:rotate(90deg); }
-  .bp3-tether-element-attached-right.bp3-tether-target-attached-left &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-right.bp3-tether-target-attached-left > .bp3-tooltip{
     margin-left:-11px;
     margin-right:11px; }
-    .bp3-tether-element-attached-right.bp3-tether-target-attached-left &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+    .bp3-tether-element-attached-right.bp3-tether-target-attached-left > .bp3-tooltip > .bp3-popover-arrow{
       right:-8px; }
-      .bp3-tether-element-attached-right.bp3-tether-target-attached-left &gt; .bp3-tooltip &gt; .bp3-popover-arrow svg{
+      .bp3-tether-element-attached-right.bp3-tether-target-attached-left > .bp3-tooltip > .bp3-popover-arrow svg{
         -webkit-transform:rotate(180deg);
                 transform:rotate(180deg); }
-  .bp3-tether-element-attached-middle &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-middle > .bp3-tooltip > .bp3-popover-arrow{
     top:50%;
     -webkit-transform:translateY(-50%);
             transform:translateY(-50%); }
-  .bp3-tether-element-attached-center &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-center > .bp3-tooltip > .bp3-popover-arrow{
     right:50%;
     -webkit-transform:translateX(50%);
             transform:translateX(50%); }
-  .bp3-tether-element-attached-top.bp3-tether-target-attached-top &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-top.bp3-tether-target-attached-top > .bp3-tooltip > .bp3-popover-arrow{
     top:-0.22183px; }
-  .bp3-tether-element-attached-right.bp3-tether-target-attached-right &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-right.bp3-tether-target-attached-right > .bp3-tooltip > .bp3-popover-arrow{
     right:-0.22183px; }
-  .bp3-tether-element-attached-left.bp3-tether-target-attached-left &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-left.bp3-tether-target-attached-left > .bp3-tooltip > .bp3-popover-arrow{
     left:-0.22183px; }
-  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-bottom &gt; .bp3-tooltip &gt; .bp3-popover-arrow{
+  .bp3-tether-element-attached-bottom.bp3-tether-target-attached-bottom > .bp3-tooltip > .bp3-popover-arrow{
     bottom:-0.22183px; }
-  .bp3-tether-element-attached-top.bp3-tether-element-attached-left &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-top.bp3-tether-element-attached-left > .bp3-tooltip{
     -webkit-transform-origin:top left;
             transform-origin:top left; }
-  .bp3-tether-element-attached-top.bp3-tether-element-attached-center &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-top.bp3-tether-element-attached-center > .bp3-tooltip{
     -webkit-transform-origin:top center;
             transform-origin:top center; }
-  .bp3-tether-element-attached-top.bp3-tether-element-attached-right &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-top.bp3-tether-element-attached-right > .bp3-tooltip{
     -webkit-transform-origin:top right;
             transform-origin:top right; }
-  .bp3-tether-element-attached-middle.bp3-tether-element-attached-left &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-middle.bp3-tether-element-attached-left > .bp3-tooltip{
     -webkit-transform-origin:center left;
             transform-origin:center left; }
-  .bp3-tether-element-attached-middle.bp3-tether-element-attached-center &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-middle.bp3-tether-element-attached-center > .bp3-tooltip{
     -webkit-transform-origin:center center;
             transform-origin:center center; }
-  .bp3-tether-element-attached-middle.bp3-tether-element-attached-right &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-middle.bp3-tether-element-attached-right > .bp3-tooltip{
     -webkit-transform-origin:center right;
             transform-origin:center right; }
-  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-left &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-left > .bp3-tooltip{
     -webkit-transform-origin:bottom left;
             transform-origin:bottom left; }
-  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-center &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-center > .bp3-tooltip{
     -webkit-transform-origin:bottom center;
             transform-origin:bottom center; }
-  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-right &gt; .bp3-tooltip{
+  .bp3-tether-element-attached-bottom.bp3-tether-element-attached-right > .bp3-tooltip{
     -webkit-transform-origin:bottom right;
             transform-origin:bottom right; }
   .bp3-tooltip .bp3-popover-content{
@@ -8990,10 +9209,10 @@ span.bp3-popover-target{
     fill-opacity:0.1; }
   .bp3-tooltip .bp3-popover-arrow-fill{
     fill:#394b59; }
-  .bp3-popover-enter &gt; .bp3-tooltip, .bp3-popover-appear &gt; .bp3-tooltip{
+  .bp3-popover-enter > .bp3-tooltip, .bp3-popover-appear > .bp3-tooltip{
     -webkit-transform:scale(0.8);
             transform:scale(0.8); }
-  .bp3-popover-enter-active &gt; .bp3-tooltip, .bp3-popover-appear-active &gt; .bp3-tooltip{
+  .bp3-popover-enter-active > .bp3-tooltip, .bp3-popover-appear-active > .bp3-tooltip{
     -webkit-transform:scale(1);
             transform:scale(1);
     -webkit-transition-delay:0;
@@ -9006,10 +9225,10 @@ span.bp3-popover-target{
     transition-property:transform, -webkit-transform;
     -webkit-transition-timing-function:cubic-bezier(0.4, 1, 0.75, 0.9);
             transition-timing-function:cubic-bezier(0.4, 1, 0.75, 0.9); }
-  .bp3-popover-exit &gt; .bp3-tooltip{
+  .bp3-popover-exit > .bp3-tooltip{
     -webkit-transform:scale(1);
             transform:scale(1); }
-  .bp3-popover-exit-active &gt; .bp3-tooltip{
+  .bp3-popover-exit-active > .bp3-tooltip{
     -webkit-transform:scale(0.8);
             transform:scale(0.8);
     -webkit-transition-delay:0;
@@ -9236,14 +9455,14 @@ span.bp3-popover-target{
   color:rgba(92, 112, 128, 0.6);
   cursor:not-allowed; }
 
-.bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content{
+.bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content{
   background-color:#137cbd; }
-  .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content,
-  .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content .bp3-icon, .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content .bp3-icon-standard, .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content .bp3-icon-large{
+  .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content,
+  .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content .bp3-icon, .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content .bp3-icon-standard, .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content .bp3-icon-large{
     color:#ffffff; }
-  .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content .bp3-tree-node-caret::before{
+  .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content .bp3-tree-node-caret::before{
     color:rgba(255, 255, 255, 0.7); }
-  .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content .bp3-tree-node-caret:hover::before{
+  .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content .bp3-tree-node-caret:hover::before{
     color:#ffffff; }
 
 .bp3-dark .bp3-tree-node-content:hover{
@@ -9260,7 +9479,7 @@ span.bp3-popover-target{
   .bp3-dark .bp3-tree .bp3-icon.bp3-intent-danger, .bp3-dark .bp3-tree .bp3-icon-standard.bp3-intent-danger, .bp3-dark .bp3-tree .bp3-icon-large.bp3-intent-danger{
     color:#db3737; }
 
-.bp3-dark .bp3-tree-node.bp3-tree-node-selected &gt; .bp3-tree-node-content{
+.bp3-dark .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content{
   background-color:#137cbd; }
 .bp3-omnibar{
   -webkit-filter:blur(0);
@@ -9961,24 +10180,24 @@ span.bp3-popover-target{
  */
 #tab-manager
   .lm-TabBar-tab.jp-mod-dirty
-  &gt; .lm-TabBar-tabCloseIcon
-  &gt; :not(:hover)
-  &gt; .jp-icon3[fill] {
+  > .lm-TabBar-tabCloseIcon
+  > :not(:hover)
+  > .jp-icon3[fill] {
   fill: none;
 }
 #tab-manager
   .lm-TabBar-tab.jp-mod-dirty
-  &gt; .lm-TabBar-tabCloseIcon
-  &gt; :not(:hover)
-  &gt; .jp-icon-busy[fill] {
+  > .lm-TabBar-tabCloseIcon
+  > :not(:hover)
+  > .jp-icon-busy[fill] {
   fill: var(--jp-inverse-layout-color3);
 }
 
 #tab-manager
   .lm-TabBar-tab.jp-mod-dirty.jp-mod-active
-  &gt; .lm-TabBar-tabCloseIcon
-  &gt; :not(:hover)
-  &gt; .jp-icon-busy[fill] {
+  > .lm-TabBar-tabCloseIcon
+  > :not(:hover)
+  > .jp-icon-busy[fill] {
   fill: #fff;
 }
 
@@ -9989,16 +10208,16 @@ span.bp3-popover-target{
 */
 .lm-DockPanel-tabBar
   .lm-TabBar-tab.lm-mod-closable.jp-mod-dirty
-  &gt; .lm-TabBar-tabCloseIcon
-  &gt; :not(:hover)
-  &gt; .jp-icon3[fill] {
+  > .lm-TabBar-tabCloseIcon
+  > :not(:hover)
+  > .jp-icon3[fill] {
   fill: none;
 }
 .lm-DockPanel-tabBar
   .lm-TabBar-tab.lm-mod-closable.jp-mod-dirty
-  &gt; .lm-TabBar-tabCloseIcon
-  &gt; :not(:hover)
-  &gt; .jp-icon-busy[fill] {
+  > .lm-TabBar-tabCloseIcon
+  > :not(:hover)
+  > .jp-icon-busy[fill] {
   fill: var(--jp-inverse-layout-color3);
 }
 
@@ -10415,7 +10634,7 @@ input::placeholder {
 }
 
 /* Stop blueprint futzing with our icon fills */
-.bp3-icon.jp-BPIcon &gt; svg:not([fill]) {
+.bp3-icon.jp-BPIcon > svg:not([fill]) {
   fill: var(--jp-inverse-layout-color3);
 }
 
@@ -10441,7 +10660,7 @@ input::placeholder {
 
 /* Use our own theme for hover and option styles */
 .jp-HTMLSelect.jp-DefaultStyle select:hover,
-.jp-HTMLSelect.jp-DefaultStyle select &gt; option {
+.jp-HTMLSelect.jp-DefaultStyle select > option {
   background-color: var(--jp-layout-color2);
   color: var(--jp-ui-font-color0);
 }
@@ -10630,7 +10849,7 @@ select {
   background: var(--jp-layout-color2);
 }
 
-.lm-CommandPalette-header &gt; mark {
+.lm-CommandPalette-header > mark {
   background-color: transparent;
   font-weight: bold;
   color: var(--jp-ui-font-color1);
@@ -10653,7 +10872,7 @@ select {
   background: var(--jp-brand-color1);
 }
 
-.lm-CommandPalette-item.lm-mod-active .lm-CommandPalette-itemLabel &gt; mark {
+.lm-CommandPalette-item.lm-mod-active .lm-CommandPalette-itemLabel > mark {
   color: var(--jp-ui-inverse-font-color0);
 }
 
@@ -10661,7 +10880,7 @@ select {
   fill: var(--jp-layout-color0);
 }
 
-.lm-CommandPalette-item.lm-mod-active .lm-CommandPalette-itemLabel &gt; mark {
+.lm-CommandPalette-item.lm-mod-active .lm-CommandPalette-itemLabel > mark {
   color: var(--jp-ui-inverse-font-color0);
 }
 
@@ -10678,7 +10897,7 @@ select {
   overflow: hidden;
 }
 
-.lm-CommandPalette-itemLabel &gt; mark {
+.lm-CommandPalette-itemLabel > mark {
   color: var(--jp-ui-font-color0);
   background-color: transparent;
   font-weight: bold;
@@ -10832,15 +11051,15 @@ button.jp-Dialog-close-button {
   text-overflow: ellipsis;
 }
 
-.jp-Dialog-body &gt; .jp-select-wrapper {
+.jp-Dialog-body > .jp-select-wrapper {
   width: 100%;
 }
 
-.jp-Dialog-body &gt; button {
+.jp-Dialog-body > button {
   padding: 0px 16px;
 }
 
-.jp-Dialog-body &gt; label {
+.jp-Dialog-body > label {
   line-height: 1.4;
   color: var(--jp-ui-font-color0);
 }
@@ -10873,7 +11092,7 @@ button.jp-Dialog-close-button {
   height: 100%;
 }
 
-.jp-IFrame &gt; iframe {
+.jp-IFrame > iframe {
   border: none;
 }
 
@@ -10903,7 +11122,7 @@ body.lm-mod-override-cursor .jp-IFrame:before {
   width: 100%;
 }
 
-.jp-Input-Boolean-Dialog &gt; label {
+.jp-Input-Boolean-Dialog > label {
   flex: 1 1 auto;
 }
 
@@ -10913,7 +11132,7 @@ body.lm-mod-override-cursor .jp-IFrame:before {
 | Distributed under the terms of the Modified BSD License.
 |----------------------------------------------------------------------------*/
 
-.jp-MainAreaWidget &gt; :focus {
+.jp-MainAreaWidget > :focus {
   outline: none;
 }
 
@@ -11333,7 +11552,7 @@ input.jp-mod-styled:focus {
   width: 100%;
 }
 
-.jp-FileDialog-Checkbox &gt; label {
+.jp-FileDialog-Checkbox > label {
   flex: 1 1 auto;
 }
 
@@ -11406,7 +11625,7 @@ select.jp-mod-styled {
 
 /* Toolbar items */
 
-.jp-Toolbar &gt; .jp-Toolbar-item.jp-Toolbar-spacer {
+.jp-Toolbar > .jp-Toolbar-item.jp-Toolbar-spacer {
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -11419,7 +11638,7 @@ select.jp-mod-styled {
   background-size: 16px;
 }
 
-.jp-Toolbar &gt; .jp-Toolbar-item {
+.jp-Toolbar > .jp-Toolbar-item {
   flex: 0 0 auto;
   display: flex;
   padding-left: 1px;
@@ -11482,14 +11701,14 @@ button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
 
 #jp-main-dock-panel[data-mode='single-document']
   .jp-MainAreaWidget
-  &gt; .jp-Toolbar.jp-Toolbar-micro {
+  > .jp-Toolbar.jp-Toolbar-micro {
   padding: 0;
   min-height: 0;
 }
 
 #jp-main-dock-panel[data-mode='single-document']
   .jp-MainAreaWidget
-  &gt; .jp-Toolbar {
+  > .jp-Toolbar {
   border: none;
   box-shadow: none;
 }
@@ -11510,7 +11729,7 @@ button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
 |----------------------------------------------------------------------------*/
 
 
-/* &lt;DEPRECATED&gt; */ body.p-mod-override-cursor *, /* &lt;/DEPRECATED&gt; */
+/* <DEPRECATED> */ body.p-mod-override-cursor *, /* </DEPRECATED> */
 body.lm-mod-override-cursor * {
   cursor: inherit !important;
 }
@@ -11897,8 +12116,8 @@ div.CodeMirror-dragcursors {
 .CodeMirror-selected { background: #d9d9d9; }
 .CodeMirror-focused .CodeMirror-selected { background: #d7d4f0; }
 .CodeMirror-crosshair { cursor: crosshair; }
-.CodeMirror-line::selection, .CodeMirror-line &gt; span::selection, .CodeMirror-line &gt; span &gt; span::selection { background: #d7d4f0; }
-.CodeMirror-line::-moz-selection, .CodeMirror-line &gt; span::-moz-selection, .CodeMirror-line &gt; span &gt; span::-moz-selection { background: #d7d4f0; }
+.CodeMirror-line::selection, .CodeMirror-line > span::selection, .CodeMirror-line > span > span::selection { background: #d7d4f0; }
+.CodeMirror-line::-moz-selection, .CodeMirror-line > span::-moz-selection, .CodeMirror-line > span > span::-moz-selection { background: #d7d4f0; }
 
 .cm-searching {
   background-color: #ffa;
@@ -12213,7 +12432,7 @@ span.CodeMirror-selectedtext { background: none; }
   box-sizing: border-box;
 }
 
-.jp-CodeMirrorEditor .remote-caret &gt; div {
+.jp-CodeMirrorEditor .remote-caret > div {
   white-space: nowrap;
   position: absolute;
   top: -1.15em;
@@ -12232,12 +12451,12 @@ span.CodeMirror-selectedtext { background: none; }
   transition: opacity 0.3s ease-in-out;
 }
 
-.jp-CodeMirrorEditor .remote-caret.hide-name &gt; div {
+.jp-CodeMirrorEditor .remote-caret.hide-name > div {
   transition-delay: 0.7s;
   opacity: 0;
 }
 
-.jp-CodeMirrorEditor .remote-caret:hover &gt; div {
+.jp-CodeMirrorEditor .remote-caret:hover > div {
   opacity: 1;
   transition-delay: 0s;
 }
@@ -12596,7 +12815,7 @@ span.CodeMirror-selectedtext { background: none; }
   margin-bottom: 1em;
 }
 
-.jp-RenderedHTMLCommon &gt; pre {
+.jp-RenderedHTMLCommon > pre {
   margin: 1.5em 2em;
 }
 
@@ -12612,7 +12831,7 @@ span.CodeMirror-selectedtext { background: none; }
   white-space: pre-wrap;
 }
 
-.jp-RenderedHTMLCommon :not(pre) &gt; code {
+.jp-RenderedHTMLCommon :not(pre) > code {
   background-color: var(--jp-layout-color2);
   padding: 1px 5px;
 }
@@ -12691,7 +12910,7 @@ span.CodeMirror-selectedtext { background: none; }
 }
 
 /* Restrict to direct children as other images could be nested in other content. */
-.jp-RenderedHTMLCommon &gt; img {
+.jp-RenderedHTMLCommon > img {
   display: block;
   margin-left: 0;
   margin-right: 0;
@@ -12741,8 +12960,8 @@ span.CodeMirror-selectedtext { background: none; }
 .jp-RenderedHTMLCommon .alert-info hr {
   border-color: var(--jp-info-color3);
 }
-.jp-RenderedHTMLCommon .alert-info &gt; p:last-child,
-.jp-RenderedHTMLCommon .alert-info &gt; ul:last-child {
+.jp-RenderedHTMLCommon .alert-info > p:last-child,
+.jp-RenderedHTMLCommon .alert-info > ul:last-child {
   margin-bottom: 0;
 }
 
@@ -12754,8 +12973,8 @@ span.CodeMirror-selectedtext { background: none; }
 .jp-RenderedHTMLCommon .alert-warning hr {
   border-color: var(--jp-warn-color3);
 }
-.jp-RenderedHTMLCommon .alert-warning &gt; p:last-child,
-.jp-RenderedHTMLCommon .alert-warning &gt; ul:last-child {
+.jp-RenderedHTMLCommon .alert-warning > p:last-child,
+.jp-RenderedHTMLCommon .alert-warning > ul:last-child {
   margin-bottom: 0;
 }
 
@@ -12767,8 +12986,8 @@ span.CodeMirror-selectedtext { background: none; }
 .jp-RenderedHTMLCommon .alert-success hr {
   border-color: var(--jp-success-color3);
 }
-.jp-RenderedHTMLCommon .alert-success &gt; p:last-child,
-.jp-RenderedHTMLCommon .alert-success &gt; ul:last-child {
+.jp-RenderedHTMLCommon .alert-success > p:last-child,
+.jp-RenderedHTMLCommon .alert-success > ul:last-child {
   margin-bottom: 0;
 }
 
@@ -12780,8 +12999,8 @@ span.CodeMirror-selectedtext { background: none; }
 .jp-RenderedHTMLCommon .alert-danger hr {
   border-color: var(--jp-error-color3);
 }
-.jp-RenderedHTMLCommon .alert-danger &gt; p:last-child,
-.jp-RenderedHTMLCommon .alert-danger &gt; ul:last-child {
+.jp-RenderedHTMLCommon .alert-danger > p:last-child,
+.jp-RenderedHTMLCommon .alert-danger > ul:last-child {
   margin-bottom: 0;
 }
 
@@ -12823,7 +13042,7 @@ h6:hover .jp-InternalAnchorLink {
  * between cells. Going all the way to 0 gets too tight between markdown and
  * code cells.
  */
-.jp-RenderedHTMLCommon &gt; *:last-child {
+.jp-RenderedHTMLCommon > *:last-child {
   margin-bottom: 0.5em;
 }
 
@@ -13953,7 +14172,7 @@ body[data-format='mobile'] .jp-InputPrompt {
   padding: 12px 0px 12px 0px;
 }
 
-.jp-RankedPanel &gt; :not(:first-child) {
+.jp-RankedPanel > :not(:first-child) {
   margin-top: 12px;
 }
 
@@ -14074,9 +14293,9 @@ div.jp-Cell-Placeholder-content-3 {
   top: 140px;
 }
 
-&lt;/style&gt;
+</style>
 
-    &lt;style type="text/css"&gt;
+    <style type="text/css">
 /*-----------------------------------------------------------------------------
 | Copyright (c) Jupyter Development Team.
 | Distributed under the terms of the Modified BSD License.
@@ -14469,9 +14688,9 @@ all of MD as it is not optimized for dense, information rich UIs.
   --jp-icon-contrast-color2: var(--md-pink-600);
   --jp-icon-contrast-color3: var(--md-blue-600);
 }
-&lt;/style&gt;
+</style>
 
-&lt;style type="text/css"&gt;
+<style type="text/css">
 /* Force rendering true colors when outputing to pdf */
 * {
   -webkit-print-color-adjust: exact;
@@ -14553,12 +14772,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     break-inside: avoid-page;
   }
 }
-&lt;/style&gt;
+</style>
 
-&lt;!-- Load mathjax --&gt;
-    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"&gt; &lt;/script&gt;
-    &lt;!-- MathJax configuration --&gt;
-    &lt;script type="text/x-mathjax-config"&gt;
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
     init_mathjax = function() {
         if (window.MathJax) {
         // MathJax loaded
@@ -14587,99 +14806,127 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
         }
     }
     init_mathjax();
-    &lt;/script&gt;
-    &lt;!-- End of mathjax configuration --&gt;&lt;/head&gt;
-&lt;body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light"&gt;
+    </script>
+    <!-- End of mathjax configuration --></head>
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
-&lt;div class="jp-Cell jp-MarkdownCell jp-Notebook-cell"&gt;
-&lt;div class="jp-Cell-inputWrapper"&gt;
-&lt;div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser"&gt;
-&lt;/div&gt;
-&lt;div class="jp-InputArea jp-Cell-inputArea"&gt;&lt;div class="jp-InputPrompt jp-InputArea-prompt"&gt;
-&lt;/div&gt;&lt;div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown"&gt;
-&lt;p&gt;Some time ago I decided to move from a MacOS development environment back to Linux for exploring and working with Python datascience and statistical modelling libraries. Though most of the Python libraries and platforms offer support for MacOS, things are generally easier in  Linux. One avoids a lot of special installation and compatability instructions. My first experience with Linux dates from 1996 when I bought a set of Slackware cdroms. Since then I have used Linux on various types of hardware, but not that much during the last few years. I mainly use &lt;a href="https://jupyter-notebook.readthedocs.io/en/latest/"&gt;Jupyter Notebooks&lt;/a&gt;, which are accessed through a webbrowser. So I will just run the Linux machine as a server and work in the notebooks through from my MacOS desktop using a browser. I find the Jupyter notebook a helpful tool, but &lt;a href="https://twitter.com/joelgrus/status/1033035196428378113"&gt;here&lt;/a&gt; are some valid points on its downsides.&lt;/p&gt;
-&lt;p&gt;A second reason for wanting to switch back to Linux has to do with the fact that I want to take a look at running deep learning models on a Graphics Processing Unit (&lt;a href="https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/"&gt;GPU&lt;/a&gt;). My MacOS desktop (iMac) does not have compatible hardware or the possibility of installing such hardware. Today, the &lt;a href="https://developer.nvidia.com/computeworks"&gt;GPU's and toolkits from Nvidia&lt;/a&gt; are most common and deep learning frameworks like TensorFlow and Theano support mainly those. I must admit that the GPU was not a strict requirement for the new hardware: I am currently interested in probabilistic programming in PyMC3 and those type of models generally do not benefit from running on a GPU. Using the CPU for the computations is often faster! But since i wanted to take a look at Keras/Tensorflow I opted for a GPU anyway, making it the most expensive hardware component in my build...&lt;/p&gt;
-&lt;p&gt;Below are some details on the hardware and the base installation of the Python libraries. It assumes basic knowledge of hardware components, Linux, Python and Deep Learning frameworks.&lt;/p&gt;
-&lt;h3 id="Hardware"&gt;Hardware&lt;a class="anchor-link" href="#Hardware"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;My objective was &lt;em&gt;not&lt;/em&gt; to build a high-end Deep Learning machine with multiple GPU's of the newest hardware available. I wanted to have a reasonably compact and average machine in terms of performance and cost. Checking component compatibility and reviews with help of &lt;a href="https://pcpartpicker.com/"&gt;pcpartpicker&lt;/a&gt; was very convenient. The actual installation of the hardware was not very difficult. Carefully read the manual of the motherboard and case. Those will pretty much show you in which order to put things together.&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/hardware_components.png" alt="Image: Hardware components" width="400"/&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Motherboard: &lt;a href="https://www.asus.com/uk/Motherboards/PRIME-B250M-PLUS/specifications/"&gt;ASUS Prime B250M-Plus&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-This motherboard has a B250 chipset with support for 6th/7th generation Skylake/Kaby Lake Intel Core processors. Initially I went for the B250M-K which has one slot for GPU instead of two and two slots for RAM instead of four. This would have been fine since I do not intend on running multiple GPU's or upgrade to more RAM. But as it turned out, the B250M-K is not compatible with the case I had bought: it has only one connector for a case fan whereas my case came with two fans. I really liked the case so I decided to change the motherboard since the extra cost was small.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;CPU: &lt;a href="https://ark.intel.com/products/97123"&gt;Intel Core i5 7500 3.4 GHz&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-A 7th generation Kaby Lake processor with 4 cores from Q1 2017. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;CPU Cooler: &lt;a href="http://www.coolermaster.com/cooling/cpu-air-cooler/hyper-212-evo/"&gt;Cooler Master Hyper 212 EVO&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-The Intel CPU came with a fan but I bought this one afterwards. Mostly to reduce the noise somewhat. I do not think there would have been any problems with the Intel stock cooler since I am not going to overclock the CPU. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Video Card: &lt;a href="https://www.asus.com/uk/Graphics-Cards/PH-GTX1060-6G/specifications/"&gt;ASUS GeForce GTX 1060 6GB Phoenix&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-Not the newest and most capable GPU on the market, but enough for what I intend to use it for.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Memory: &lt;a href="https://www.corsair.com/eu/en/Categories/Products/Memory/VENGEANCE%C2%AE-LPX-16GB-%282-x-8GB%29-DDR4-DRAM-2400MHz-C16-Memory-Kit---Black/p/CMK16GX4M2Z2400C16"&gt;Corsair 16GB (2x 8GB) DDR4 2400MHz CL16 Vengeance&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-The Motherboard supports a maximum of 64GB DDR4 @ 2400 MHz. It required a BIOS update for the motherboard to run the RAM at 2400MHz.   &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Storage: &lt;a href="https://www.samsung.com/uk/memory-storage/960-evo-nvme-m-2-ssd/MZ-V6E250BW/"&gt;Samsung 960 EVO 250GB&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-I wanted a SSD disk as the main storage disk.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Case: &lt;a href="http://www.fractal-design.com/home/product/cases/define-series/define-mini-c"&gt;Fractal Design Define Mini C Svart&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-Nice, compact mATX case. High quality finish and good manual.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Power Supply: &lt;a href="http://www.fractal-design.com/home/product/power-supplies/integra-m/integra-m-450w"&gt;Fractal Design Integra M 450W&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-All the components together do not draw that much power at all. This modest 450 Watt power supply works just fine. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The total price tag for the components was a little more than 1100 USD.&lt;/p&gt;
-&lt;h3 id="Software"&gt;Software&lt;a class="anchor-link" href="#Software"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;Instead of just copying the installation instructions of the various libraries here, I will just mentioned specific points which I think are especially important. You should read all notes in the context of &lt;em&gt;"At the time of installation"&lt;/em&gt;. Available versions and dependencies have likely changed since then.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://help.ubuntu.com/16.04/installation-guide/index.html"&gt;Ubuntu 16.04 LTS&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-I chose the 16.04 release over the more recent 18.04 because the latter is not explicitly mentioned as being compatible with the Nvidia Cuda Toolkit. Judging from various posts on the Internet there are ways to get it to work in 18.04, but I did not want to take any chances. I installed Ubuntu by means of a boot image on a &lt;a href="https://help.ubuntu.com/16.04/installation-guide/amd64/ch04s03.html"&gt;USB memory stick&lt;/a&gt;.  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://developer.nvidia.com/cuda-toolkit-archive"&gt;Nvidia CUDA Toolkit 9.0&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-&lt;em&gt;"The NVIDIA® CUDA® Toolkit provides a development environment for creating high performance GPU-accelerated applications. With the CUDA Toolkit, you can develop, optimize and deploy your applications on GPU-accelerated embedded systems, desktop workstations, enterprise data centers, cloud-based platforms and HPC supercomputers."&lt;/em&gt;&lt;br&gt;
-TensorFlow with GPU support in Ubuntu requires CUDA Toolkit 9.0. After carefully following the &lt;a href="https://docs.nvidia.com/cuda/archive/9.0/cuda-installation-guide-linux/index.html"&gt;installation and post-installation instructions&lt;/a&gt;, I did not encounter any problems with the Ubuntu deb packages. To make sure that my package manager does automatically upgrade to a never version of the toolkit I installed with &lt;code&gt;sudo apt-get install cuda-9.0&lt;/code&gt; instead of &lt;code&gt;sudo apt-get install cuda&lt;/code&gt;.  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://developer.nvidia.com/cudnn"&gt;Nvidia cuDNN 7.1.4 for CUDA 9.0&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-&lt;em&gt;"The NVIDIA CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers. cuDNN is part of the NVIDIA Deep Learning SDK."&lt;/em&gt;&lt;br&gt;
-I installed the deb packages as described in the &lt;a href="https://docs.nvidia.com/deeplearning/sdk/cudnn-archived/cudnn_714/cudnn-install/index.html#install-linux"&gt;documentation&lt;/a&gt;. You will have to register (free) as a developer to be able to download the library.  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.anaconda.com/download/#linux"&gt;Anaconda 5.2 (Python 3.6)&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-I created a conda environment with Python version 3.6 and installed the typical PyData libraries like Pandas, Numpy, Scipy, Matplotlib and Jupyter.    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="http://deeplearning.net/software/theano/install_ubuntu.html"&gt;Theano 1.0.2&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-Bleeding-Edge installation as described in the documentation: &lt;code&gt;pip install&lt;/code&gt; from GitHub. I did this within the conda environment. The Ubuntu installation instructions appear a bit dated with regards to the required versions of the dependent libraries. Just install the libraries mentioned using &lt;code&gt;conda install [library]&lt;/code&gt;. I installed libgpuarray following the step-by-step system install description (note &lt;code&gt;cmake&lt;/code&gt; requirement).&lt;br&gt;
-Read the documentation about the configuration of Theano using the &lt;code&gt;.theanorc&lt;/code&gt; file.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="http://docs.pymc.io/"&gt;PyMC3 3.5&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-PyMC3 is a Python package for Bayesian modelling and relies on Theano for computations. I installed the development branch with &lt;code&gt;pip install&lt;/code&gt; from GitHub within the conda environment. When testing some code to see if I could use the GPU with Theano, I found out that PyMC3 tries to do parallel MCMC sampling by default. It assumes that you have multiple GPU's and this will result in a RuntimeError. Specify &lt;code&gt;cores=1&lt;/code&gt; when calling the &lt;code&gt;pm.sample()&lt;/code&gt; method. If you have configured Theano to use the CPU instead of the GPU  (&lt;code&gt;device = cpu&lt;/code&gt; in your &lt;code&gt;.theanorc&lt;/code&gt; file), you can enter the number of cores of your cpu. As mentioned earlier, the GPU does generally not speed up computations with PyMC3 models.  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://www.tensorflow.org/install/install_linux"&gt;TensorFlow 1.9&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-Installed in the conda environment using pip and the URL of the TensorFlow package with GPU support for Python 3.6.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="https://keras.io/"&gt;Keras 2.2.2&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-Installed in the conda environment using pip. It will use TensorFlow as its backend.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;There are of course more base packages and libraries that one would install in a typical development environment, but the above are the main parts with regards to Deep Learning and Bayesian modelling. Furthermore, the modelling and Deep Learning ecosystem for Python is &lt;a href="https://t.co/Zn6pjXplXB"&gt;developping fast&lt;/a&gt;. Many more frameworks are available. I am looking forward to exploring these!&lt;/p&gt;
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:</p>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block (SMB)</a></p>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Network_File_System">Network File System (NFS)</a></p>
+</li>
+<li><p><a href="https://en.wikipedia.org/wiki/Apple_Filing_Protocol">Apple Filing Protocol (AFP)</a></p>
+</li>
+</ul>
+<p>The SMB protocol is the standard in Windows networks, whereas NFS is used more in Unix/Linux environments. I have a <a href="https://www.synology.com/">Synology</a> NAS and have both Linux and Microsoft Windows clients connecting to the fileserver.</p>
+<p>SMB works fine on Linux too, but there are a number of advantages in using NFS which I will not detail here. However, certain steps in NFS configuration are especially important to make file permissions work properly/securely with version 4 of the NFS protocol. This has to do with how user accounts on the NAS are mapped and authorized to the user accounts on the Linux client. A quick and dirty setup on the Synology NAS is possible: mapping all connecting NFS clients to a guest account on the NAS. As a consequence, owners of the files created on the NFS share are mapped to user <code>nobody</code>. With this setup I ran into issues with using <code>git</code> on the NFS fileshares since my Linux user was not the owner of the repository files.</p>
+<p>Below I describe how I configured NFSv4 + Kerberos on the Synology NAS and my Linux client in order to work properly with regards to file ownership and permissions. This is by no means an exhaustive description and assumes some prior knowledge on the subjects, but hopefully it gives some form of guidance.</p>
+<p>System environment:</p>
+<ul>
+<li><p><strong>NFS Server</strong>: Synology DS216+ NAS running DSM 7.1.1-42962 Update 6</p>
+<ul>
+<li>NFSv4</li>
+<li>Kerberos 5 v1.18.3</li>
+</ul>
+</li>
+<li><p><strong>NFS Client</strong>: Manjaro Linux running a 6.3 kernel</p>
+<ul>
+<li>Mounting NFSv4 share on NAS.</li>
+<li>Acting as Kerberos KDC (Kerberos Distribution Center). Note: in larger networks the KDC would typically be on a separate server. </li>
+<li>Kerberos 5 v1.19.4   </li>
+</ul>
+</li>
+<li><p><strong>No DNS on local network</strong></p>
+</li>
+</ul>
+<h4 id="Kerberos">Kerberos<a class="anchor-link" href="#Kerberos">&#182;</a></h4><p>NSFv4 clients are authenticated on user level. This can be done using standard UNIX authentication (AUTH<em>SYS), but then user accounts on client and NAS need to match on UID/GID level as I understand it. The other authentication method uses [Kerberos](<a href="https://en.wikipedia.org/wiki/Kerberos">https://en.wikipedia.org/wiki/Kerberos</a></em>(protocol)) Understanding how Kerberos works (high level) takes some time. It is typically one of those things where you will need to read documentation, try things out, re-read documentation and try some more.</p>
+<p>Here are a number of resources which I found useful:</p>
+<ul>
+<li><p><a href="https://kerberos.org/software/tutorial.html">Tutorial (kerberos.org)</a><br>
+I suggest to start here.</p>
+</li>
+<li><p><a href="https://web.mit.edu/kerberos/krb5-latest/doc/">Official Documentation (web.mit.edu)</a><br>
+This is a collection of separate HTML pages. I found the single pdf file contained in the <a href="http://web.mit.edu/kerberos/dist/">releases</a> easier to navigate.</p>
+</li>
+<li><p><a href="https://wiki.archlinux.org/title/Kerberos">Kerberos on Arch Wiki</a><br>
+I run the Manjaro Distribution, which is based on Arch Linux.</p>
+</li>
+<li><p><a href="http://techpubs.spinlocksolutions.com/dklar/kerberos.html">Kerberos Tutorial Debian/Ubuntu</a><br>
+Not all parts are applicable to Manjaro (and perhaps not anymore to Debian either?), but still very informative.</p>
+</li>
+<li><p>Linux man files on the various config files, programs and protocols.</p>
+</li>
+</ul>
+<h4 id="NFS-Client">NFS Client<a class="anchor-link" href="#NFS-Client">&#182;</a></h4><ul>
+<li>Enable NFS client services: <code>sudo systemctl enable nfs-client.target</code><br>
+The <a href="https://kb.synology.com/en-br/DSM/help/DSM/AdminCenter/file_winmacnfs_nfs?version=7">Synology documentation</a> mentions that <em>idmapd</em> needs to be enabled. However, I noticed that the idmapd manual in Linux says that only NFSv4 servers need to have that daemon running. The client on newer Linux kernels now uses the <em>nfsidmap</em> program to do name mapping. No need to enable idmapd.</li>
+<li><p>Configure<code>/etc/hosts</code>
+The hostname of the client (and KDC) must be mapped to the LAN ip address, <em>not</em> the 127.* address.<br>
+The hostname of the service/server (NAS) must be mapped to the LAN ip address (unless you have DNS running).</p>
+</li>
+<li><p>Kerberos configuration in <code>/etc/krb5.conf</code></p>
+<ul>
+<li>Section <code>[libdefaults]</code>: set your <code>default_realm</code> to a name you want to use for your Kerberos realm. Convention is to use the DNS domain in capital letters, but if you do not use DNS in your local network you can of course pick something else.</li>
+<li>Section <code>[realms]</code>: map the <code>admin_server</code> and <code>kdc</code>for your realm to the ip address/FQDN of your linux client.</li>
+<li>Section <code>[domain_realm]</code>: map the domain to your real</li>
+</ul>
+</li>
+<li><p>Add an administrator user to the Kerberos Access Control List <code>/var/lib/krb5kdc/kadm5.acl</code></p>
+</li>
+<li><p>Kerberos database configuration</p>
+<ul>
+<li>After initial creation of the database, use <code>$sudo kadmin_local</code> to add the administrator principal to the database. After having added this principal, you can from now on use <code>$kadmin</code> which interacts with the database <em>via the kadmind daemon</em>.</li>
+<li>Add a standard principal that is your user on the Linux client.</li>
+<li>Add a service principal for the NAS/NSFv4 server.</li>
+</ul>
+</li>
+<li><p>Export the principal key for the server to the <code>/etc/krb5.keytab</code> file using <code>$kadmin</code>.
+Every time you generate a new entry for a principal to the KDC database, a key-version-number (kvno) is incremented.</p>
+</li>
+<li><p>Prepare a mount point for the NFSv4 share.<br>
+Add an entry in the <code>/etc/fstab</code> file (type nfs). It is not necessary to indicate any NFS version or other options, defaults will do.</p>
+</li>
+</ul>
+<h4 id="NFS-Server">NFS Server<a class="anchor-link" href="#NFS-Server">&#182;</a></h4><ul>
+<li><p>Enable the NFSv4 service in the NAS.</p>
+<p><img src="images/DSM_Files_Services_NFS.png" alt="Image: DSM Control Panel - File Sharing" width="800"/></p>
+</li>
+<li><p>Enter NFSv4 domain/realm under 'Advanced Settings'. No need to change anything regarding the size of the read/write packages. These are negotiated between server and client automatically.</p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+</li>
+<li><p>Import the <code>/etc/krbd5.keytab</code>file from the linux client. In this setup, it should only contain the keys for the service principal we are interested in, the NAS.</p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Kerberos_Keys.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+</li>
+<li><p>Map the principal ID from Kerberos database to a local user on the NAS.</p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_ID-Mapping.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_ID-Mapping2.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+</li>
+<li><p>Now the server's Kerberos principal identifier will show on the first screen of the 'Advanced Settings'.</p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Principal.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+</li>
+<li><p>Create NFS permission rule for the file share you want to connect to with the Linux client.</p>
+<ul>
+<li>Enter IP address of the Linux client</li>
+<li>Read/write privilege</li>
+<li>Do not enable any static mapping here</li>
+<li>Security: choose either <em>Kerberos integrity</em> (krb5i - Kerberos Authentication and Integrity Checking) or Kerberos Privacy (krb5p - Kerberos Authentication, Integrity Checking and Traffic Encryption). The first Kerberos option only does authentication and provides no further security. </li>
+</ul>
+<p><img src="images/DSM_Shared_Folder_NFS_Permissions.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+</li>
+</ul>
 
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
+</div>
+</div>
+</div>
+</div>
+</body>
 
 
 
@@ -14687,5 +14934,158 @@ Installed in the conda environment using pip. It will use TensorFlow as its back
 
 
 
-&lt;/html&gt;
-  &lt;/p&gt;</content><category term="Blog"></category><category term="Linux"></category><category term="Deep Learning"></category><category term="GPU"></category><category term="Python"></category></entry></feed>
+</html>
+  </p>
+  </div>
+  
+<div class="article-tag-list">
+<span class="label label-default">Tags</span>
+	<a href="https://jwarmenhoven.github.io/tag/kerberos.html"><i class="fa fa-tag"></i>Kerberos</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/nfs4.html"><i class="fa fa-tag"></i>NFS4</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/linux.html"><i class="fa fa-tag"></i>Linux</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/manjaro.html"><i class="fa fa-tag"></i>Manjaro</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/synology.html"><i class="fa fa-tag"></i>Synology</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/nas.html"><i class="fa fa-tag"></i>NAS</a>&nbsp;
+</div>  <hr />
+  <div class="well well-sm">  <!-- Social media sharing buttons -->
+    <!-- Twitter -->
+    <a href="https://twitter.com/share" class="twitter-share-button" 
+       data-via="penguinsula" >Tweet</a>&nbsp;
+
+    <!-- Google+ -->
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="g-plusone" data-size="medium"></div>&nbsp;
+
+    <!-- Facebook -->
+    <div class="fb-like" 
+        data-href="https://jwarmenhoven.github.io/drafts/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" 
+        data-layout="button_count" 
+        data-action="like" data-show-faces="true" 
+        data-share="true">
+    </div>
+    &nbsp;
+  </div> <!-- /Social media sharing buttons -->
+</article>
+        </div><!-- /content -->
+
+        <div class="col-md-3 sidebar-nav" id="sidebar">
+
+<div class="row">
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
+<ul class="list-unstyled social-links">
+    <li><a href="https://twitter.com/penguinsula" target="_blank">
+	  <i class="fa fa-twitter-square fa-fw fa-lg" title="Twitter"></i>
+		Twitter
+	</a></li>
+    <li><a href="https://github.com/jwarmenhoven" target="_blank">
+	  <i class="fa fa-github-square fa-fw fa-lg" title="GitHub"></i>
+		GitHub
+	</a></li>
+    <li><a href="https://www.linkedin.com/in/jordi-warmenhoven-9650805/" target="_blank">
+	  <i class="fa fa-linkedin-square fa-fw fa-lg" title="LinkedIn"></i>
+		LinkedIn
+	</a></li>
+</ul>
+</div>
+
+<div class="col-xs-6 col-md-12">
+<h4><i class="fa fa-folder fa-fw fa-lg"></i> Categories</h4>
+<ul class="list-unstyled category-links">
+  <li><a href="https://jwarmenhoven.github.io/category/blog.html" >
+    <i class="fa fa-folder-open fa-fw fa-lg"></i> Blog</a></li>
+</ul>
+</div>
+
+</div> <!-- /row -->
+
+<h4><i class="fa fa-tags fa-fw fa-lg"></i> Tags</h4>
+<p class="tag-cloud">
+      <a href="https://jwarmenhoven.github.io/tag/linux.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>Linux
+      </a>
+      <a href="https://jwarmenhoven.github.io/tag/deep-learning.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>Deep Learning
+      </a>
+      <a href="https://jwarmenhoven.github.io/tag/gpu.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>GPU
+      </a>
+      <a href="https://jwarmenhoven.github.io/tag/python.html">
+        <i class="fa fa-tag fa-fw fa-lg"></i>Python
+      </a>
+</p>
+<h4><i class="fa fa-rss fa-fw fa-lg"></i> Feeds</h4>
+<ul class="list-unstyled">
+    <li><a href="https://jwarmenhoven.github.io/feeds/all.atom.xml" 
+		   type="application/atom+xml" rel="alternate">
+		<i class="fa fa-rss-square fa-fw fa-lg"></i> Atom Feed</a></li>
+</ul>
+
+<hr />
+
+        </div><!--/sidebar -->
+      </div><!--/row-->
+    </div><!--/.container /#main-container -->
+
+    <footer id="site-footer">
+ 
+      <address id="site-colophon">
+        <p class="text-center text-muted">
+        Site built using <a href="http://getpelican.com/" target="_blank">Pelican</a>
+        &nbsp;&bull;&nbsp; Theme based on
+        <a href="http://www.voidynullness.net/page/voidy-bootstrap-pelican-theme/"
+           target="_blank">VoidyBootstrap</a> by 
+        <a href="http://www.robertiwancz.com/"
+           target="_blank">RKI</a>  
+        </p>
+      </address><!-- /colophon  -->
+    </footer>
+
+<!-- DISQUS script for displaying comment count -->
+<script type="text/javascript">
+    var disqus_shortname = 'penguinsula';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+    <!-- javascript -->
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google+ -->
+<!-- Synchronous 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+-->
+<!-- Asynchronous -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>  </body>
+</html>
