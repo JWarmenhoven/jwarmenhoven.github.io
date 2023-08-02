@@ -21,14 +21,14 @@ DISQUS_SITENAME = 'penguinsula'
 THEME = '../pelican-themes/voidy-bootstrap'
 
 #PLUGIN_PATHS = ['../pelican-plugins/']
-PLUGINS = ['pelican.plugins.liquid_tags.generic', 'pelican.plugins.liquid_tags.notebook']
-NOTEBOOK_DIR = 'notebooks'
+#PLUGINS = ['pelican.plugins.liquid_tags.generic', 'pelican.plugins.liquid_tags.notebook']
+#NOTEBOOK_DIR = 'notebooks'
 STATIC_PATHS = ['images']
 
 # Jordi: Liquid tags notebook
-from io import open
-EXTRA_HEADER = open('_nb_header.html', encoding='utf-8').read()
-LIQUID_TAGS = ['notebook']
+#from io import open
+#EXTRA_HEADER = open('_nb_header.html', encoding='utf-8').read()
+#LIQUID_TAGS = ['notebook']
 
 #SITETAG = "Text that's displayed in the title on the home page."
 
