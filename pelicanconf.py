@@ -15,7 +15,8 @@ DELETE_OUTPUT_DIRECTORY = False
 AUTHOR = 'Jordi Warmenhoven'
 SITENAME = 'Penguinsula'
 SITESUBTITLE = 'Python, Stats, Modelling & Stuff'
-SITEURL = ''
+SITEURL = 'https://jwarmenhoven.github.io/'
+
 DISQUS_SITENAME = 'penguinsula'
 
 THEME = '../pelican-themes/voidy-bootstrap'
@@ -63,14 +64,6 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-
-# Blogroll
-#LINKS = (('PyMC3', 'http://pymc3.readthedocs.io/en/latest/'),)
-
-# Social widget
-#SOCIAL = (('Twitter', 'https://twitter.com/penguinsula'),
-#	  ('GitHub', 'https://github.com/jwarmenhoven'),
-#	  ('LinkedIn', 'https://www.linkedin.com/in/jordi-warmenhoven-9650805/'))
 
 DEFAULT_PAGINATION = 10
 
