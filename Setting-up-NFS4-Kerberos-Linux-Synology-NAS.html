@@ -98,31 +98,23 @@
   <div class="content-body" itemprop="text articleBody">
 	<p>Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:</p>
 <ul>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block (SMB)</a></p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Network_File_System">Network File System (NFS)</a></p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/Apple_Filing_Protocol">Apple Filing Protocol (AFP)</a></p>
-</li>
+<li><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block (SMB)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Network_File_System">Network File System (NFS)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apple_Filing_Protocol">Apple Filing Protocol (AFP)</a></li>
 </ul>
 <p>The SMB protocol is the standard in Windows networks, whereas NFS is used more in Unix/Linux environments. I have a <a href="https://www.synology.com/">Synology</a> NAS and have both Linux and Microsoft Windows clients connecting to the fileserver. </p>
-<p>SMB works fine on Linux too, but there are a number of advantages in using NFS which I will not detail here. However, certain steps in NFS configuration are especially important to make file permissions work properly/securely with version 4 of the NFS protocol. This has to do with how user accounts on the NAS are mapped and authorized to the user accounts on the Linux client. A quick and dirty setup on the Synology NAS is possible: mapping all connecting NFS clients to a guest account on the NAS. As a consequence, owners of the files created on the NFS share are mapped to user <code>nobody</code>. With this setup I ran into issues with using <code>git</code> on the NFS fileshares since my Linux user was not the owner of the repository files.</p>
+<p>SMB works fine on Linux too, but there are a number of advantages in using NFS which I will not detail here. However, certain steps in NFS configuration are especially important to make file permissions work properly/securely with version 4 of the NFS protocol. This has to do with how user accounts on the NAS are mapped and authorized to the user accounts on the Linux client. A quick and dirty setup on the Synology NAS is possible: mapping all connecting NFS clients to a guest account on the NAS. As a consequence, owners of the files created on the NFS share are mapped to user <code>nobody</code>. With this setup I ran into issues with using <code>git</code> on the NFS fileshares since my Linux user was not the owner of the local repository files.</p>
 <p>Below I describe how I configured NFSv4 + Kerberos on the Synology NAS and my Linux client in order to work properly with regards to file ownership and permissions. This is by no means an exhaustive description and assumes some prior knowledge on the subjects, but hopefully it gives some form of guidance.</p>
 <blockquote>
 <h4>System environment:</h4>
 <ul>
 <li><strong>NFS Server</strong>: Synology DS216+ NAS running DSM 7.1.1-42962 Update 6<ul>
-<li>NFSv4  </li>
-<li>Kerberos 5 v1.18.3  </li>
+<li>NFSv4 (4.0)</li>
 </ul>
 </li>
 <li><strong>NFS Client</strong>: Manjaro Linux running a 6.3 kernel<ul>
-<li>Mounting NFSv4 share on NAS.</li>
-<li>Running Kerberos KDC (Kerberos Distribution Center). In larger networks the KDC would typically run on a separate server. </li>
-<li>Kerberos 5 v1.19.4   </li>
+<li>Running Kerberos KDC (Kerberos Distribution Center). In larger networks the KDC would typically run on a separate server. (Kerberos 5 v1.19.4)</li>
+<li>Mounting the NFSv4 share on the Synology NAS.</li>
 </ul>
 </li>
 <li><strong>No DNS on local network</strong></li>
@@ -143,7 +135,7 @@
 </li>
 <li>
 <p><a href="https://wiki.archlinux.org/title/Kerberos">Kerberos on Arch Wiki</a> <br>
-  I run the Manjaro Distribution, which is based on Arch Linux.</p>
+  I run a Manjaro Linux Distribution, which is based on Arch Linux.</p>
 </li>
 <li>
 <p><a href="http://techpubs.spinlocksolutions.com/dklar/kerberos.html">Kerberos Tutorial Debian/Ubuntu</a> <br>
@@ -161,7 +153,7 @@
 <ul>
 <li>
 <p><strong>Enable NFS client services</strong>: <br>
-<code>sudo systemctl enable nfs-client.target</code> <br>
+<code>$sudo systemctl enable nfs-client.target</code> <br>
   The <a href="https://kb.synology.com/en-br/DSM/help/DSM/AdminCenter/file_winmacnfs_nfs?version=7">Synology documentation</a> mentions that <em>idmapd</em> needs to be enabled. However, I noticed that the Linux idmapd manual says that only NFSv4 <em>servers</em> need to have that daemon running. The client on newer Linux kernels now uses the <em>nfsidmap</em> program to do name mapping. No need to enable idmapd. However, you do need to set the NFSv4 domain identical to the Kerberos Realm in <code>/etc/idmapd.conf</code>. This config file is used by other programs as well according to the manual page.</p>
 </li>
 <li>
@@ -188,7 +180,9 @@
 <li>Add a standard principal that is your user on the Linux client.</li>
 <li>Add a service principal for the NAS/NFSv4 server.   </li>
 <li>Add a service principal for the KDC (the Linux client).<br>
-Restart krb5-kadmind and krb5-kdc services with command <code>sudo systemctl restart</code>.  </li>
+Restart krb5-kdc and krb5-kadmind services.<br>
+<code>$sudo systemctl restart krb5-kdc</code>.  c
+<code>$sudo systemctl restart krb5-kadmind</code>.  </li>
 </ul>
 </li>
 <li>
@@ -201,8 +195,7 @@ Restart krb5-kadmind and krb5-kdc services with command <code>sudo systemctl res
 </li>
 <li>
 <p><strong>Configure PAM to automatically generate a Kerberos TGT ticket at login.</strong><br>
-  When you have a Kerberos KDC running with the relevant principals you can use <code>$kinit</code> to generate a TGT ticket. When you try to access the NFS fileshare, a service ticket is automatically generated which grants you this access. In order to have the first step done in the background as well, you need to configure the <a href="https://github.com/linux-pam/linux-pam">Pluggable Authentication Modules</a> (PAM).
- <a href="https://linuskarlsson.se/blog/acquiring-kerberos-ticket-upon-local-login/">This</a> post describes a way how to do that in a pragmatic way. It relies on having both a local login <em>and</em> Kerberos login with identical passwords, but for me this is fine.</p>
+  When you have a Kerberos KDC running with the relevant principals you can use <code>$kinit</code> to generate a TGT ticket. When you try to access the NFS fileshare, a service ticket is automatically generated which grants you this access. In order to have the first step done in the background as well, you need to configure the <a href="https://github.com/linux-pam/linux-pam">Pluggable Authentication Modules</a> (PAM). These modules take care of all authentication in Linux. There is a <a href="https://www.eyrie.org/~eagle/software/pam-krb5/">pam-krb5</a> module that you can install allowing you to enable Kerberos authentication with PAM. <a href="https://linuskarlsson.se/blog/acquiring-kerberos-ticket-upon-local-login/">This post</a> describes a way how to do that in a pragmatic way. It relies on having both a local login <em>and</em> a Kerberos login with identical passwords, but for me this is fine.</p>
 </li>
 </ul>
 <hr>
@@ -210,37 +203,42 @@ Restart krb5-kadmind and krb5-kdc services with command <code>sudo systemctl res
 <ul>
 <li>
 <p>Enable the NFSv4 service in the NAS.</p>
-<p><img src="images/DSM_Files_Services_NFS.png" alt="Image: DSM Control Panel - File Sharing" width="800"/></p>
+<p><img src="images/DSM_Files_Services_NFS.png" alt="Image: DSM Control Panel - File Sharing"/></p>
 </li>
 <li>
 <p>Enter NFSv4 domain/realm under 'Advanced Settings'. No need to change anything regarding the size of the read/write packages. These are negotiated between server and client automatically.</p>
 </li>
 </ul>
-<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings.png" alt="Image: DSM Control Panel - File Sharing" width="400"/> </p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings.png" alt="Image: DSM Control Panel - File Sharing"/> </p>
 <ul>
 <li>Import the <code>/etc/krbd5.keytab</code>file from the linux client. In this setup, it should only contain the keys for the service principal we are interested in, the NAS.</li>
 </ul>
-<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Kerberos_Keys.png" alt="Image: DSM Control Panel - File Sharing" width="400"/> </p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Kerberos_Keys.png" alt="Image: DSM Control Panel - File Sharing"/> </p>
 <ul>
 <li>Map the principal ID from Kerberos database to a local user on the NAS.</li>
 </ul>
-<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_ID-Mapping.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
-<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_ID-Mapping2.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_ID-Mapping.png" alt="Image: DSM Control Panel - File Sharing" /></p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_ID-Mapping2.png" alt="Image: DSM Control Panel - File Sharing" /></p>
 <ul>
 <li>Now the server's Kerberos principal identifier will show on the first screen of the 'Advanced Settings'.</li>
 </ul>
-<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Principal.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
+<p><img src="images/DSM_Files_Services_NFS_Advanced_Settings_Principal.png" alt="Image: DSM Control Panel - File Sharing" /></p>
 <ul>
 <li>Create NFS permission rule for the file share you want to connect to with the Linux client.</li>
 <li>Enter IP address of the Linux client.</li>
 <li>Read/write privilege</li>
 <li>Do not enable any static mapping here.</li>
-<li>Security: choose either <em>Kerberos integrity</em> (krb5i - Kerberos Authentication and Integrity Checking) or Kerberos Privacy (krb5p - Kerberos Authentication, Integrity Checking and Traffic Encryption). The first Kerberos option only does authentication and provides no further security. </li>
+<li>Security: choose one of the Kerberos authentication methods.<ul>
+<li><em>Kerberos authentication</em>: krb5 - Authentication only. </li>
+<li><em>Kerberos integrity</em>: krb5i - Authentication and Integrity Checking.</li>
+<li><em>Kerberos privacy</em>: krb5p - Authentication, Integrity Checking and Traffic Encryption</li>
 </ul>
-<p><img src="images/DSM_Shared_Folder_NFS_Permissions.png" alt="Image: DSM Control Panel - File Sharing" width="400"/></p>
-<p>After all has been set up and services restarted, you can try to mount the NFSv4 file share on the NAS. You can check the status of the mount using<br>
-<code>$findmnt -t nfs4 -l</code><br>
-  It will show you the details on the file share.</p>
+</li>
+</ul>
+<p><img src="images/DSM_Shared_Folder_NFS_Permissions.png" alt="Image: DSM Control Panel - File Sharing" /></p>
+<p>After all has been set up and services restarted, you can try to mount the NFSv4 file share on the NAS. You can check the status of the mount using <code>$findmnt -t nfs4</code><br>
+  It will show you the details on the NFSv4 file share.</p>
+<p>You should now have an NFSv4 share mounted in Linux with authentican handled by Kerberos. </p>
   </div>
   
 <div class="article-tag-list">
