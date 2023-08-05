@@ -8,7 +8,7 @@
     <meta name="author" content="Jordi Warmenhoven" />
     <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
 
-    <title>Synology NAS | NFSv4 | Kerberos | Linux Client - Penguinsula</title>
+    <title>Mounting Synology NFSv4 shares in Linux using Kerberos authentication - Penguinsula</title>
 
    
         <link rel="stylesheet"
@@ -82,8 +82,8 @@
   Tue 01 August 2023
 </abbr> <h1>
   <a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" rel="bookmark"
-     title="Permalink to Synology NAS | NFSv4 | Kerberos | Linux Client">
-    Synology NAS | NFSv4 | Kerberos | Linux Client
+     title="Permalink to Mounting Synology NFSv4 shares in Linux using Kerberos authentication">
+    Mounting Synology NFSv4 shares in Linux using Kerberos authentication
   </a>
 </h1><div class="article-header-info">
   <p>
@@ -113,7 +113,7 @@
 </ul>
 </li>
 <li><strong>NFS Client</strong>: Manjaro Linux running a 6.3 kernel<ul>
-<li>Running Kerberos KDC (Kerberos Distribution Center). In larger networks the KDC would typically run on a separate server. (Kerberos 5 v1.19.4)</li>
+<li>Running Kerberos Key Distribution Center (KDC). In a multi-user network environment you would typically run the KDC on a separate server. However, since my Linux workstation is the only NFS client it does not matter that the KDC is unavailable for authentication when my workstation is offline.</li>
 <li>Mounting the NFSv4 share on the Synology NAS.</li>
 </ul>
 </li>
