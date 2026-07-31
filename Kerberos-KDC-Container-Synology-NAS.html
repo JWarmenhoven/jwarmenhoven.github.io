@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content=" Posts tagged with NAS" />
+    <meta name="description" content="" />
     <meta name="author" content="Jordi Warmenhoven" />
     <meta name="generator" content="Pelican (VoidyBootstrap theme)" />
 
-    <title>Tag:NAS - Penguinsula</title>
+    <title>Running Kerberos KDC in a container on Synology NAS - Penguinsula</title>
 
    
         <link rel="stylesheet"
@@ -80,13 +80,8 @@
     <div class="container" id="main-container">
       <div class="row">
         <div class="col-md-9" id="content">
-<ol class="breadcrumb">
-    <li><a href="https://jwarmenhoven.github.io/" title="Home" rel="home">
-		<i class="fa fa-home fa-fw fa-lg"></i> </a></li>
-    <li>Tags </li>
-    <li class="active">NAS</li>
-</ol>
-    <article>
+<article itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="article-header">
 <abbr class="article-header-date">
   Fri 31 July 2026
 </abbr> <h1>
@@ -103,46 +98,55 @@
     &nbsp;&nbsp;
   </p>
 </div> <!-- /.article-header-info -->
+  </header>
+  <div class="content-body" itemprop="text articleBody">
+	<p>In a <a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html">previous post</a> I described how to run Kerberos KDC (Key Distribution Center) on a Linux desktop client for authentication. The KDC was used to let this same client access NSF shares on a Synology NAS. This worked fine when the Linux desktop was the only client using the Kerberos authentication, since shutting down the Linux desktop makes the KDC unavailable for authentication. Recently I started using a laptop with Linux and also wanted to access the NFS shares from there. Of course I could start up the desktop with KDC each time I use the laptop at home, but that is rather impractical and a waste of energy. Solution: running a lightweight container with Kerberos KDC on the Synology NAS itself. This blogpost will describe how to do that.</p>
+<p>Being updated...</p>
+  </div>
+  
+<div class="article-tag-list">
+<span class="label label-default">Tags</span>
+	<a href="https://jwarmenhoven.github.io/tag/kerberos.html"><i class="fa fa-tag"></i>Kerberos</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/nfs4.html"><i class="fa fa-tag"></i>NFS4</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/linux.html"><i class="fa fa-tag"></i>Linux</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/manjaro.html"><i class="fa fa-tag"></i>Manjaro</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/synology.html"><i class="fa fa-tag"></i>Synology</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/nas.html"><i class="fa fa-tag"></i>NAS</a>&nbsp;
+	<a href="https://jwarmenhoven.github.io/tag/container.html"><i class="fa fa-tag"></i>Container</a>&nbsp;
+</div>  <hr />
+  <div class="well well-sm">  <!-- Social media sharing buttons -->
+    <!-- Twitter -->
+    <a href="https://twitter.com/share" class="twitter-share-button" 
+       data-via="penguinsula" >Tweet</a>&nbsp;
 
-      <div class="summary">
-		<p>In a <a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html">previous post</a> I described how to run Kerberos KDC (Key Distribution Center) on a Linux desktop client for authentication. The KDC was used to let this same client access NSF shares on a Synology NAS. This worked fine when the Linux desktop was the only client using the …</p>
-		<p class="content-emphasis"><a href="https://jwarmenhoven.github.io/Kerberos-KDC-Container-Synology-NAS.html">
-			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
-		</a></p>
-      </div>    </article>
-    <hr />
-    <article>
-<abbr class="article-header-date">
-  Tue 01 August 2023
-</abbr> <h1>
-  <a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" rel="bookmark"
-     title="Permalink to Mounting Synology NFSv4 shares in Linux using Kerberos authentication">
-    Mounting Synology NFSv4 shares in Linux using Kerberos authentication
-  </a>
-</h1><div class="article-header-info">
-  <p>
-      Posted by <a href="https://jwarmenhoven.github.io/author/jordi-warmenhoven.html">Jordi Warmenhoven</a>
-    in 
-    <a href="https://jwarmenhoven.github.io/category/blog.html">
-      Blog</a>
-    &nbsp;&nbsp;
-  </p>
-</div> <!-- /.article-header-info -->
+    <!-- Google+ -->
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="g-plusone" data-size="medium"></div>&nbsp;
 
-      <div class="summary">
-		<p>Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Server Message Block (SMB)</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Network_File_System">Network File System …</a></li></ul>
-		<p class="content-emphasis"><a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html">
-			Read more... <i class="fa fa-arrow-circle-right fa-fw fa-lg"></i> 
-		</a></p>
-      </div>    </article>
-    <hr />
-
-<nav class="index-pager">
-
-</nav> <!-- /index-pager -->
+    <!-- Facebook -->
+    <div class="fb-like" 
+        data-href="https://jwarmenhoven.github.io/Kerberos-KDC-Container-Synology-NAS.html" 
+        data-layout="button_count" 
+        data-action="like" data-show-faces="true" 
+        data-share="true">
+    </div>
+    &nbsp;
+  </div> <!-- /Social media sharing buttons -->
+  <div class="comments">
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+				   (function() {
+						var dsq = document.createElement('script');
+						dsq.type = 'text/javascript'; dsq.async = true;
+						dsq.src = '//Penguinsula.disqus.com/embed.js';
+						(document.getElementsByTagName('head')[0] ||
+						 document.getElementsByTagName('body')[0]).appendChild(dsq);
+				  })();
+	</script>
+  </div>
+</article>
         </div><!-- /content -->
 
         <div class="col-md-3 sidebar-nav" id="sidebar">
@@ -260,5 +264,30 @@
             crossorigin="anonymous"></script>
 
 
-  </body>
+<!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Google+ -->
+<!-- Synchronous 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+-->
+<!-- Asynchronous -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>  </body>
 </html>
