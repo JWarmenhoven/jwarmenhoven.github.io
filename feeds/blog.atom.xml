@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Penguinsula - Blog</title><link href="https://jwarmenhoven.github.io/" rel="alternate"/><link href="https://jwarmenhoven.github.io/feeds/blog.atom.xml" rel="self"/><id>https://jwarmenhoven.github.io/</id><updated>2026-07-31T00:00:00+02:00</updated><subtitle>Python, Stats, Modelling &amp; Stuff</subtitle><entry><title>Running Kerberos KDC in a container on Synology NAS</title><link href="https://jwarmenhoven.github.io/Kerberos-KDC-Container-Synology-NAS.html" rel="alternate"/><published>2026-07-31T00:00:00+02:00</published><updated>2026-07-31T00:00:00+02:00</updated><author><name>Jordi Warmenhoven</name></author><id>tag:jwarmenhoven.github.io,2026-07-31:/Kerberos-KDC-Container-Synology-NAS.html</id><summary type="html">&lt;p&gt;In a &lt;a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html"&gt;previous post&lt;/a&gt; I described how to run Kerberos KDC (Key Distribution Center) on a Linux desktop client for authentication. The KDC was used to let this same client access NSF shares on a Synology NAS. This worked fine when the Linux desktop was the only client using the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In a &lt;a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html"&gt;previous post&lt;/a&gt; I described how to run Kerberos KDC (Key Distribution Center) on a Linux desktop client for authentication. The KDC was used to let this same client access NSF shares on a Synology NAS. This worked fine when the Linux desktop was the only client using the Kerberos authentication, since shutting down the Linux desktop makes the KDC unavailable for authentication. Recently I started using a laptop with Linux and also wanted to access the NFS shares from there. Of course I could start up the desktop with KDC each time I use the laptop at home, but that is rather impractical and a waste of energy. Solution: running a lightweight container with Kerberos KDC on the Synology NAS itself. This blogpost will describe how to do that.&lt;/p&gt;
-&lt;p&gt;Being updated...&lt;/p&gt;</content><category term="Blog"/><category term="Kerberos"/><category term="NFS4"/><category term="Linux"/><category term="Manjaro"/><category term="Synology"/><category term="NAS"/><category term="Container"/></entry><entry><title>Mounting Synology NFSv4 shares in Linux using Kerberos authentication</title><link href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" rel="alternate"/><published>2023-08-01T00:00:00+02:00</published><updated>2023-08-01T00:00:00+02:00</updated><author><name>Jordi Warmenhoven</name></author><id>tag:jwarmenhoven.github.io,2023-08-01:/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html</id><summary type="html">&lt;p&gt;Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:&lt;/p&gt;
+&lt;p&gt;Required:&lt;br&gt;
+ - Container Manager application on your Synology NAS. &lt;br&gt;
+ - Linux docker image. I use a lightweight Arch Linux image.  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Install Container Manager application in Package Center on your Synology NAS.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download Docker imager.&lt;/strong&gt;&lt;br&gt;
+Open Container Manager. Search and download the Arch Linux image (tag: latest) under Registry.
+&lt;img src="images/Container_Manager_Registry.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Create container.&lt;/strong&gt;&lt;br&gt;
+With the image selected, click on Run. This will start the creation of the container. Enable auto-restart. The Kerberos processes do not take many system resources, so no need to limit these here.
+&lt;img src="images/Container_Manager_Create_Container1.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Map container volumes&lt;/strong&gt;&lt;br&gt;
+Map ports 88 (Kerberos) and 749 (database admin tool). Map the indicated volumes from the image to a local share in order to make the database and configuration persistent between image updates/restarts. Access to mapped folders/files on your NAS should be limited to docker_user and admin.
+&lt;img src="images/Container_Manager_Create_Container2.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Accept default values for Environment, Capabilities and Network.&lt;/strong&gt;
+&lt;img src="images/Container_Manager_Create_Container3.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Set container startup command&lt;/strong&gt;&lt;br&gt;
+The following works as a startup command for the container:&lt;br&gt;
+&lt;code&gt;/usr/bin/bash -c krb5kdc &amp;amp;&amp;amp; exec kadmind -nofork&lt;/code&gt;&lt;br&gt;
+This makes sure that the Kerberos Key Distribution Center and the Administration Daemon are started when the container is launched.
+&lt;img src="images/Container_Manager_Create_Container4.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Continue and run the container.&lt;/strong&gt;&lt;br&gt;
+&lt;img src="images/Container_Manager_Create_Container5.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configure Kerberos.&lt;/strong&gt;&lt;br&gt;
+Open a terminal in the container. (create a new one)&lt;br&gt;
+Create and configure the Kerberos principal database. Configure the Realm in both client and KDC.
+&lt;img src="images/Container_Manager_Terminal.png" width="800"/&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Blog"/><category term="Kerberos"/><category term="NFS4"/><category term="Linux"/><category term="Manjaro"/><category term="Synology"/><category term="NAS"/><category term="Container"/></entry><entry><title>Mounting Synology NFSv4 shares in Linux using Kerberos authentication</title><link href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html" rel="alternate"/><published>2023-08-01T00:00:00+02:00</published><updated>2023-08-01T00:00:00+02:00</updated><author><name>Jordi Warmenhoven</name></author><id>tag:jwarmenhoven.github.io,2023-08-01:/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html</id><summary type="html">&lt;p&gt;Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Server_Message_Block"&gt;Server Message Block (SMB)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Network_File_System"&gt;Network File System …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Many people have a Network Attached Storage (NAS) server in their home networks to share files and perhaps function as a private cloud. These NAS servers usually offer different ways (protocols) to share files with devices on the network. Most common protocols are:&lt;/p&gt;

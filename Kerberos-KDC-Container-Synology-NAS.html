@@ -101,7 +101,50 @@
   </header>
   <div class="content-body" itemprop="text articleBody">
 	<p>In a <a href="https://jwarmenhoven.github.io/Setting-up-NFS4-Kerberos-Linux-Synology-NAS.html">previous post</a> I described how to run Kerberos KDC (Key Distribution Center) on a Linux desktop client for authentication. The KDC was used to let this same client access NSF shares on a Synology NAS. This worked fine when the Linux desktop was the only client using the Kerberos authentication, since shutting down the Linux desktop makes the KDC unavailable for authentication. Recently I started using a laptop with Linux and also wanted to access the NFS shares from there. Of course I could start up the desktop with KDC each time I use the laptop at home, but that is rather impractical and a waste of energy. Solution: running a lightweight container with Kerberos KDC on the Synology NAS itself. This blogpost will describe how to do that.</p>
-<p>Being updated...</p>
+<p>Required:<br>
+ - Container Manager application on your Synology NAS. <br>
+ - Linux docker image. I use a lightweight Arch Linux image.  </p>
+<ol>
+<li>
+<p><strong>Install Container Manager application in Package Center on your Synology NAS.</strong></p>
+</li>
+<li>
+<p><strong>Download Docker imager.</strong><br>
+Open Container Manager. Search and download the Arch Linux image (tag: latest) under Registry.
+<img src="images/Container_Manager_Registry.png" width="800"/></p>
+</li>
+<li>
+<p><strong>Create container.</strong><br>
+With the image selected, click on Run. This will start the creation of the container. Enable auto-restart. The Kerberos processes do not take many system resources, so no need to limit these here.
+<img src="images/Container_Manager_Create_Container1.png" width="800"/></p>
+</li>
+<li>
+<p><strong>Map container volumes</strong><br>
+Map ports 88 (Kerberos) and 749 (database admin tool). Map the indicated volumes from the image to a local share in order to make the database and configuration persistent between image updates/restarts. Access to mapped folders/files on your NAS should be limited to docker_user and admin.
+<img src="images/Container_Manager_Create_Container2.png" width="800"/></p>
+</li>
+<li>
+<p><strong>Accept default values for Environment, Capabilities and Network.</strong>
+<img src="images/Container_Manager_Create_Container3.png" width="800"/></p>
+</li>
+<li>
+<p><strong>Set container startup command</strong><br>
+The following works as a startup command for the container:<br>
+<code>/usr/bin/bash -c krb5kdc &amp;&amp; exec kadmind -nofork</code><br>
+This makes sure that the Kerberos Key Distribution Center and the Administration Daemon are started when the container is launched.
+<img src="images/Container_Manager_Create_Container4.png" width="800"/></p>
+</li>
+<li>
+<p><strong>Continue and run the container.</strong><br>
+<img src="images/Container_Manager_Create_Container5.png" width="800"/></p>
+</li>
+<li>
+<p><strong>Configure Kerberos.</strong><br>
+Open a terminal in the container. (create a new one)<br>
+Create and configure the Kerberos principal database. Configure the Realm in both client and KDC.
+<img src="images/Container_Manager_Terminal.png" width="800"/></p>
+</li>
+</ol>
   </div>
   
 <div class="article-tag-list">
@@ -156,14 +199,6 @@
 <div class="col-xs-6 col-md-12">
 <h4><i class="fa fa-comment fa-fw fa-lg"></i> Social</h4>
 <ul class="list-unstyled social-links">
-    <li><a href="https://fosstodon.org/@Penguinsula" target="_blank">
-	  <i class="fa fa-pencil-square fa-fw fa-lg" title="Mastodon"></i>
-		Mastodon
-	</a></li>
-    <li><a href="https://twitter.com/penguinsula" target="_blank">
-	  <i class="fa fa-twitter-square fa-fw fa-lg" title="Twitter"></i>
-		Twitter
-	</a></li>
     <li><a href="https://github.com/jwarmenhoven" target="_blank">
 	  <i class="fa fa-github-square fa-fw fa-lg" title="GitHub"></i>
 		GitHub
