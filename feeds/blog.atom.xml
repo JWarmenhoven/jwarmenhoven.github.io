@@ -126,7 +126,7 @@ Create and configure the Kerberos principal database. Configure the Realm in bot
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Configure Kerberos database&lt;/strong&gt;  &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;After initial creation of the database, use &lt;code&gt;$sudo kadmin_local&lt;/code&gt; to add the administrator principal to the database. After having added this principal, you can from now on use &lt;code&gt;$kadmin&lt;/code&gt; which interacts with the database &lt;em&gt;via the kadmind daemon&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;After initial creation of the database, use &lt;code&gt;$sudo kadmin.local&lt;/code&gt; to add the administrator principal to the database. After having added this principal, you can from now on use &lt;code&gt;$kadmin&lt;/code&gt; which interacts with the database &lt;em&gt;via the kadmind daemon&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;Add a standard principal that is your user on the Linux client.&lt;/li&gt;
 &lt;li&gt;Add a service principal for the NAS/NFSv4 server.   &lt;/li&gt;
 &lt;li&gt;Add a service principal for the KDC (the Linux client).&lt;br&gt;
