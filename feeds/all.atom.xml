@@ -131,8 +131,8 @@ Create and configure the Kerberos principal database. Configure the Realm in bot
 &lt;li&gt;Add a service principal for the NAS/NFSv4 server.   &lt;/li&gt;
 &lt;li&gt;Add a service principal for the KDC (the Linux client).&lt;br&gt;
 Restart krb5-kdc and krb5-kadmind services.&lt;br&gt;
-&lt;code&gt;$sudo systemctl restart krb5-kdc&lt;/code&gt;.  c
-&lt;code&gt;$sudo systemctl restart krb5-kadmind&lt;/code&gt;.  &lt;/li&gt;
+&lt;code&gt;$sudo systemctl restart krb5-kdc&lt;/code&gt;.&lt;br&gt;
+&lt;code&gt;$sudo systemctl restart krb5-kadmind&lt;/code&gt;.    &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
